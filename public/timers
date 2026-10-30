@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Timers</title>
+    <title>Go با مثال: تایمرها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'range-over-channels';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'tickers';
           }
           
@@ -24,20 +24,20 @@
   </script>
   <body>
     <div class="example" id="timers">
-      <h2><a href="./">Go by Example</a>: Timers</h2>
+      <h2><a href="./">Go با مثال</a>: تایمرها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>We often want to execute Go code at some point in the
-future, or repeatedly at some interval. Go&rsquo;s built-in
-<em>timer</em> and <em>ticker</em> features make both of these tasks
-easy. We&rsquo;ll look first at timers and then
-at <a href="tickers">tickers</a>.</p>
+            <p>اغلب می‌خواهیم کد Go را در زمانی در آینده یا به‌طور
+تکراری در فواصل مشخص اجرا کنیم. قابلیت‌های داخلی
+<em>timer</em> و <em>ticker</em> در Go هر دو کار را ساده می‌کنند.
+اول تایمرها را می‌بینیم و سپس
+<a href="tickers">تیکرها</a> را.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -47,8 +47,8 @@ at <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/gF7VLRz3URM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/vSCWvXVV0Ak"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -57,7 +57,7 @@ at <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -70,7 +70,7 @@ at <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -78,13 +78,13 @@ at <a href="tickers">tickers</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>Timers represent a single event in the future. You
-tell the timer how long you want to wait, and it
-provides a channel that will be notified at that
-time. This timer will wait 2 seconds.</p>
+            <p>تایمرها نمایانگر یک رویداد واحد در آینده هستند. به
+تایمر می‌گویید چقدر می‌خواهید صبر کنید و تایمر
+کانالی در اختیارتان می‌گذارد که در آن زمان خبردار
+می‌شود. این تایمر ۲ ثانیه صبر می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">timer1</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTimer</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -92,12 +92,11 @@ time. This timer will wait 2 seconds.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&lt;-timer1.C</code> blocks on the timer&rsquo;s channel <code>C</code>
-until it sends a value indicating that the timer
-fired.</p>
+            <p><code>&lt;-timer1.C</code> روی کانال <code>C</code> تایمر مسدود می‌ماند تا
+تایمر مقداری بفرستد که نشان دهد زمانش فرا رسیده است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">timer1</span><span class="p">.</span><span class="nx">C</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Timer 1 fired&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -106,13 +105,13 @@ fired.</p>
         
         <tr>
           <td class="docs">
-            <p>If you just wanted to wait, you could have used
-<code>time.Sleep</code>. One reason a timer may be useful is
-that you can cancel the timer before it fires.
-Here&rsquo;s an example of that.</p>
+            <p>اگر فقط می‌خواستید صبر کنید، می‌توانستید از
+<code>time.Sleep</code> استفاده کنید. یکی از دلایل مفید بودن
+تایمر این است که می‌توانید آن را پیش از فرا رسیدن
+زمانش لغو کنید. این یک نمونه از آن است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">timer2</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTimer</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
@@ -128,11 +127,12 @@ Here&rsquo;s an example of that.</p>
         
         <tr>
           <td class="docs">
-            <p>Give the <code>timer2</code> enough time to fire, if it ever
-was going to, to show it is in fact stopped.</p>
+            <p>به <code>timer2</code> به اندازهٔ کافی زمان می‌دهیم تا اگر قرار
+بود اجرا شود، اجرا شود؛ تا نشان دهیم که واقعاً
+متوقف شده است.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -145,12 +145,12 @@ was going to, to show it is in fact stopped.</p>
         
         <tr>
           <td class="docs">
-            <p>The first timer will fire ~2s after we start the
-program, but the second should be stopped before it has
-a chance to fire.</p>
+            <p>تایمر اول حدود ۲ ثانیه پس از شروع برنامه اجرا می‌شود،
+اما تایمر دوم باید پیش از اینکه فرصت اجرا پیدا کند
+متوقف شود.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run timers.go
 </span></span><span class="line"><span class="cl"><span class="go">Timer 1 fired
@@ -162,12 +162,12 @@ a chance to fire.</p>
       
       
       <p class="next">
-        Next example: <a href="tickers" rel="next">Tickers</a>.
+        مثال بعدی: <a href="tickers" rel="next">تیکرها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

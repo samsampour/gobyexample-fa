@@ -1,85 +1,85 @@
-Hello World
-Values
-Variables
-Constants
-For
-If/Else
-Switch
-Arrays
-Slices
-Maps
-Functions
-Multiple Return Values
-Variadic Functions
-Closures
-Recursion
-Range over Built-in Types
-Pointers
-Strings and Runes
-Structs
-Methods
-Interfaces
-Enums
-Struct Embedding
-Generics
-Range over Iterators
-Errors
-Custom Errors
-Goroutines
-Channels
-Channel Buffering
-Channel Synchronization
-Channel Directions
-Select
-Timeouts
-Non-Blocking Channel Operations
-Closing Channels
-Range over Channels
-Timers
-Tickers
-Worker Pools
-WaitGroups
-Rate Limiting
-Atomic Counters
-Mutexes
-Stateful Goroutines
-Sorting
-Sorting by Functions
-Panic
-Defer
-Recover
-String Functions
-String Formatting
-Text Templates
-Regular Expressions
-JSON
-XML
-Time
-Epoch
-Time Formatting / Parsing
-Random Numbers
-Number Parsing
-URL Parsing
-SHA256 Hashes
-Base64 Encoding
-Reading Files
-Writing Files
-Line Filters
-File Paths
-Directories
-Temporary Files and Directories
-Embed Directive
-Testing and Benchmarking
-Command-Line Arguments
-Command-Line Flags
-Command-Line Subcommands
-Environment Variables
-Logging
-HTTP Client
-HTTP Server
-TCP Server
-Context
-Spawning Processes
-Exec'ing Processes
-Signals
-Exit
+Hello World|سلام دنیا
+Values|مقادیر
+Variables|متغیرها
+Constants|ثابت‌ها
+For|حلقه for
+If/Else|شرط if/else
+Switch|دستور switch
+Arrays|آرایه‌ها
+Slices|اسلایس‌ها
+Maps|مپ‌ها
+Functions|توابع
+Multiple Return Values|چند مقدار بازگشتی
+Variadic Functions|توابع با تعداد آرگومان متغیر
+Closures|کلوژرها
+Recursion|بازگشت (Recursion)
+Range over Built-in Types|range روی انواع داخلی
+Pointers|اشاره‌گرها
+Strings and Runes|رشته‌ها و رون‌ها
+Structs|ساختارها (Struct)
+Methods|متدها
+Interfaces|اینترفیس‌ها
+Enums|نوع‌های شمارشی (Enum)
+Struct Embedding|جاسازی ساختارها
+Generics|جنریک‌ها
+Range over Iterators|range روی پیمایشگرها
+Errors|خطاها
+Custom Errors|خطاهای سفارشی
+Goroutines|گوروتین‌ها
+Channels|کانال‌ها
+Channel Buffering|کانال‌های بافردار
+Channel Synchronization|همگام‌سازی با کانال
+Channel Directions|جهت کانال‌ها
+Select|دستور select
+Timeouts|مهلت زمانی (Timeout)
+Non-Blocking Channel Operations|عملیات غیرمسدودکننده روی کانال
+Closing Channels|بستن کانال‌ها
+Range over Channels|range روی کانال‌ها
+Timers|تایمرها
+Tickers|تیکرها
+Worker Pools|استخر کارگرها (Worker Pool)
+WaitGroups|WaitGroupها
+Rate Limiting|محدودسازی نرخ
+Atomic Counters|شمارنده‌های اتمیک
+Mutexes|میوتکس‌ها
+Stateful Goroutines|گوروتین‌های حالت‌دار
+Sorting|مرتب‌سازی
+Sorting by Functions|مرتب‌سازی با تابع
+Panic|panic
+Defer|defer
+Recover|recover
+String Functions|توابع رشته
+String Formatting|قالب‌بندی رشته
+Text Templates|قالب‌های متنی
+Regular Expressions|عبارات منظم
+JSON|JSON
+XML|XML
+Time|زمان
+Epoch|زمان یونیکس (Epoch)
+Time Formatting / Parsing|قالب‌بندی و تجزیهٔ زمان
+Random Numbers|اعداد تصادفی
+Number Parsing|تجزیهٔ اعداد
+URL Parsing|تجزیهٔ URL
+SHA256 Hashes|هش SHA256
+Base64 Encoding|کدگذاری Base64
+Reading Files|خواندن فایل‌ها
+Writing Files|نوشتن فایل‌ها
+Line Filters|فیلترهای خطی
+File Paths|مسیر فایل‌ها
+Directories|پوشه‌ها
+Temporary Files and Directories|فایل‌ها و پوشه‌های موقت
+Embed Directive|دستور embed
+Testing and Benchmarking|تست و بنچمارک
+Command-Line Arguments|آرگومان‌های خط فرمان
+Command-Line Flags|فلگ‌های خط فرمان
+Command-Line Subcommands|زیرفرمان‌های خط فرمان
+Environment Variables|متغیرهای محیطی
+Logging|لاگ‌گیری
+HTTP Client|کلاینت HTTP
+HTTP Server|سرور HTTP
+TCP Server|سرور TCP
+Context|Context
+Spawning Processes|ایجاد پروسه‌ها
+Exec'ing Processes|اجرای پروسه با exec
+Signals|سیگنال‌ها
+Exit|خروج

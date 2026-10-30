@@ -1,5 +1,5 @@
-// Branching with `if` and `else` in Go is
-// straight-forward.
+// شرط‌گذاری با `if` و `else` در Go ساده و سرراست
+// است.
 
 package main
 
@@ -7,27 +7,27 @@ import "fmt"
 
 func main() {
 
-	// Here's a basic example.
+	// یک مثال ساده.
 	if 7%2 == 0 {
 		fmt.Println("7 is even")
 	} else {
 		fmt.Println("7 is odd")
 	}
 
-	// You can have an `if` statement without an else.
+	// می‌توانید دستور `if` را بدون else هم بنویسید.
 	if 8%4 == 0 {
 		fmt.Println("8 is divisible by 4")
 	}
 
-	// Logical operators like `&&` and `||` are often
-	// useful in conditions.
+	// عملگرهای منطقی مثل `&&` و `||` اغلب در شرط‌ها
+	// به کار می‌آیند.
 	if 8%2 == 0 || 7%2 == 0 {
 		fmt.Println("either 8 or 7 are even")
 	}
 
-	// A statement can precede conditionals; any variables
-	// declared in this statement are available in the current
-	// and all subsequent branches.
+	// پیش از شرط می‌توان یک دستور نوشت؛ هر متغیری که در
+	// این دستور تعریف شود، در شاخهٔ فعلی و همهٔ شاخه‌های
+	// بعدی در دسترس است.
 	if num := 9; num < 0 {
 		fmt.Println(num, "is negative")
 	} else if num < 10 {
@@ -37,5 +37,5 @@ func main() {
 	}
 }
 
-// Note that you don't need parentheses around conditions
-// in Go, but that the braces are required.
+// توجه کنید که در Go نیازی به پرانتز دور شرط‌ها نیست،
+// اما آکولادها الزامی هستند.

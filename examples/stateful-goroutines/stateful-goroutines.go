@@ -1,11 +1,11 @@
-// In the previous example we used explicit locking with
-// [mutexes](mutexes) to synchronize access to shared state
-// across multiple goroutines. Another option is to use the
-// built-in synchronization features of  goroutines and
-// channels to achieve the same result. This channel-based
-// approach aligns with Go's ideas of sharing memory by
-// communicating and having each piece of data owned
-// by exactly one goroutine.
+// در مثال قبل از قفل‌گذاری صریح با [میوتکس‌ها](mutexes)
+// برای همگام‌سازی دسترسی به وضعیت مشترک بین چند گوروتین
+// استفاده کردیم. گزینهٔ دیگر این است که از قابلیت‌های
+// همگام‌سازی داخلی گوروتین‌ها و کانال‌ها برای رسیدن به
+// همان نتیجه استفاده کنیم. این رویکرد مبتنی بر کانال با
+// ایدهٔ Go هماهنگ است: به اشتراک گذاشتن حافظه از طریق
+// ارتباط، و اینکه هر تکه داده دقیقاً متعلق به یک
+// گوروتین باشد.
 
 package main
 
@@ -16,14 +16,13 @@ import (
 	"time"
 )
 
-// In this example our state will be owned by a single
-// goroutine. This will guarantee that the data is never
-// corrupted with concurrent access. In order to read or
-// write that state, other goroutines will send messages
-// to the owning goroutine and receive corresponding
-// replies. These `readOp` and `writeOp` `struct`s
-// encapsulate those requests and a way for the owning
-// goroutine to respond.
+// در این مثال وضعیت ما متعلق به یک گوروتین واحد است. این
+// تضمین می‌کند که داده‌ها هرگز با دسترسی هم‌زمان خراب
+// نشوند. برای خواندن یا نوشتن آن وضعیت، گوروتین‌های دیگر
+// به گوروتینِ مالک پیام می‌فرستند و پاسخ متناظر را
+// دریافت می‌کنند. این `struct`های `readOp` و `writeOp`
+// آن درخواست‌ها و راهی برای پاسخ دادن گوروتین مالک را
+// در بر می‌گیرند.
 type readOp struct {
 	key  int
 	resp chan int
@@ -36,25 +35,24 @@ type writeOp struct {
 
 func main() {
 
-	// As before we'll count how many operations we perform.
+	// مثل قبل، تعداد عملیاتی را که انجام می‌دهیم می‌شماریم.
 	var readOps uint64
 	var writeOps uint64
 
-	// The `reads` and `writes` channels will be used by
-	// other goroutines to issue read and write requests,
-	// respectively.
+	// گوروتین‌های دیگر از کانال‌های `reads` و `writes`
+	// به‌ترتیب برای ارسال درخواست‌های خواندن و نوشتن
+	// استفاده می‌کنند.
 	reads := make(chan readOp)
 	writes := make(chan writeOp)
 
-	// Here is the goroutine that owns the `state`, which
-	// is a map as in the previous example but now private
-	// to the stateful goroutine. This goroutine repeatedly
-	// selects on the `reads` and `writes` channels,
-	// responding to requests as they arrive. A response
-	// is executed by first performing the requested
-	// operation and then sending a value on the response
-	// channel `resp` to indicate success (and the desired
-	// value in the case of `reads`).
+	// این گوروتینی است که مالک `state` است؛ `state` مثل
+	// مثال قبل یک مپ است، اما حالا مختص همین گوروتینِ
+	// حالت‌دار است. این گوروتین پشت سر هم روی کانال‌های
+	// `reads` و `writes`، select می‌کند و به درخواست‌ها به
+	// محض رسیدن پاسخ می‌دهد. پاسخ دادن به این صورت است که
+	// اول عملیات درخواستی انجام می‌شود و سپس مقداری روی
+	// کانال پاسخ `resp` فرستاده می‌شود تا موفقیت را نشان دهد
+	// (و در مورد `reads`، مقدار خواسته‌شده را).
 	go func() {
 		var state = make(map[int]int)
 		for {
@@ -68,11 +66,11 @@ func main() {
 		}
 	}()
 
-	// This starts 100 goroutines to issue reads to the
-	// state-owning goroutine via the `reads` channel.
-	// Each read requires constructing a `readOp`, sending
-	// it over the `reads` channel, and then receiving the
-	// result over the provided `resp` channel.
+	// این بخش ۱۰۰ گوروتین راه می‌اندازد که از طریق کانال
+	// `reads` درخواست خواندن به گوروتینِ مالک وضعیت
+	// می‌فرستند. هر خواندن شامل ساختن یک `readOp`، فرستادن
+	// آن روی کانال `reads` و سپس دریافت نتیجه از کانال
+	// `resp` داده‌شده است.
 	for range 100 {
 		go func() {
 			for {
@@ -87,8 +85,7 @@ func main() {
 		}()
 	}
 
-	// We start 10 writes as well, using a similar
-	// approach.
+	// ۱۰ نوشتن را هم با روشی مشابه راه می‌اندازیم.
 	for range 10 {
 		go func() {
 			for {
@@ -104,10 +101,10 @@ func main() {
 		}()
 	}
 
-	// Let the goroutines work for a second.
+	// اجازه می‌دهیم گوروتین‌ها یک ثانیه کار کنند.
 	time.Sleep(time.Second)
 
-	// Finally, capture and report the op counts.
+	// در نهایت، تعداد عملیات را می‌خوانیم و گزارش می‌دهیم.
 	readOpsFinal := atomic.LoadUint64(&readOps)
 	fmt.Println("readOps:", readOpsFinal)
 	writeOpsFinal := atomic.LoadUint64(&writeOps)

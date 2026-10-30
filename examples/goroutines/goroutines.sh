@@ -1,8 +1,7 @@
-# When we run this program, we see the output of the
-# blocking call first, then the output of the two
-# goroutines. The goroutines' output may be interleaved,
-# because goroutines are being run concurrently by the
-# Go runtime.
+# وقتی این برنامه را اجرا کنیم، اول خروجی فراخوانی
+# مسدودکننده را می‌بینیم و بعد خروجی دو گوروتین را.
+# خروجی گوروتین‌ها ممکن است درهم باشد، چون runtime
+# زبان Go آن‌ها را هم‌زمان اجرا می‌کند.
 $ go run goroutines.go
 direct : 0
 direct : 1
@@ -13,5 +12,5 @@ goroutine : 1
 goroutine : 2
 done
 
-# Next we'll look at a complement to goroutines in
-# concurrent Go programs: channels.
+# در ادامه مکملِ گوروتین‌ها در برنامه‌های هم‌روند Go را
+# می‌بینیم: کانال‌ها.

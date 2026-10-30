@@ -1,15 +1,13 @@
-# Running our program shows that the goroutine-based
-# state management example completes about 80,000
-# total operations.
+# اجرای برنامه نشان می‌دهد که مثال مدیریت وضعیت
+# مبتنی بر گوروتین، در مجموع حدود ۸۰٬۰۰۰ عملیات انجام
+# می‌دهد.
 $ go run stateful-goroutines.go
 readOps: 71708
 writeOps: 7177
 
-# For this particular case the goroutine-based approach
-# was a bit more involved than the mutex-based one. It
-# might be useful in certain cases though, for example
-# where you have other channels involved or when managing
-# multiple such mutexes would be error-prone. You should
-# use whichever approach feels most natural, especially
-# with respect to understanding the correctness of your
-# program.
+# در این مورد خاص، رویکرد مبتنی بر گوروتین کمی
+# پیچیده‌تر از رویکرد مبتنی بر میوتکس بود. اما در برخی
+# موارد می‌تواند مفید باشد؛ مثلاً وقتی کانال‌های دیگری هم
+# درگیرند یا وقتی مدیریت چندین میوتکس مستعد خطاست. از
+# هر رویکردی که طبیعی‌تر به نظر می‌رسد استفاده کنید،
+# به‌ویژه از نظر فهم درستی برنامه‌تان.

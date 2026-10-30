@@ -1,7 +1,7 @@
-// _Channels_ are the pipes that connect concurrent
-// goroutines. You can send values into channels from one
-// goroutine and receive those values into another
-// goroutine.
+// _کانال‌ها_ (channels) لوله‌هایی هستند که گوروتین‌های
+// هم‌روند را به هم وصل می‌کنند. می‌توانید از یک گوروتین
+// مقادیری را به کانال بفرستید و در گوروتینی دیگر آن‌ها را
+// دریافت کنید.
 
 package main
 
@@ -9,18 +9,19 @@ import "fmt"
 
 func main() {
 
-	// Create a new channel with `make(chan val-type)`.
-	// Channels are typed by the values they convey.
+	// یک کانال جدید را با `make(chan val-type)` بسازید.
+	// نوع کانال‌ها با نوع مقادیری که منتقل می‌کنند تعیین
+	// می‌شود.
 	messages := make(chan string)
 
-	// _Send_ a value into a channel using the `channel <-`
-	// syntax. Here we send `"ping"`  to the `messages`
-	// channel we made above, from a new goroutine.
+	// با نحو `channel <-` یک مقدار را به کانال _بفرستید_.
+	// اینجا از یک گوروتین جدید، `"ping"` را به کانال
+	// `messages` که بالا ساختیم می‌فرستیم.
 	go func() { messages <- "ping" }()
 
-	// The `<-channel` syntax _receives_ a value from the
-	// channel. Here we'll receive the `"ping"` message
-	// we sent above and print it out.
+	// نحو `<-channel` یک مقدار را از کانال _دریافت_
+	// می‌کند. اینجا پیام `"ping"` را که بالا فرستادیم
+	// دریافت و چاپ می‌کنیم.
 	msg := <-messages
 	fmt.Println(msg)
 }

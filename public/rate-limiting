@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Rate Limiting</title>
+    <title>Go با مثال: محدودسازی نرخ</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'waitgroups';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'atomic-counters';
           }
           
@@ -24,20 +24,20 @@
   </script>
   <body>
     <div class="example" id="rate-limiting">
-      <h2><a href="./">Go by Example</a>: Rate Limiting</h2>
+      <h2><a href="./">Go با مثال</a>: محدودسازی نرخ</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Rate_limiting"><em>Rate limiting</em></a>
-is an important mechanism for controlling resource
-utilization and maintaining quality of service. Go
-elegantly supports rate limiting with goroutines,
-channels, and <a href="tickers">tickers</a>.</p>
+            <p><a href="https://en.wikipedia.org/wiki/Rate_limiting"><em>محدودسازی نرخ</em></a>
+(rate limiting) سازوکار مهمی برای کنترل مصرف منابع و
+حفظ کیفیت سرویس است. Go با گوروتین‌ها، کانال‌ها و
+<a href="tickers">تیکرها</a> به شکلی زیبا از محدودسازی نرخ
+پشتیبانی می‌کند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -47,8 +47,8 @@ channels, and <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/y9V3goQfy5m"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/jbRLzCE9jvt"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -57,7 +57,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -70,7 +70,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -78,13 +78,13 @@ channels, and <a href="tickers">tickers</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>First we&rsquo;ll look at basic rate limiting. Suppose
-we want to limit our handling of incoming requests.
-We&rsquo;ll serve these requests off a channel of the
-same name.</p>
+            <p>اول محدودسازی نرخ ساده را می‌بینیم. فرض کنید
+می‌خواهیم رسیدگی به درخواست‌های ورودی را محدود کنیم.
+این درخواست‌ها را از کانالی به همین نام سرویس
+می‌دهیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">requests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
@@ -96,12 +96,11 @@ same name.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>limiter</code> channel will receive a value
-every 200 milliseconds. This is the regulator in
-our rate limiting scheme.</p>
+            <p>کانال <code>limiter</code> هر ۲۰۰ میلی‌ثانیه یک مقدار دریافت
+می‌کند. این تنظیم‌کنندهٔ طرح محدودسازی نرخ ماست.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limiter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -109,12 +108,12 @@ our rate limiting scheme.</p>
         
         <tr>
           <td class="docs">
-            <p>By blocking on a receive from the <code>limiter</code> channel
-before serving each request, we limit ourselves to
-1 request every 200 milliseconds.</p>
+            <p>با مسدود شدن روی دریافت از کانال <code>limiter</code> پیش از
+سرویس دادن به هر درخواست، خودمان را به ۱ درخواست در
+هر ۲۰۰ میلی‌ثانیه محدود می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">requests</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">limiter</span>
@@ -125,14 +124,14 @@ before serving each request, we limit ourselves to
         
         <tr>
           <td class="docs">
-            <p>We may want to allow short bursts of requests in
-our rate limiting scheme while preserving the
-overall rate limit. We can accomplish this by
-buffering our limiter channel. This <code>burstyLimiter</code>
-channel will allow bursts of up to 3 events.</p>
+            <p>ممکن است بخواهیم در طرح محدودسازی نرخ، اجازهٔ
+رگبارهای کوتاهی از درخواست‌ها (burst) را بدهیم و در
+عین حال محدودیت نرخ کلی حفظ شود. این کار را می‌توان
+با بافردار کردن کانال limiter انجام داد. کانال
+<code>burstyLimiter</code> اجازهٔ رگبارهایی تا ۳ رویداد را می‌دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyLimiter</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -140,10 +139,10 @@ channel will allow bursts of up to 3 events.</p>
         
         <tr>
           <td class="docs">
-            <p>Fill up the channel to represent allowed bursting.</p>
+            <p>کانال را پر می‌کنیم تا رگبار مجاز را نشان دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">range</span> <span class="mi">3</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
@@ -153,11 +152,11 @@ channel will allow bursts of up to 3 events.</p>
         
         <tr>
           <td class="docs">
-            <p>Every 200 milliseconds we&rsquo;ll try to add a new
-value to <code>burstyLimiter</code>, up to its limit of 3.</p>
+            <p>هر ۲۰۰ میلی‌ثانیه سعی می‌کنیم یک مقدار جدید به
+<code>burstyLimiter</code> اضافه کنیم، تا سقف ۳.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span> <span class="p">{</span>
@@ -169,12 +168,12 @@ value to <code>burstyLimiter</code>, up to its limit of 3.</p>
         
         <tr>
           <td class="docs">
-            <p>Now simulate 5 more incoming requests. The first
-3 of these will benefit from the burst capability
-of <code>burstyLimiter</code>.</p>
+            <p>حالا ۵ درخواست ورودی دیگر را شبیه‌سازی می‌کنیم. ۳
+درخواست اول از قابلیت رگبارِ <code>burstyLimiter</code> بهره
+می‌برند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyRequests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
@@ -195,11 +194,12 @@ of <code>burstyLimiter</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our program we see the first batch of requests
-handled once every ~200 milliseconds as desired.</p>
+            <p>با اجرای برنامه می‌بینیم که همان‌طور که می‌خواستیم،
+به دستهٔ اول درخواست‌ها هر ~۲۰۰ میلی‌ثانیه یک بار
+رسیدگی می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run rate-limiting.go
 </span></span><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:18.687438 +0000 UTC
@@ -212,12 +212,12 @@ handled once every ~200 milliseconds as desired.</p>
         
         <tr>
           <td class="docs">
-            <p>For the second batch of requests we serve the first
-3 immediately because of the burstable rate limiting,
-then serve the remaining 2 with ~200ms delays each.</p>
+            <p>در دستهٔ دوم درخواست‌ها، به لطف محدودسازی نرخِ
+رگبارپذیر، به ۳ درخواست اول فوراً رسیدگی می‌شود و
+سپس ۲ درخواست باقی‌مانده هر کدام با ~۲۰۰ms تأخیر.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:20.487578 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 2 2012-10-19 00:38:20.487645 +0000 UTC
@@ -231,12 +231,12 @@ then serve the remaining 2 with ~200ms delays each.</p>
       
       
       <p class="next">
-        Next example: <a href="atomic-counters" rel="next">Atomic Counters</a>.
+        مثال بعدی: <a href="atomic-counters" rel="next">شمارنده‌های اتمیک</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

@@ -1,21 +1,21 @@
-// When using channels as function parameters, you can
-// specify if a channel is meant to only send or receive
-// values. This specificity increases the type-safety of
-// the program.
+// وقتی از کانال‌ها به‌عنوان پارامتر تابع استفاده می‌کنید،
+// می‌توانید مشخص کنید که کانال فقط برای ارسال است یا فقط
+// برای دریافت. این مشخص بودن، ایمنی نوع برنامه را
+// افزایش می‌دهد.
 
 package main
 
 import "fmt"
 
-// This `ping` function only accepts a channel for sending
-// values. It would be a compile-time error to try to
-// receive on this channel.
+// این تابع `ping` فقط کانالی برای ارسال مقادیر می‌پذیرد.
+// تلاش برای دریافت از این کانال، خطای زمان کامپایل
+// خواهد بود.
 func ping(pings chan<- string, msg string) {
 	pings <- msg
 }
 
-// The `pong` function accepts one channel for receives
-// (`pings`) and a second for sends (`pongs`).
+// تابع `pong` یک کانال برای دریافت (`pings`) و یک کانال
+// دوم برای ارسال (`pongs`) می‌پذیرد.
 func pong(pings <-chan string, pongs chan<- string) {
 	msg := <-pings
 	pongs <- msg

@@ -1,26 +1,26 @@
-// Go supports <em><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-// allowing you to pass references to values and records
-// within your program.
+// Go از <em><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">اشاره‌گرها</a></em>
+// (pointers) پشتیبانی می‌کند که به شما اجازه می‌دهند
+// ارجاع به مقادیر و رکوردها را در برنامه جابه‌جا کنید.
 
 package main
 
 import "fmt"
 
-// We'll show how pointers work in contrast to values with
-// 2 functions: `zeroval` and `zeroptr`. `zeroval` has an
-// `int` parameter, so arguments will be passed to it by
-// value. `zeroval` will get a copy of `ival` distinct
-// from the one in the calling function.
+// با دو تابع `zeroval` و `zeroptr` نشان می‌دهیم که
+// اشاره‌گرها در مقایسه با مقادیر چطور کار می‌کنند.
+// `zeroval` یک پارامتر `int` دارد، پس آرگومان‌ها با مقدار
+// (by value) به آن داده می‌شوند. `zeroval` یک کپی از
+// `ival` می‌گیرد که از متغیر تابع صدازننده جداست.
 func zeroval(ival int) {
 	ival = 0
 }
 
-// `zeroptr` in contrast has an `*int` parameter, meaning
-// that it takes an `int` pointer. The `*iptr` code in the
-// function body then _dereferences_ the pointer from its
-// memory address to the current value at that address.
-// Assigning a value to a dereferenced pointer changes the
-// value at the referenced address.
+// در مقابل، `zeroptr` یک پارامتر `*int` دارد، یعنی یک
+// اشاره‌گر به `int` می‌گیرد. سپس کد `*iptr` در بدنهٔ تابع،
+// اشاره‌گر را _dereference_ می‌کند؛ یعنی از آدرس حافظه
+// به مقدار فعلیِ آن آدرس می‌رسد. انتساب مقدار به یک
+// اشاره‌گرِ dereference‌شده، مقدارِ آدرس مورد ارجاع را
+// تغییر می‌دهد.
 func zeroptr(iptr *int) {
 	*iptr = 0
 }
@@ -32,16 +32,16 @@ func main() {
 	zeroval(i)
 	fmt.Println("zeroval:", i)
 
-	// The `&i` syntax gives the memory address of `i`,
-	// i.e. a pointer to `i`.
+	// نحو `&i` آدرس حافظهٔ `i` را می‌دهد، یعنی یک
+	// اشاره‌گر به `i`.
 	zeroptr(&i)
 	fmt.Println("zeroptr:", i)
 
-	// Pointers can be printed too.
+	// اشاره‌گرها را هم می‌توان چاپ کرد.
 	fmt.Println("pointer:", &i)
 
-	// A new pointer to a value can be created with the
-	// builtin function `new`.
+	// با تابع داخلی `new` می‌توان یک اشاره‌گر جدید به یک
+	// مقدار ساخت.
 	p := new(42)
 	fmt.Println("value at *p:", *p)
 	zeroptr(p)

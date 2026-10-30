@@ -10,5 +10,5 @@ Worker 2 done
 Worker 5 done
 Worker 3 done
 
-# The order of workers starting up and finishing
-# is likely to be different for each invocation.
+# ترتیب شروع و پایان کار کارگرها احتمالاً در هر بار
+# اجرا متفاوت خواهد بود.

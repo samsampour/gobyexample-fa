@@ -1,6 +1,7 @@
-// Starting with version 1.23, Go has added support for
-// [iterators](https://go.dev/blog/range-functions),
-// which lets us range over pretty much anything!
+// از نسخهٔ 1.23، Go پشتیبانی از
+// [پیمایشگرها](https://go.dev/blog/range-functions)
+// (iterators) را اضافه کرده که به ما اجازه می‌دهد تقریباً
+// روی هر چیزی `range` بزنیم!
 
 package main
 
@@ -11,11 +12,10 @@ import (
 	"strings"
 )
 
-// Let's look at the `List` type from the
-// [previous example](generics) again. In that example
-// we had an `AllElements` method that returned a slice
-// of all elements in the list. With Go iterators, we
-// can do it better - as shown below.
+// بیایید دوباره نوع `List` از [مثال قبل](generics) را
+// ببینیم. در آن مثال متد `AllElements` را داشتیم که یک
+// اسلایس از همهٔ عناصر لیست برمی‌گرداند. با پیمایشگرهای
+// Go می‌توانیم این کار را بهتر انجام دهیم؛ مثل کد زیر.
 type List[T any] struct {
 	head, tail *element[T]
 }
@@ -35,15 +35,16 @@ func (lst *List[T]) Push(v T) {
 	}
 }
 
-// All returns an _iterator_, which in Go is a function
-// with a [special signature](https://pkg.go.dev/iter#Seq).
+// All یک _پیمایشگر_ برمی‌گرداند که در Go تابعی با
+// [امضای ویژه](https://pkg.go.dev/iter#Seq) است.
 func (lst *List[T]) All() iter.Seq[T] {
 	return func(yield func(T) bool) {
-		// The iterator function takes another function as
-		// a parameter, called `yield` by convention (but
-		// the name can be arbitrary). It will call `yield` for
-		// every element we want to iterate over, and note `yield`'s
-		// return value for a potential early termination.
+		// تابع پیمایشگر تابع دیگری را به‌عنوان پارامتر
+		// می‌گیرد که طبق قرارداد `yield` نامیده می‌شود (اما
+		// نامش می‌تواند هر چیزی باشد). این تابع برای هر
+		// عنصری که می‌خواهیم پیمایش کنیم `yield` را صدا
+		// می‌زند و به مقدار بازگشتی `yield` توجه می‌کند تا در
+		// صورت لزوم زودتر متوقف شود.
 		for e := lst.head; e != nil; e = e.next {
 			if !yield(e.val) {
 				return
@@ -52,10 +53,10 @@ func (lst *List[T]) All() iter.Seq[T] {
 	}
 }
 
-// Iteration doesn't require an underlying data structure,
-// and doesn't even have to be finite! Here's a function
-// returning an iterator over Fibonacci numbers: it keeps
-// running as long as `yield` keeps returning `true`.
+// پیمایش نیازی به یک ساختار داده‌ی زیربنایی ندارد و حتی
+// لازم نیست متناهی باشد! این تابع پیمایشگری روی اعداد
+// فیبوناچی برمی‌گرداند: تا زمانی که `yield` مقدار `true`
+// برگرداند، به کارش ادامه می‌دهد.
 func genFib() iter.Seq[int] {
 	return func(yield func(int) bool) {
 		a, b := 0, 1
@@ -75,30 +76,32 @@ func main() {
 	lst.Push(13)
 	lst.Push(23)
 
-	// Since `List.All` returns an iterator, we can use it
-	// in a regular `range` loop.
+	// چون `List.All` یک پیمایشگر برمی‌گرداند، می‌توانیم از
+	// آن در یک حلقهٔ `range` معمولی استفاده کنیم.
 	for e := range lst.All() {
 		fmt.Println(e)
 	}
 
-	// Packages like [slices](https://pkg.go.dev/slices) have
-	// a number of useful functions to work with iterators.
-	// For example, `Collect` takes any iterator and collects
-	// all its values into a slice.
+	// بسته‌هایی مثل [slices](https://pkg.go.dev/slices)
+	// توابع مفید زیادی برای کار با پیمایشگرها دارند.
+	// برای مثال، `Collect` هر پیمایشگری را می‌گیرد و همهٔ
+	// مقادیرش را در یک اسلایس جمع می‌کند.
 	all := slices.Collect(lst.All())
 	fmt.Println("all:", all)
 
-	// Standard library packages now expose iterator helpers
-	// too. For example, `strings.SplitSeq` iterates over parts
-	// of a byte slice without first building a result slice.
+	// بسته‌های کتابخانهٔ استاندارد حالا ابزارهای کمکی
+	// پیمایشگر هم دارند. برای مثال، `strings.SplitSeq` روی
+	// بخش‌های یک رشته پیمایش می‌کند، بدون اینکه اول یک
+	// اسلایس نتیجه بسازد.
 	for part := range strings.SplitSeq("go-by-example", "-") {
 		fmt.Printf("part: %s\n", part)
 	}
 
 	for n := range genFib() {
 
-		// Once the loop hits `break` or an early return, the `yield` function
-		// passed to the iterator will return `false`.
+		// وقتی حلقه به `break` یا یک return زودهنگام برسد،
+		// تابع `yield` که به پیمایشگر داده شده `false`
+		// برمی‌گرداند.
 		if n >= 10 {
 			break
 		}

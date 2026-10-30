@@ -1,10 +1,10 @@
-// Parsing numbers from strings is a basic but common task
-// in many programs; here's how to do it in Go.
+// تجزیهٔ اعداد از رشته‌ها کاری ساده اما رایج در بسیاری از
+// برنامه‌هاست؛ این روش انجامش در Go است.
 
 package main
 
-// The built-in package `strconv` provides the number
-// parsing.
+// بستهٔ داخلی `strconv` امکان تجزیهٔ اعداد را فراهم
+// می‌کند.
 import (
 	"fmt"
 	"strconv"
@@ -12,31 +12,31 @@ import (
 
 func main() {
 
-	// With `ParseFloat`, this `64` tells how many bits of
-	// precision to parse.
+	// در `ParseFloat`، این `64` تعیین می‌کند که با چند بیت
+	// دقت تجزیه شود.
 	f, _ := strconv.ParseFloat("1.234", 64)
 	fmt.Println(f)
 
-	// For `ParseInt`, the `0` means infer the base from
-	// the string. `64` requires that the result fit in 64
-	// bits.
+	// در `ParseInt`، عدد `0` یعنی مبنا از روی خود رشته
+	// تشخیص داده شود. `64` یعنی نتیجه باید در ۶۴ بیت جا
+	// شود.
 	i, _ := strconv.ParseInt("123", 0, 64)
 	fmt.Println(i)
 
-	// `ParseInt` will recognize hex-formatted numbers.
+	// `ParseInt` اعداد با قالب هگز را هم تشخیص می‌دهد.
 	d, _ := strconv.ParseInt("0x1c8", 0, 64)
 	fmt.Println(d)
 
-	// A `ParseUint` is also available.
+	// `ParseUint` هم در دسترس است.
 	u, _ := strconv.ParseUint("789", 0, 64)
 	fmt.Println(u)
 
-	// `Atoi` is a convenience function for basic base-10
-	// `int` parsing.
+	// `Atoi` تابعی کمکی برای تجزیهٔ ساده‌ی `int` در مبنای
+	// ۱۰ است.
 	k, _ := strconv.Atoi("135")
 	fmt.Println(k)
 
-	// Parse functions return an error on bad input.
+	// توابع تجزیه برای ورودی نادرست خطا برمی‌گردانند.
 	_, e := strconv.Atoi("wat")
 	fmt.Println(e)
 }

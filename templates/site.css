@@ -1,3 +1,6 @@
+/* Persian font: https://github.com/rastikerdar/vazirmatn */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
 /* CSS reset: https://meyerweb.com/eric/tools/css/reset/ */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -43,11 +46,12 @@ table {
 }
 
 
+
 /* Layout and typography */
 body {
-  font-family: 'Georgia', serif;
+  font-family: 'Vazirmatn', 'Tahoma', 'Georgia', serif;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 24px;
 }
 em {
   font-style: italic;
@@ -101,10 +105,10 @@ td.docs {
   min-width: 420px;
   min-height: 5px;
   vertical-align: top;
-  text-align: left;
+  text-align: right;
 }
 td.docs p {
-  padding-right: 5px;
+  padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 15px;
 }
@@ -135,6 +139,18 @@ img.copy, img.run {
 }
 img.copy {
   margin-right: 4px;
+}
+
+/* RTL: Persian text flows right-to-left, code stays left-to-right */
+td.code, pre {
+  direction: ltr;
+  text-align: left;
+}
+td.docs code, div#intro code, p.next a {
+  unicode-bidi: isolate;
+}
+td.docs code {
+  direction: ltr;
 }
 
 

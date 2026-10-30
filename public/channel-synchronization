@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Channel Synchronization</title>
+    <title>Go با مثال: همگام‌سازی با کانال</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'channel-buffering';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'channel-directions';
           }
           
@@ -24,20 +24,20 @@
   </script>
   <body>
     <div class="example" id="channel-synchronization">
-      <h2><a href="./">Go by Example</a>: Channel Synchronization</h2>
+      <h2><a href="./">Go با مثال</a>: همگام‌سازی با کانال</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>We can use channels to synchronize execution
-across goroutines. Here&rsquo;s an example of using a
-blocking receive to wait for a goroutine to finish.
-When waiting for multiple goroutines to finish,
-you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
+            <p>می‌توانیم از کانال‌ها برای همگام‌سازی اجرا بین
+گوروتین‌ها استفاده کنیم. این مثالی است از استفادهٔ یک
+دریافت مسدودکننده برای منتظر ماندن تا پایان کار یک
+گوروتین. وقتی منتظر پایان چند گوروتین هستید، شاید
+بهتر باشد از <a href="waitgroups">WaitGroup</a> استفاده کنید.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -47,8 +47,8 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/Nw-1DzIGk5f"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/kfmmI0WL2DZ"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -57,7 +57,7 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -68,12 +68,12 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>This is the function we&rsquo;ll run in a goroutine. The
-<code>done</code> channel will be used to notify another
-goroutine that this function&rsquo;s work is done.</p>
+            <p>این تابعی است که در یک گوروتین اجرا می‌کنیم. از کانال
+<code>done</code> استفاده می‌شود تا به گوروتین دیگری خبر دهیم که
+کار این تابع تمام شده است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">done</span> <span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;working...&#34;</span><span class="p">)</span>
@@ -84,10 +84,10 @@ goroutine that this function&rsquo;s work is done.</p>
         
         <tr>
           <td class="docs">
-            <p>Send a value to notify that we&rsquo;re done.</p>
+            <p>یک مقدار می‌فرستیم تا خبر دهیم کارمان تمام شده.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -98,7 +98,7 @@ goroutine that this function&rsquo;s work is done.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -106,11 +106,11 @@ goroutine that this function&rsquo;s work is done.</p>
         
         <tr>
           <td class="docs">
-            <p>Start a worker goroutine, giving it the channel to
-notify on.</p>
+            <p>یک گوروتین worker را راه می‌اندازیم و کانالی را که
+باید از طریق آن خبر بدهد به آن می‌دهیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span></span></span></code></pre>
@@ -119,11 +119,11 @@ notify on.</p>
         
         <tr>
           <td class="docs">
-            <p>Block until we receive a notification from the
-worker on the channel.</p>
+            <p>تا وقتی از طریق کانال خبری از worker دریافت نکنیم،
+مسدود می‌مانیم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -138,7 +138,7 @@ worker on the channel.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channel-synchronization.go      
 </span></span><span class="line"><span class="cl"><span class="go">working...done                  </span></span></span></code></pre>
@@ -147,12 +147,12 @@ worker on the channel.</p>
         
         <tr>
           <td class="docs">
-            <p>If you removed the <code>&lt;- done</code> line from this program,
-the program could exit before the <code>worker</code> finished
-its work, or in some cases even before it started.</p>
+            <p>اگر خط <code>&lt;- done</code> را از این برنامه حذف کنید، ممکن است
+برنامه پیش از تمام شدن کار <code>worker</code> خارج شود، یا در
+برخی موارد حتی پیش از شروع آن.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -162,12 +162,12 @@ its work, or in some cases even before it started.</p>
       
       
       <p class="next">
-        Next example: <a href="channel-directions" rel="next">Channel Directions</a>.
+        مثال بعدی: <a href="channel-directions" rel="next">جهت کانال‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

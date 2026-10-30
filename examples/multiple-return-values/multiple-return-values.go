@@ -1,27 +1,27 @@
-// Go has built-in support for _multiple return values_.
-// This feature is used often in idiomatic Go, for example
-// to return both result and error values from a function.
+// Go به‌طور داخلی از _چند مقدار بازگشتی_ پشتیبانی می‌کند.
+// این قابلیت در کدهای رایج Go زیاد استفاده می‌شود؛ مثلاً
+// برای برگرداندن هم‌زمان نتیجه و خطا از یک تابع.
 
 package main
 
 import "fmt"
 
-// The `(int, int)` in this function signature shows that
-// the function returns 2 `int`s.
+// عبارت `(int, int)` در امضای این تابع نشان می‌دهد که
+// تابع دو `int` برمی‌گرداند.
 func vals() (int, int) {
 	return 3, 7
 }
 
 func main() {
 
-	// Here we use the 2 different return values from the
-	// call with _multiple assignment_.
+	// اینجا دو مقدار بازگشتی فراخوانی را با _انتساب
+	// چندگانه_ دریافت می‌کنیم.
 	a, b := vals()
 	fmt.Println(a)
 	fmt.Println(b)
 
-	// If you only want a subset of the returned values,
-	// use the blank identifier `_`.
+	// اگر فقط بخشی از مقادیر بازگشتی را می‌خواهید، از
+	// شناسهٔ خالی `_` استفاده کنید.
 	_, c := vals()
 	fmt.Println(c)
 }

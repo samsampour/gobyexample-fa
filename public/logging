@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Logging</title>
+    <title>Go با مثال: لاگ‌گیری</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'environment-variables';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'http-client';
           }
           
@@ -24,22 +24,21 @@
   </script>
   <body>
     <div class="example" id="logging">
-      <h2><a href="./">Go by Example</a>: Logging</h2>
+      <h2><a href="./">Go با مثال</a>: لاگ‌گیری</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The Go standard library provides straightforward
-tools for outputting logs from Go programs, with
-the <a href="https://pkg.go.dev/log">log</a> package for
-free-form output and the
-<a href="https://pkg.go.dev/log/slog">log/slog</a> package for
-structured output.</p>
+            <p>کتابخانهٔ استاندارد Go ابزارهای سرراستی برای تولید لاگ
+در برنامه‌های Go دارد: بستهٔ <a href="https://pkg.go.dev/log">log</a>
+برای خروجی آزاد و بستهٔ
+<a href="https://pkg.go.dev/log/slog">log/slog</a> برای خروجی
+ساخت‌یافته (structured).</p>
 
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/Qd0uCqBlYUn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/dsdERUJucNA"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -48,7 +47,7 @@ structured output.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
@@ -62,7 +61,7 @@ structured output.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="s">&#34;log/slog&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -73,7 +72,7 @@ structured output.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -81,15 +80,14 @@ structured output.</p>
         
         <tr>
           <td class="docs">
-            <p>Simply invoking functions like <code>Println</code> from the
-<code>log</code> package uses the <em>standard</em> logger, which
-is already pre-configured for reasonable logging
-output to <code>os.Stderr</code>. Additional methods like
-<code>Fatal*</code> or <code>Panic*</code> will exit the program after
-logging.</p>
+            <p>صدا زدن ساده‌ی توابعی مثل <code>Println</code> از بستهٔ <code>log</code>
+از لاگرِ <em>استاندارد</em> استفاده می‌کند که از قبل برای
+خروجی لاگ معقول در <code>os.Stderr</code> پیکربندی شده است.
+متدهای دیگری مثل <code>Fatal*</code> یا <code>Panic*</code> پس از ثبت لاگ
+از برنامه خارج می‌شوند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;standard logger&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -97,15 +95,15 @@ logging.</p>
         
         <tr>
           <td class="docs">
-            <p>Loggers can be configured with <em>flags</em> to set
-their output format. By default, the standard
-logger has the <code>log.Ldate</code> and <code>log.Ltime</code> flags
-set, and these are collected in <code>log.LstdFlags</code>.
-We can change its flags to emit time with
-microsecond accuracy, for example.</p>
+            <p>لاگرها را می‌توان با <em>فلگ‌ها</em> پیکربندی کرد تا قالب
+خروجی‌شان تعیین شود. به‌طور پیش‌فرض، لاگر استاندارد
+فلگ‌های <code>log.Ldate</code> و <code>log.Ltime</code> را دارد که در
+<code>log.LstdFlags</code> جمع شده‌اند. برای مثال می‌توانیم
+فلگ‌هایش را تغییر دهیم تا زمان را با دقت میکروثانیه
+ثبت کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">SetFlags</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span> <span class="p">|</span> <span class="nx">log</span><span class="p">.</span><span class="nx">Lmicroseconds</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;with micro&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -114,11 +112,11 @@ microsecond accuracy, for example.</p>
         
         <tr>
           <td class="docs">
-            <p>It also supports emitting the file name and
-line from which the <code>log</code> function is called.</p>
+            <p>همچنین از ثبت نام فایل و شماره خطی که تابع <code>log</code> از
+آن صدا زده شده پشتیبانی می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">SetFlags</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span> <span class="p">|</span> <span class="nx">log</span><span class="p">.</span><span class="nx">Lshortfile</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;with file/line&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -127,13 +125,13 @@ line from which the <code>log</code> function is called.</p>
         
         <tr>
           <td class="docs">
-            <p>It may be useful to create a custom logger and
-pass it around. When creating a new logger, we
-can set a <em>prefix</em> to distinguish its output
-from other loggers.</p>
+            <p>ممکن است مفید باشد یک لاگر سفارشی بسازیم و آن را
+جابه‌جا کنیم. هنگام ساختن لاگر جدید می‌توانیم یک
+<em>پیشوند</em> (prefix) تعیین کنیم تا خروجی‌اش از لاگرهای
+دیگر قابل تشخیص باشد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">mylog</span> <span class="o">:=</span> <span class="nx">log</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;my:&#34;</span><span class="p">,</span> <span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;from mylog&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -142,12 +140,11 @@ from other loggers.</p>
         
         <tr>
           <td class="docs">
-            <p>We can set the prefix
-on existing loggers (including the standard one)
-with the <code>SetPrefix</code> method.</p>
+            <p>با متد <code>SetPrefix</code> می‌توانیم پیشوند لاگرهای موجود
+(از جمله لاگر استاندارد) را هم تنظیم کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">SetPrefix</span><span class="p">(</span><span class="s">&#34;ohmy:&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;from mylog&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -156,11 +153,11 @@ with the <code>SetPrefix</code> method.</p>
         
         <tr>
           <td class="docs">
-            <p>Loggers can have custom output targets;
-any <code>io.Writer</code> works.</p>
+            <p>لاگرها می‌توانند مقصدهای خروجی سفارشی داشته باشند؛
+هر <code>io.Writer</code>ی کار می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">buf</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">buflog</span> <span class="o">:=</span> <span class="nx">log</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">buf</span><span class="p">,</span> <span class="s">&#34;buf:&#34;</span><span class="p">,</span> <span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span><span class="p">)</span></span></span></code></pre>
@@ -169,10 +166,10 @@ any <code>io.Writer</code> works.</p>
         
         <tr>
           <td class="docs">
-            <p>This call writes the log output into <code>buf</code>.</p>
+            <p>این فراخوانی خروجی لاگ را در <code>buf</code> می‌نویسد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">buflog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -180,10 +177,10 @@ any <code>io.Writer</code> works.</p>
         
         <tr>
           <td class="docs">
-            <p>This will actually show it on standard output.</p>
+            <p>این یکی آن را واقعاً در خروجی استاندارد نشان می‌دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;from buflog:&#34;</span><span class="p">,</span> <span class="nx">buf</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -191,12 +188,11 @@ any <code>io.Writer</code> works.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>slog</code> package provides
-<em>structured</em> log output. For example, logging
-in JSON format is straightforward.</p>
+            <p>بستهٔ <code>slog</code> خروجی لاگِ <em>ساخت‌یافته</em> فراهم می‌کند.
+برای مثال، ثبت لاگ با قالب JSON ساده است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">jsonHandler</span> <span class="o">:=</span> <span class="nx">slog</span><span class="p">.</span><span class="nf">NewJSONHandler</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">myslog</span> <span class="o">:=</span> <span class="nx">slog</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">jsonHandler</span><span class="p">)</span>
@@ -206,12 +202,11 @@ in JSON format is straightforward.</p>
         
         <tr>
           <td class="docs">
-            <p>In addition to the message, <code>slog</code> output can
-contain an arbitrary number of key=value
-pairs.</p>
+            <p>علاوه بر پیام، خروجی <code>slog</code> می‌تواند هر تعداد دلخواه
+جفت key=value داشته باشد.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">myslog</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;hello again&#34;</span><span class="p">,</span> <span class="s">&#34;key&#34;</span><span class="p">,</span> <span class="s">&#34;val&#34;</span><span class="p">,</span> <span class="s">&#34;age&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -224,11 +219,11 @@ pairs.</p>
         
         <tr>
           <td class="docs">
-            <p>Sample output; the date and time
-emitted will depend on when the example ran.</p>
+            <p>نمونهٔ خروجی؛ تاریخ و زمان ثبت‌شده به زمان اجرای
+مثال بستگی دارد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run logging.go
 </span></span><span class="line"><span class="cl"><span class="go">2023/08/22 10:45:16 standard logger
@@ -242,12 +237,11 @@ emitted will depend on when the example ran.</p>
         
         <tr>
           <td class="docs">
-            <p>These are wrapped for clarity of presentation
-on the website; in reality they are emitted
-on a single line.</p>
+            <p>این خطوط برای خوانایی در وب‌سایت شکسته شده‌اند؛ در
+واقعیت هر کدام در یک خط ثبت می‌شوند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">{&#34;time&#34;:&#34;2023-08-22T10:45:16.904166391-07:00&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go"> &#34;level&#34;:&#34;INFO&#34;,&#34;msg&#34;:&#34;hi there&#34;}
@@ -261,12 +255,12 @@ on a single line.</p>
       
       
       <p class="next">
-        Next example: <a href="http-client" rel="next">HTTP Client</a>.
+        مثال بعدی: <a href="http-client" rel="next">کلاینت HTTP</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

@@ -1,11 +1,11 @@
-// A Go string is a read-only slice of bytes. The language
-// and the standard library treat strings specially - as
-// containers of text encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
-// In other languages, strings are made of "characters".
-// In Go, the concept of a character is called a `rune` - it's
-// an integer that represents a Unicode code point.
-// [This Go blog post](https://go.dev/blog/strings) is a good
-// introduction to the topic.
+// رشته در Go یک اسلایس فقط‌خواندنی از بایت‌هاست. زبان و
+// کتابخانهٔ استاندارد با رشته‌ها رفتار ویژه‌ای دارند و
+// آن‌ها را ظرفی برای متن کدگذاری‌شده با [UTF-8](https://en.wikipedia.org/wiki/UTF-8) می‌دانند.
+// در زبان‌های دیگر، رشته‌ها از «کاراکتر» تشکیل می‌شوند.
+// در Go، مفهوم کاراکتر `rune` (رون) نام دارد؛ یک عدد صحیح
+// که نمایانگر یک کدپوینت یونیکد است.
+// [این مقاله از وبلاگ Go](https://go.dev/blog/strings)
+// مقدمهٔ خوبی بر این موضوع است.
 
 package main
 
@@ -16,56 +16,56 @@ import (
 
 func main() {
 
-	// `s` is a `string` assigned a literal value
-	// representing the word "hello" in the Thai
-	// language. Go string literals are UTF-8
-	// encoded text.
+	// `s` یک `string` است که مقداری لفظی به آن داده شده؛
+	// کلمهٔ «سلام» به زبان تایلندی. رشته‌های لفظی در Go
+	// متن کدگذاری‌شده با UTF-8 هستند.
 	const s = "สวัสดี"
 
-	// Since strings are equivalent to `[]byte`, this
-	// will produce the length of the raw bytes stored within.
+	// چون رشته‌ها معادل `[]byte` هستند، این کد طول
+	// بایت‌های خامِ ذخیره‌شده در آن را می‌دهد.
 	fmt.Println("Len:", len(s))
 
-	// Indexing into a string produces the raw byte values at
-	// each index. This loop generates the hex values of all
-	// the bytes that constitute the code points in `s`.
+	// اندیس‌گذاری روی رشته، مقدار بایت خام در هر اندیس را
+	// می‌دهد. این حلقه مقدار هگز همهٔ بایت‌هایی را که
+	// کدپوینت‌های `s` را تشکیل می‌دهند تولید می‌کند.
 	for i := 0; i < len(s); i++ {
 		fmt.Printf("%x ", s[i])
 	}
 	fmt.Println()
 
-	// To count how many _runes_ are in a string, we can use
-	// the `utf8` package. Note that the run-time of
-	// `RuneCountInString` depends on the size of the string,
-	// because it has to decode each UTF-8 rune sequentially.
-	// Some Thai characters are represented by UTF-8 code points
-	// that can span multiple bytes, so the result of this count
-	// may be surprising.
+	// برای شمردن تعداد _رون‌های_ یک رشته می‌توانیم از بستهٔ
+	// `utf8` استفاده کنیم. توجه کنید که زمان اجرای
+	// `RuneCountInString` به اندازهٔ رشته بستگی دارد، چون
+	// باید تک‌تک رون‌های UTF-8 را به ترتیب رمزگشایی کند.
+	// برخی کاراکترهای تایلندی با کدپوینت‌هایی نمایش داده
+	// می‌شوند که چند بایت را در بر می‌گیرند، پس نتیجهٔ این
+	// شمارش ممکن است غافلگیرکننده باشد.
 	fmt.Println("Rune count:", utf8.RuneCountInString(s))
 
-	// A `range` loop handles strings specially and decodes
-	// each `rune` along with its offset in the string.
+	// حلقهٔ `range` با رشته‌ها رفتار ویژه‌ای دارد و هر `rune`
+	// را همراه با موقعیتش در رشته رمزگشایی می‌کند.
 	for idx, runeValue := range s {
 		fmt.Printf("%#U starts at %d\n", runeValue, idx)
 	}
 
-	// We can achieve the same iteration by using the
-	// `utf8.DecodeRuneInString` function explicitly.
+	// همین پیمایش را می‌توانیم با استفادهٔ صریح از تابع
+	// `utf8.DecodeRuneInString` هم انجام دهیم.
 	fmt.Println("\nUsing DecodeRuneInString")
 	for i, w := 0, 0; i < len(s); i += w {
 		runeValue, width := utf8.DecodeRuneInString(s[i:])
 		fmt.Printf("%#U starts at %d\n", runeValue, i)
 		w = width
 
-		// This demonstrates passing a `rune` value to a function.
+		// این بخش ارسال یک مقدار `rune` به یک تابع را نشان می‌دهد.
 		examineRune(runeValue)
 	}
 }
 
 func examineRune(r rune) {
 
-	// Values enclosed in single quotes are _rune literals_. We
-	// can compare a `rune` value to a rune literal directly.
+	// مقادیری که بین کوتیشن تکی قرار می‌گیرند _رون لفظی_
+	// (rune literal) هستند. می‌توانیم یک مقدار `rune` را
+	// مستقیماً با یک رون لفظی مقایسه کنیم.
 	if r == 't' {
 		fmt.Println("found tee")
 	} else if r == 'ส' {

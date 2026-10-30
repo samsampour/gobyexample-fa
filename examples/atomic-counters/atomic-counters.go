@@ -1,9 +1,9 @@
-// The primary mechanism for managing state in Go is
-// communication over channels. We saw this for example
-// with [worker pools](worker-pools). There are a few other
-// options for managing state though. Here we'll
-// look at using the `sync/atomic` package for _atomic
-// counters_ accessed by multiple goroutines.
+// سازوکار اصلی مدیریت وضعیت (state) در Go، ارتباط از
+// طریق کانال‌هاست. نمونه‌اش را در
+// [استخر کارگرها](worker-pools) دیدیم. اما گزینه‌های دیگری
+// هم برای مدیریت وضعیت وجود دارد. اینجا استفاده از بستهٔ
+// `sync/atomic` را برای _شمارنده‌های اتمیک_ می‌بینیم که
+// چند گوروتین به آن‌ها دسترسی دارند.
 
 package main
 
@@ -15,30 +15,30 @@ import (
 
 func main() {
 
-	// We'll use an atomic integer type to represent our
-	// (always-positive) counter.
+	// از یک نوع عدد صحیح اتمیک برای نمایش شمارندهٔ
+	// (همیشه مثبتِ) خودمان استفاده می‌کنیم.
 	var ops atomic.Uint64
 
-	// A WaitGroup will help us wait for all goroutines
-	// to finish their work.
+	// یک WaitGroup کمک می‌کند منتظر بمانیم تا همهٔ
+	// گوروتین‌ها کارشان را تمام کنند.
 	var wg sync.WaitGroup
 
-	// We'll start 50 goroutines that each increment the
-	// counter exactly 1000 times.
+	// ۵۰ گوروتین راه می‌اندازیم که هر کدام شمارنده را
+	// دقیقاً ۱۰۰۰ بار افزایش می‌دهند.
 	for range 50 {
 		wg.Go(func() {
 			for range 1000 {
-				// To atomically increment the counter we use `Add`.
+				// برای افزایش اتمیک شمارنده از `Add` استفاده می‌کنیم.
 				ops.Add(1)
 			}
 		})
 	}
 
-	// Wait until all the goroutines are done.
+	// صبر می‌کنیم تا همهٔ گوروتین‌ها تمام شوند.
 	wg.Wait()
 
-	// Here no goroutines are writing to 'ops', but using
-	// `Load` it's safe to atomically read a value even while
-	// other goroutines are (atomically) updating it.
+	// اینجا هیچ گوروتینی در 'ops' نمی‌نویسد، اما با `Load`
+	// خواندن اتمیک یک مقدار امن است، حتی وقتی گوروتین‌های
+	// دیگر در حال به‌روزرسانی (اتمیک) آن هستند.
 	fmt.Println("ops:", ops.Load())
 }

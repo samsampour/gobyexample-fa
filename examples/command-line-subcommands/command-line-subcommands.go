@@ -1,9 +1,9 @@
-// Some command-line tools, like the `go` tool or `git`
-// have many *subcommands*, each with its own set of
-// flags. For example, `go build` and `go get` are two
-// different subcommands of the `go` tool.
-// The `flag` package lets us easily define simple
-// subcommands that have their own flags.
+// برخی ابزارهای خط فرمان، مثل ابزار `go` یا `git`،
+// *زیرفرمان‌های* (subcommands) زیادی دارند که هر کدام
+// مجموعه فلگ‌های خودش را دارد. برای مثال، `go build` و
+// `go get` دو زیرفرمان متفاوت ابزار `go` هستند.
+// بستهٔ `flag` به ما اجازه می‌دهد به‌راحتی زیرفرمان‌های
+// ساده‌ای تعریف کنیم که فلگ‌های خودشان را دارند.
 
 package main
 
@@ -15,30 +15,29 @@ import (
 
 func main() {
 
-	// We declare a subcommand using the `NewFlagSet`
-	// function, and proceed to define new flags specific
-	// for this subcommand.
+	// یک زیرفرمان را با تابع `NewFlagSet` تعریف می‌کنیم و
+	// سپس فلگ‌های جدیدِ مخصوص این زیرفرمان را تعریف
+	// می‌کنیم.
 	fooCmd := flag.NewFlagSet("foo", flag.ExitOnError)
 	fooEnable := fooCmd.Bool("enable", false, "enable")
 	fooName := fooCmd.String("name", "", "name")
 
-	// For a different subcommand we can define different
-	// supported flags.
+	// برای یک زیرفرمان دیگر می‌توانیم فلگ‌های متفاوتی
+	// تعریف کنیم.
 	barCmd := flag.NewFlagSet("bar", flag.ExitOnError)
 	barLevel := barCmd.Int("level", 0, "level")
 
-	// The subcommand is expected as the first argument
-	// to the program.
+	// انتظار می‌رود زیرفرمان اولین آرگومان برنامه باشد.
 	if len(os.Args) < 2 {
 		fmt.Println("expected 'foo' or 'bar' subcommands")
 		os.Exit(1)
 	}
 
-	// Check which subcommand is invoked.
+	// بررسی می‌کنیم کدام زیرفرمان صدا زده شده.
 	switch os.Args[1] {
 
-	// For every subcommand, we parse its own flags and
-	// have access to trailing positional arguments.
+	// برای هر زیرفرمان، فلگ‌های خودش را تجزیه می‌کنیم و به
+	// آرگومان‌های موقعیتی انتهایی دسترسی داریم.
 	case "foo":
 		fooCmd.Parse(os.Args[2:])
 		fmt.Println("subcommand 'foo'")

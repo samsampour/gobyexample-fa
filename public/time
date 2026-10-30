@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Time</title>
+    <title>Go با مثال: زمان</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'xml';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'epoch';
           }
           
@@ -24,17 +24,17 @@
   </script>
   <body>
     <div class="example" id="time">
-      <h2><a href="./">Go by Example</a>: Time</h2>
+      <h2><a href="./">Go با مثال</a>: زمان</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go offers extensive support for times and durations;
-here are some examples.</p>
+            <p>Go پشتیبانی گسترده‌ای از زمان‌ها و بازه‌های زمانی
+(durations) دارد؛ این چند نمونه است.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -44,8 +44,8 @@ here are some examples.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/YAM3s1KPc8c"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/NmezYbVKnC9"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -54,7 +54,7 @@ here are some examples.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -67,7 +67,7 @@ here are some examples.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
@@ -76,10 +76,10 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start by getting the current time.</p>
+            <p>با گرفتن زمان فعلی شروع می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span></span></span></code></pre>
@@ -88,12 +88,12 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>You can build a <code>time</code> struct by providing the
-year, month, day, etc. Times are always associated
-with a <code>Location</code>, i.e. time zone.</p>
+            <p>می‌توانید با دادن سال، ماه، روز و غیره یک ساختار
+<code>time</code> بسازید. زمان‌ها همیشه به یک <code>Location</code>، یعنی
+منطقهٔ زمانی، وابسته‌اند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">651387237</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">)</span>
@@ -103,11 +103,11 @@ with a <code>Location</code>, i.e. time zone.</p>
         
         <tr>
           <td class="docs">
-            <p>You can extract the various components of the time
-value as expected.</p>
+            <p>همان‌طور که انتظار دارید می‌توانید اجزای مختلف مقدار
+زمان را استخراج کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Year</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Month</span><span class="p">())</span>
@@ -122,10 +122,11 @@ value as expected.</p>
         
         <tr>
           <td class="docs">
-            <p>The Monday-Sunday <code>Weekday</code> is also available.</p>
+            <p>روز هفته (<code>Weekday</code>) از دوشنبه تا یکشنبه هم در
+دسترس است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -133,12 +134,11 @@ value as expected.</p>
         
         <tr>
           <td class="docs">
-            <p>These methods compare two times, testing if the
-first occurs before, after, or at the same time
-as the second, respectively.</p>
+            <p>این متدها دو زمان را مقایسه می‌کنند و به‌ترتیب بررسی
+می‌کنند که آیا اولی قبل، بعد، یا هم‌زمان با دومی است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
@@ -148,11 +148,11 @@ as the second, respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Sub</code> methods returns a <code>Duration</code> representing
-the interval between two times.</p>
+            <p>متد <code>Sub</code> یک <code>Duration</code> برمی‌گرداند که فاصلهٔ بین
+دو زمان را نشان می‌دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">)</span></span></span></code></pre>
@@ -161,11 +161,10 @@ the interval between two times.</p>
         
         <tr>
           <td class="docs">
-            <p>We can compute the length of the duration in
-various units.</p>
+            <p>می‌توانیم طول این بازه را در واحدهای مختلف حساب کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Hours</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Minutes</span><span class="p">())</span>
@@ -176,12 +175,11 @@ various units.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use <code>Add</code> to advance a time by a given
-duration, or with a <code>-</code> to move backwards by a
-duration.</p>
+            <p>با <code>Add</code> می‌توانید زمان را به اندازهٔ یک بازهٔ مشخص
+جلو ببرید، یا با <code>-</code> به اندازهٔ یک بازه عقب ببرید.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">diff</span><span class="p">))</span>
@@ -197,7 +195,7 @@ duration.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time.go
 </span></span><span class="line"><span class="cl"><span class="go">2012-10-31 15:50:13.793654 +0000 UTC
@@ -226,11 +224,11 @@ duration.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at the related idea of time relative to
-the Unix epoch.</p>
+            <p>در ادامه ایدهٔ مرتبطِ زمان نسبت به مبدأ زمانی یونیکس
+(Unix epoch) را می‌بینیم.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -240,12 +238,12 @@ the Unix epoch.</p>
       
       
       <p class="next">
-        Next example: <a href="epoch" rel="next">Epoch</a>.
+        مثال بعدی: <a href="epoch" rel="next">زمان یونیکس (Epoch)</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

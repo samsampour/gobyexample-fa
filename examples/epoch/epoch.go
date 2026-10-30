@@ -1,7 +1,7 @@
-// A common requirement in programs is getting the number
-// of seconds, milliseconds, or nanoseconds since the
-// [Unix epoch](https://en.wikipedia.org/wiki/Unix_time).
-// Here's how to do it in Go.
+// یکی از نیازهای رایج در برنامه‌ها، گرفتن تعداد ثانیه‌ها،
+// میلی‌ثانیه‌ها یا نانوثانیه‌های گذشته از
+// [مبدأ زمانی یونیکس](https://en.wikipedia.org/wiki/Unix_time)
+// (Unix epoch) است. این روش انجامش در Go است.
 
 package main
 
@@ -12,9 +12,9 @@ import (
 
 func main() {
 
-	// Use `time.Now` with `Unix`, `UnixMilli` or `UnixNano`
-	// to get elapsed time since the Unix epoch in seconds,
-	// milliseconds or nanoseconds, respectively.
+	// از `time.Now` همراه با `Unix`، `UnixMilli` یا
+	// `UnixNano` استفاده کنید تا زمان گذشته از مبدأ یونیکس
+	// را به‌ترتیب به ثانیه، میلی‌ثانیه یا نانوثانیه بگیرید.
 	now := time.Now()
 	fmt.Println(now)
 
@@ -22,8 +22,8 @@ func main() {
 	fmt.Println(now.UnixMilli())
 	fmt.Println(now.UnixNano())
 
-	// You can also convert integer seconds or nanoseconds
-	// since the epoch into the corresponding `time`.
+	// می‌توانید تعداد صحیح ثانیه‌ها یا نانوثانیه‌های گذشته
+	// از مبدأ را هم به `time` متناظر تبدیل کنید.
 	fmt.Println(time.Unix(now.Unix(), 0))
 	fmt.Println(time.Unix(0, now.UnixNano()))
 }

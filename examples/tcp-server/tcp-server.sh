@@ -1,7 +1,6 @@
-# Run the TCP server in the background.
+# سرور TCP را در پس‌زمینه اجرا کنید.
 $ go run tcp-server.go &
 
-# Send data and capture the response using netcat.
+# با netcat داده بفرستید و پاسخ را دریافت کنید.
 $ echo "Hello from netcat" | nc localhost 8090
 ACK: HELLO FROM NETCAT
-

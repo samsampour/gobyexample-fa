@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Recover</title>
+    <title>Go با مثال: recover</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'defer';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'string-functions';
           }
           
@@ -24,19 +24,19 @@
   </script>
   <body>
     <div class="example" id="recover">
-      <h2><a href="./">Go by Example</a>: Recover</h2>
+      <h2><a href="./">Go با مثال</a>: recover</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go makes it possible to <em>recover</em> from a panic, by
-using the <code>recover</code> built-in function. A <code>recover</code> can
-stop a <code>panic</code> from aborting the program and let it
-continue with execution instead.</p>
+            <p>Go این امکان را می‌دهد که با تابع داخلی <code>recover</code> از
+یک panic <em>بازیابی</em> (recover) کنیم. <code>recover</code> می‌تواند
+جلوی متوقف شدن برنامه توسط <code>panic</code> را بگیرد و اجازه
+دهد اجرا ادامه پیدا کند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -44,15 +44,15 @@ continue with execution instead.</p>
         
         <tr>
           <td class="docs">
-            <p>An example of where this can be useful: a server
-wouldn&rsquo;t want to crash if one of the client connections
-exhibits a critical error. Instead, the server would
-want to close that connection and continue serving
-other clients. In fact, this is what Go&rsquo;s <code>net/http</code>
-does by default for HTTP servers.</p>
+            <p>نمونه‌ای از جایی که این کار مفید است: یک سرور
+نمی‌خواهد اگر یکی از اتصال‌های کلاینت خطای بحرانی
+داشت، کرش کند. در عوض، سرور می‌خواهد آن اتصال را ببندد
+و به سرویس‌دهی به کلاینت‌های دیگر ادامه دهد. در واقع
+<code>net/http</code> در Go به‌طور پیش‌فرض همین کار را برای
+سرورهای HTTP انجام می‌دهد.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -62,8 +62,8 @@ does by default for HTTP servers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/Sk-SVdofEIZ"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/a4VUQk2duLv"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -72,7 +72,7 @@ does by default for HTTP servers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
@@ -80,10 +80,10 @@ does by default for HTTP servers.</p>
         
         <tr>
           <td class="docs">
-            <p>This function panics.</p>
+            <p>این تابع panic می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">mayPanic</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;a problem&#34;</span><span class="p">)</span>
@@ -93,13 +93,12 @@ does by default for HTTP servers.</p>
         
         <tr>
           <td class="docs">
-            <p><code>recover</code> must be called within a deferred function.
-When the enclosing function panics, the defer will
-activate and a <code>recover</code> call within it will catch
-the panic.</p>
+            <p><code>recover</code> باید داخل یک تابع defer‌شده صدا زده شود.
+وقتی تابع دربرگیرنده panic کند، defer فعال می‌شود و
+فراخوانی <code>recover</code> داخل آن panic را می‌گیرد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -107,11 +106,11 @@ the panic.</p>
         
         <tr>
           <td class="docs">
-            <p>The return value of <code>recover</code> is the error raised in
-the call to <code>panic</code>.</p>
+            <p>مقدار بازگشتی <code>recover</code> خطایی است که در
+فراخوانی <code>panic</code> ایجاد شده.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
@@ -122,7 +121,7 @@ the call to <code>panic</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Recovered. Error:\n&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
@@ -134,7 +133,7 @@ the call to <code>panic</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">mayPanic</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -142,12 +141,12 @@ the call to <code>panic</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>This code will not run, because <code>mayPanic</code> panics.
-The execution of <code>main</code> stops at the point of the
-panic and resumes in the deferred closure.</p>
+            <p>این کد اجرا نمی‌شود، چون <code>mayPanic</code> پنیک می‌کند.
+اجرای <code>main</code> در نقطهٔ panic متوقف می‌شود و در
+کلوژرِ defer‌شده ادامه پیدا می‌کند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;After mayPanic()&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -162,7 +161,7 @@ panic and resumes in the deferred closure.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run recover.go
 </span></span><span class="line"><span class="cl"><span class="go">Recovered. Error:
@@ -174,12 +173,12 @@ panic and resumes in the deferred closure.</p>
       
       
       <p class="next">
-        Next example: <a href="string-functions" rel="next">String Functions</a>.
+        مثال بعدی: <a href="string-functions" rel="next">توابع رشته</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

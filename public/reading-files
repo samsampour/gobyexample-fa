@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Reading Files</title>
+    <title>Go با مثال: خواندن فایل‌ها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'base64-encoding';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'writing-files';
           }
           
@@ -24,18 +24,18 @@
   </script>
   <body>
     <div class="example" id="reading-files">
-      <h2><a href="./">Go by Example</a>: Reading Files</h2>
+      <h2><a href="./">Go با مثال</a>: خواندن فایل‌ها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Reading and writing files are basic tasks needed for
-many Go programs. First we&rsquo;ll look at some examples of
-reading files.</p>
+            <p>خواندن و نوشتن فایل‌ها از کارهای پایه‌ای است که بسیاری
+از برنامه‌های Go به آن نیاز دارند. اول چند مثال از
+خواندن فایل‌ها را می‌بینیم.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -45,8 +45,8 @@ reading files.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/J710-KJyC8z"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/9ARjoak595L"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,7 +55,7 @@ reading files.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
@@ -69,11 +69,12 @@ reading files.</p>
         
         <tr>
           <td class="docs">
-            <p>Reading files requires checking most calls for errors.
-This helper will streamline our error checks below.</p>
+            <p>خواندن فایل‌ها نیاز دارد که خطای بیشتر فراخوانی‌ها را
+بررسی کنیم. این تابع کمکی بررسی خطاها را در ادامه
+ساده‌تر می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -87,7 +88,7 @@ This helper will streamline our error checks below.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -95,11 +96,11 @@ This helper will streamline our error checks below.</p>
         
         <tr>
           <td class="docs">
-            <p>Perhaps the most basic file reading task is
-slurping a file&rsquo;s entire contents into memory.</p>
+            <p>شاید ابتدایی‌ترین کار در خواندن فایل، بارگذاری کل
+محتوای یک فایل در حافظه باشد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">path</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nf">TempDir</span><span class="p">(),</span> <span class="s">&#34;dat&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
@@ -110,12 +111,13 @@ slurping a file&rsquo;s entire contents into memory.</p>
         
         <tr>
           <td class="docs">
-            <p>You&rsquo;ll often want more control over how and what
-parts of a file are read. For these tasks, start
-by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
+            <p>اغلب می‌خواهید کنترل بیشتری روی نحوهٔ خواندن و اینکه
+کدام بخش‌های فایل خوانده شوند داشته باشید. برای این
+کارها، اول فایل را با <code>Open</code> باز کنید تا یک مقدار
+<code>os.File</code> بگیرید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -124,12 +126,12 @@ by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
         
         <tr>
           <td class="docs">
-            <p>Read some bytes from the beginning of the file.
-Allow up to 5 to be read but also note how many
-actually were read.</p>
+            <p>چند بایت از ابتدای فایل می‌خوانیم. اجازهٔ خواندن تا
+۵ بایت را می‌دهیم، اما به تعداد بایت‌هایی که واقعاً
+خوانده شد هم توجه می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
@@ -140,11 +142,11 @@ actually were read.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also <code>Seek</code> to a known location in the file
-and <code>Read</code> from there.</p>
+            <p>همچنین می‌توانید با <code>Seek</code> به موقعیت مشخصی در فایل
+بروید و از آنجا <code>Read</code> کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">SeekStart</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -158,11 +160,11 @@ and <code>Read</code> from there.</p>
         
         <tr>
           <td class="docs">
-            <p>Other methods of seeking are relative to the
-current cursor position,</p>
+            <p>روش‌های دیگر جابه‌جایی (seek) نسبت به موقعیت فعلی
+مکان‌نما هستند،</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">SeekCurrent</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -171,10 +173,10 @@ current cursor position,</p>
         
         <tr>
           <td class="docs">
-            <p>and relative to the end of the file.</p>
+            <p>و نسبت به انتهای فایل.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">SeekEnd</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -183,13 +185,12 @@ current cursor position,</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>io</code> package provides some functions that may
-be helpful for file reading. For example, reads
-like the ones above can be more robustly
-implemented with <code>ReadAtLeast</code>.</p>
+            <p>بستهٔ <code>io</code> توابعی دارد که ممکن است برای خواندن فایل
+مفید باشند. برای مثال، خواندن‌هایی مثل موارد بالا را
+می‌توان با <code>ReadAtLeast</code> مطمئن‌تر پیاده‌سازی کرد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">SeekStart</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -202,11 +203,11 @@ implemented with <code>ReadAtLeast</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>There is no built-in rewind, but
-<code>Seek(0, io.SeekStart)</code> accomplishes this.</p>
+            <p>تابع داخلی برای برگشت به ابتدا (rewind) وجود ندارد،
+اما <code>Seek(0, io.SeekStart)</code> همین کار را انجام می‌دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">io</span><span class="p">.</span><span class="nx">SeekStart</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -215,13 +216,12 @@ implemented with <code>ReadAtLeast</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>bufio</code> package implements a buffered
-reader that may be useful both for its efficiency
-with many small reads and because of the additional
-reading methods it provides.</p>
+            <p>بستهٔ <code>bufio</code> یک خوانندهٔ بافردار پیاده‌سازی می‌کند که
+هم به دلیل کارایی‌اش در خواندن‌های کوچکِ زیاد و هم به
+دلیل متدهای خواندن اضافه‌ای که دارد می‌تواند مفید باشد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nf">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -232,12 +232,11 @@ reading methods it provides.</p>
         
         <tr>
           <td class="docs">
-            <p>Close the file when you&rsquo;re done (usually this would
-be scheduled immediately after <code>Open</code>ing with
-<code>defer</code>).</p>
+            <p>وقتی کارتان تمام شد فایل را ببندید (معمولاً این کار
+بلافاصله پس از <code>Open</code> با <code>defer</code> زمان‌بندی می‌شود).</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -252,7 +251,7 @@ be scheduled immediately after <code>Open</code>ing with
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;hello&#34; &gt; /tmp/dat
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;go&#34; &gt;&gt;   /tmp/dat
@@ -268,10 +267,10 @@ be scheduled immediately after <code>Open</code>ing with
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at writing files.</p>
+            <p>در ادامه نوشتن فایل‌ها را می‌بینیم.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -281,12 +280,12 @@ be scheduled immediately after <code>Open</code>ing with
       
       
       <p class="next">
-        Next example: <a href="writing-files" rel="next">Writing Files</a>.
+        مثال بعدی: <a href="writing-files" rel="next">نوشتن فایل‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

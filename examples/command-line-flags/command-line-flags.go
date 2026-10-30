@@ -1,13 +1,13 @@
-// [_Command-line flags_](https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option)
-// are a common way to specify options for command-line
-// programs. For example, in `wc -l` the `-l` is a
-// command-line flag.
+// [_فلگ‌های خط فرمان_](https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option)
+// روشی رایج برای تعیین گزینه‌های برنامه‌های خط فرمان
+// هستند. برای مثال، در `wc -l`، `-l` یک فلگ خط فرمان
+// است.
 
 package main
 
-// Go provides a `flag` package supporting basic
-// command-line flag parsing. We'll use this package to
-// implement our example command-line program.
+// Go بستهٔ `flag` را دارد که از تجزیهٔ ساده‌ی فلگ‌های خط
+// فرمان پشتیبانی می‌کند. از این بسته برای پیاده‌سازی
+// برنامهٔ خط فرمان نمونهٔ خودمان استفاده می‌کنیم.
 import (
 	"flag"
 	"fmt"
@@ -15,34 +15,33 @@ import (
 
 func main() {
 
-	// Basic flag declarations are available for string,
-	// integer, and boolean options. Here we declare a
-	// string flag `word` with a default value `"foo"`
-	// and a short description. This `flag.String` function
-	// returns a string pointer (not a string value);
-	// we'll see how to use this pointer below.
+	// تعریف‌های پایهٔ فلگ برای گزینه‌های رشته‌ای، عدد صحیح
+	// و بولی در دسترس‌اند. اینجا یک فلگ رشته‌ای `word` با
+	// مقدار پیش‌فرض `"foo"` و یک توضیح کوتاه تعریف می‌کنیم.
+	// این تابع `flag.String` یک اشاره‌گر به رشته برمی‌گرداند
+	// (نه مقدار رشته)؛ در ادامه می‌بینیم که چطور از این
+	// اشاره‌گر استفاده کنیم.
 	wordPtr := flag.String("word", "foo", "a string")
 
-	// This declares `numb` and `fork` flags, using a
-	// similar approach to the `word` flag.
+	// این بخش فلگ‌های `numb` و `fork` را با روشی مشابه
+	// فلگ `word` تعریف می‌کند.
 	numbPtr := flag.Int("numb", 42, "an int")
 	forkPtr := flag.Bool("fork", false, "a bool")
 
-	// It's also possible to declare an option that uses an
-	// existing var declared elsewhere in the program.
-	// Note that we need to pass in a pointer to the flag
-	// declaration function.
+	// همچنین می‌توان گزینه‌ای تعریف کرد که از متغیری استفاده
+	// کند که جای دیگری در برنامه تعریف شده. توجه کنید که
+	// باید یک اشاره‌گر را به تابع تعریف فلگ بدهیم.
 	var svar string
 	flag.StringVar(&svar, "svar", "bar", "a string var")
 
-	// Once all flags are declared, call `flag.Parse()`
-	// to execute the command-line parsing.
+	// وقتی همهٔ فلگ‌ها تعریف شدند، `flag.Parse()` را صدا
+	// بزنید تا تجزیهٔ خط فرمان انجام شود.
 	flag.Parse()
 
-	// Here we'll just dump out the parsed options and
-	// any trailing positional arguments. Note that we
-	// need to dereference the pointers with e.g. `*wordPtr`
-	// to get the actual option values.
+	// اینجا فقط گزینه‌های تجزیه‌شده و هر آرگومان موقعیتی
+	// (positional) انتهایی را چاپ می‌کنیم. توجه کنید که
+	// برای گرفتن مقدار واقعی گزینه‌ها باید اشاره‌گرها را
+	// dereference کنیم، مثلاً با `*wordPtr`.
 	fmt.Println("word:", *wordPtr)
 	fmt.Println("numb:", *numbPtr)
 	fmt.Println("fork:", *forkPtr)

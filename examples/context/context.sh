@@ -1,9 +1,9 @@
-# Run the server in the background.
+# سرور را در پس‌زمینه اجرا کنید.
 $ go run context.go &
 
-# Simulate a client request to `/hello`, hitting
-# Ctrl+C shortly after starting to signal
-# cancellation.
+# یک درخواست کلاینت به `/hello` را شبیه‌سازی کنید و کمی
+# بعد از شروع، Ctrl+C را بزنید تا سیگنال لغو فرستاده
+# شود.
 $ curl localhost:8090/hello
 server: hello handler started
 ^C

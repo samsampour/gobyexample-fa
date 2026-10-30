@@ -1,5 +1,5 @@
-// To wait for multiple goroutines to finish, we can
-// use a *wait group*.
+// برای منتظر ماندن تا پایان کار چند گوروتین، می‌توانیم
+// از یک *wait group* استفاده کنیم.
 
 package main
 
@@ -9,36 +9,36 @@ import (
 	"time"
 )
 
-// This is the function we'll run in every goroutine.
+// این تابعی است که در هر گوروتین اجرا می‌کنیم.
 func worker(id int) {
 	fmt.Printf("Worker %d starting\n", id)
 
-	// Sleep to simulate an expensive task.
+	// برای شبیه‌سازی یک کار سنگین کمی صبر می‌کنیم.
 	time.Sleep(time.Second)
 	fmt.Printf("Worker %d done\n", id)
 }
 
 func main() {
 
-	// This WaitGroup is used to wait for all the
-	// goroutines launched here to finish. Note: if a WaitGroup is
-	// explicitly passed into functions, it should be done *by pointer*.
+	// از این WaitGroup برای منتظر ماندن تا پایان همهٔ
+	// گوروتین‌هایی که اینجا راه می‌اندازیم استفاده می‌شود. توجه:
+	// اگر WaitGroup صریحاً به توابع داده شود، باید *با اشاره‌گر* باشد.
 	var wg sync.WaitGroup
 
-	// Launch several goroutines using `WaitGroup.Go`
+	// با `WaitGroup.Go` چند گوروتین راه می‌اندازیم.
 	for i := 1; i <= 5; i++ {
 		wg.Go(func() {
 			worker(i)
 		})
 	}
 
-	// Block until all the goroutines started by `wg` are
-	// done. A goroutine is done when the function it invokes
-	// returns.
+	// تا وقتی همهٔ گوروتین‌هایی که `wg` راه انداخته تمام
+	// نشده‌اند، مسدود می‌مانیم. یک گوروتین وقتی تمام
+	// می‌شود که تابعی که صدا زده برگردد.
 	wg.Wait()
 
-	// Note that this approach has no straightforward way
-	// to propagate errors from workers. For more
-	// advanced use cases, consider using the
-	// [errgroup package](https://pkg.go.dev/golang.org/x/sync/errgroup).
+	// توجه کنید که این روش راه سرراستی برای انتقال خطاها
+	// از کارگرها ندارد. برای کاربردهای پیشرفته‌تر،
+	// استفاده از [بستهٔ errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
+	// را در نظر بگیرید.
 }

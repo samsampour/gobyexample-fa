@@ -1,31 +1,29 @@
-// _Functions_ are central in Go. We'll learn about
-// functions with a few different examples.
+// _توابع_ در Go نقش محوری دارند. با چند مثال مختلف با
+// توابع آشنا می‌شویم.
 
 package main
 
 import "fmt"
 
-// Here's a function that takes two `int`s and returns
-// their sum as an `int`.
+// این تابع دو `int` می‌گیرد و حاصل جمع آن‌ها را به‌صورت
+// یک `int` برمی‌گرداند.
 func plus(a int, b int) int {
 
-	// Go requires explicit returns, i.e. it won't
-	// automatically return the value of the last
-	// expression.
+	// Go بازگشت صریح می‌خواهد؛ یعنی مقدار آخرین عبارت را
+	// به‌طور خودکار برنمی‌گرداند.
 	return a + b
 }
 
-// When you have multiple consecutive parameters of
-// the same type, you may omit the type name for the
-// like-typed parameters up to the final parameter that
-// declares the type.
+// وقتی چند پارامتر پشت سر هم از یک نوع دارید، می‌توانید
+// نام نوع را برای پارامترهای هم‌نوع حذف کنید و فقط برای
+// آخرین پارامتر بنویسید.
 func plusPlus(a, b, c int) int {
 	return a + b + c
 }
 
 func main() {
 
-	// Call a function just as you'd expect, with
+	// فراخوانی تابع همان‌طور است که انتظار دارید:
 	// `name(args)`.
 	res := plus(1, 2)
 	fmt.Println("1+2 =", res)

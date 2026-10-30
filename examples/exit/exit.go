@@ -1,5 +1,5 @@
-// Use `os.Exit` to immediately exit with a given
-// status.
+// برای خروج فوری با یک وضعیت مشخص، از `os.Exit` استفاده
+// کنید.
 
 package main
 
@@ -10,15 +10,15 @@ import (
 
 func main() {
 
-	// `defer`s will _not_ be run when using `os.Exit`, so
-	// this `fmt.Println` will never be called.
+	// هنگام استفاده از `os.Exit`، `defer`ها اجرا _نمی‌شوند_،
+	// پس این `fmt.Println` هرگز صدا زده نمی‌شود.
 	defer fmt.Println("!")
 
-	// Exit with status 3.
+	// با وضعیت 3 خارج می‌شویم.
 	os.Exit(3)
 }
 
-// Note that unlike e.g. C, Go does not use an integer
-// return value from `main` to indicate exit status. If
-// you'd like to exit with a non-zero status you should
-// use `os.Exit`.
+// توجه کنید که برخلاف زبانی مثل C، در Go از مقدار بازگشتی
+// عددی `main` برای نشان دادن وضعیت خروج استفاده نمی‌شود.
+// اگر می‌خواهید با وضعیت غیرصفر خارج شوید، باید از
+// `os.Exit` استفاده کنید.

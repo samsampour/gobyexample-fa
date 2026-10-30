@@ -8,4 +8,4 @@ go
 2 bytes @ 6: go
 5 bytes: hello
 
-# Next we'll look at writing files.
+# در ادامه نوشتن فایل‌ها را می‌بینیم.

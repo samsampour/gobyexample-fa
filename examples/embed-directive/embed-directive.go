@@ -1,31 +1,31 @@
-// `//go:embed` is a [compiler
-// directive](https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives) that
-// allows programs to include arbitrary files and folders in the Go binary at
-// build time. Read more about the embed directive
-// [here](https://pkg.go.dev/embed).
+// `//go:embed` یک
+// [دستور کامپایلر](https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives)
+// است که به برنامه‌ها اجازه می‌دهد فایل‌ها و پوشه‌های دلخواه را هنگام
+// بیلد در فایل اجرایی Go قرار دهند. دربارهٔ دستور embed
+// [اینجا](https://pkg.go.dev/embed) بیشتر بخوانید.
 package main
 
-// Import the `embed` package; if you don't use any exported
-// identifiers from this package, you can do a blank import with `_ "embed"`.
+// بستهٔ `embed` را وارد کنید؛ اگر از هیچ شناسهٔ exported این بسته
+// استفاده نمی‌کنید، می‌توانید با `_ "embed"` یک import خالی انجام دهید.
 import (
 	"embed"
 )
 
-// `embed` directives accept paths relative to the directory containing the
-// Go source file. This directive embeds the contents of the file into the
-// `string` variable immediately following it.
+// دستورهای `embed` مسیرهایی نسبت به پوشهٔ حاوی فایل کد Go
+// می‌پذیرند. این دستور محتوای فایل را در متغیر `string` که
+// بلافاصله بعد از آن آمده قرار می‌دهد.
 //
 //go:embed folder/single_file.txt
 var fileString string
 
-// Or embed the contents of the file into a `[]byte`.
+// یا محتوای فایل را در یک `[]byte` قرار دهید.
 //
 //go:embed folder/single_file.txt
 var fileByte []byte
 
-// We can also embed multiple files or even folders with wildcards. This uses
-// a variable of the [embed.FS type](https://pkg.go.dev/embed#FS), which
-// implements a simple virtual file system.
+// با wildcardها می‌توانیم چند فایل یا حتی پوشه‌ها را هم جاسازی کنیم.
+// این کار از متغیری از [نوع embed.FS](https://pkg.go.dev/embed#FS)
+// استفاده می‌کند که یک سیستم فایل مجازی ساده را پیاده‌سازی می‌کند.
 //
 //go:embed folder/single_file.txt
 //go:embed folder/*.hash
@@ -33,11 +33,11 @@ var folder embed.FS
 
 func main() {
 
-	// Print out the contents of `single_file.txt`.
+	// محتوای `single_file.txt` را چاپ می‌کنیم.
 	print(fileString)
 	print(string(fileByte))
 
-	// Retrieve some files from the embedded folder.
+	// چند فایل را از پوشهٔ جاسازی‌شده می‌خوانیم.
 	content1, _ := folder.ReadFile("folder/file1.hash")
 	print(string(content1))
 

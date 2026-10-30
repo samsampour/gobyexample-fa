@@ -1,11 +1,11 @@
-# The spawned programs return output that is the same
-# as if we had run them directly from the command-line.
+# برنامه‌های ایجادشده همان خروجی‌ای را برمی‌گردانند که
+# اگر مستقیماً از خط فرمان اجرایشان می‌کردیم می‌دیدیم.
 $ go run spawning-processes.go 
 > date
 Thu 05 May 2022 10:10:12 PM PDT
 
-# date doesn't have a `-x` flag so it will exit with
-# an error message and non-zero return code.
+# دستور date فلگ `-x` ندارد، پس با یک پیام خطا و کد
+# بازگشتی غیرصفر خارج می‌شود.
 command exit rc = 1
 > grep hello
 hello grep

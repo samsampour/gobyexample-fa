@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Atomic Counters</title>
+    <title>Go با مثال: شمارنده‌های اتمیک</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'rate-limiting';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'mutexes';
           }
           
@@ -24,21 +24,21 @@
   </script>
   <body>
     <div class="example" id="atomic-counters">
-      <h2><a href="./">Go by Example</a>: Atomic Counters</h2>
+      <h2><a href="./">Go با مثال</a>: شمارنده‌های اتمیک</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The primary mechanism for managing state in Go is
-communication over channels. We saw this for example
-with <a href="worker-pools">worker pools</a>. There are a few other
-options for managing state though. Here we&rsquo;ll
-look at using the <code>sync/atomic</code> package for <em>atomic
-counters</em> accessed by multiple goroutines.</p>
+            <p>سازوکار اصلی مدیریت وضعیت (state) در Go، ارتباط از
+طریق کانال‌هاست. نمونه‌اش را در
+<a href="worker-pools">استخر کارگرها</a> دیدیم. اما گزینه‌های دیگری
+هم برای مدیریت وضعیت وجود دارد. اینجا استفاده از بستهٔ
+<code>sync/atomic</code> را برای <em>شمارنده‌های اتمیک</em> می‌بینیم که
+چند گوروتین به آن‌ها دسترسی دارند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -48,8 +48,8 @@ counters</em> accessed by multiple goroutines.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/yiGAVfTH49v"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/kim96NUJTob"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -58,7 +58,7 @@ counters</em> accessed by multiple goroutines.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -72,7 +72,7 @@ counters</em> accessed by multiple goroutines.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -80,11 +80,11 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use an atomic integer type to represent our
-(always-positive) counter.</p>
+            <p>از یک نوع عدد صحیح اتمیک برای نمایش شمارندهٔ
+(همیشه مثبتِ) خودمان استفاده می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">ops</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint64</span></span></span></code></pre>
           </td>
@@ -92,11 +92,11 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>A WaitGroup will help us wait for all goroutines
-to finish their work.</p>
+            <p>یک WaitGroup کمک می‌کند منتظر بمانیم تا همهٔ
+گوروتین‌ها کارشان را تمام کنند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span></span></span></code></pre>
           </td>
@@ -104,11 +104,11 @@ to finish their work.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start 50 goroutines that each increment the
-counter exactly 1000 times.</p>
+            <p>۵۰ گوروتین راه می‌اندازیم که هر کدام شمارنده را
+دقیقاً ۱۰۰۰ بار افزایش می‌دهند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">range</span> <span class="mi">50</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
@@ -118,10 +118,10 @@ counter exactly 1000 times.</p>
         
         <tr>
           <td class="docs">
-            <p>To atomically increment the counter we use <code>Add</code>.</p>
+            <p>برای افزایش اتمیک شمارنده از <code>Add</code> استفاده می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">                <span class="nx">ops</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
@@ -132,10 +132,10 @@ counter exactly 1000 times.</p>
         
         <tr>
           <td class="docs">
-            <p>Wait until all the goroutines are done.</p>
+            <p>صبر می‌کنیم تا همهٔ گوروتین‌ها تمام شوند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -143,12 +143,12 @@ counter exactly 1000 times.</p>
         
         <tr>
           <td class="docs">
-            <p>Here no goroutines are writing to &lsquo;ops&rsquo;, but using
-<code>Load</code> it&rsquo;s safe to atomically read a value even while
-other goroutines are (atomically) updating it.</p>
+            <p>اینجا هیچ گوروتینی در &lsquo;ops&rsquo; نمی‌نویسد، اما با <code>Load</code>
+خواندن اتمیک یک مقدار امن است، حتی وقتی گوروتین‌های
+دیگر در حال به‌روزرسانی (اتمیک) آن هستند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;ops:&#34;</span><span class="p">,</span> <span class="nx">ops</span><span class="p">.</span><span class="nf">Load</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -161,16 +161,15 @@ other goroutines are (atomically) updating it.</p>
         
         <tr>
           <td class="docs">
-            <p>We expect to get exactly 50,000 operations. Had we
-used a non-atomic integer and incremented it with
-<code>ops++</code>, we&rsquo;d likely get a different number,
-changing between runs, because the goroutines
-would interfere with each other. Moreover, we&rsquo;d
-get data race failures when running with the
-<code>-race</code> flag.</p>
+            <p>انتظار داریم دقیقاً ۵۰٬۰۰۰ عملیات داشته باشیم. اگر از
+یک عدد صحیح غیراتمیک استفاده می‌کردیم و آن را با
+<code>ops++</code> افزایش می‌دادیم، احتمالاً عدد دیگری می‌گرفتیم
+که در هر اجرا تغییر می‌کرد، چون گوروتین‌ها با هم تداخل
+پیدا می‌کردند. علاوه بر این، هنگام اجرا با فلگ <code>-race</code>
+با خطای data race روبه‌رو می‌شدیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run atomic-counters.go
 </span></span><span class="line"><span class="cl"><span class="go">ops: 50000</span></span></span></code></pre>
@@ -179,11 +178,11 @@ get data race failures when running with the
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at mutexes, another tool for managing
-state.</p>
+            <p>در ادامه میوتکس‌ها را می‌بینیم؛ ابزار دیگری برای مدیریت
+وضعیت.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -193,12 +192,12 @@ state.</p>
       
       
       <p class="next">
-        Next example: <a href="mutexes" rel="next">Mutexes</a>.
+        مثال بعدی: <a href="mutexes" rel="next">میوتکس‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

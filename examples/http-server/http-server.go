@@ -1,5 +1,4 @@
-// Writing a basic HTTP server is easy using the
-// `net/http` package.
+// نوشتن یک سرور HTTP ساده با بستهٔ `net/http` آسان است.
 package main
 
 import (
@@ -7,26 +6,25 @@ import (
 	"net/http"
 )
 
-// A fundamental concept in `net/http` servers is
-// *handlers*. A handler is an object implementing the
-// `http.Handler` interface. A common way to write
-// a handler is by using the `http.HandlerFunc` adapter
-// on functions with the appropriate signature.
+// یکی از مفاهیم بنیادی در سرورهای `net/http`،
+// *هندلرها* (handlers) هستند. هندلر شیئی است که اینترفیس
+// `http.Handler` را پیاده‌سازی می‌کند. یک روش رایج برای
+// نوشتن هندلر، استفاده از تبدیل‌گر `http.HandlerFunc` روی
+// توابعی با امضای مناسب است.
 func hello(w http.ResponseWriter, req *http.Request) {
 
-	// Functions serving as handlers take a
-	// `http.ResponseWriter` and a `http.Request` as
-	// arguments. The response writer is used to fill in the
-	// HTTP response. Here our simple response is just
-	// "hello\n".
+	// توابعی که نقش هندلر دارند، یک `http.ResponseWriter` و
+	// یک `http.Request` به‌عنوان آرگومان می‌گیرند. از
+	// response writer برای پر کردن پاسخ HTTP استفاده
+	// می‌شود. اینجا پاسخ ساده‌ی ما فقط "hello\n" است.
 	fmt.Fprintf(w, "hello\n")
 }
 
 func headers(w http.ResponseWriter, req *http.Request) {
 
-	// This handler does something a little more
-	// sophisticated by reading all the HTTP request
-	// headers and echoing them into the response body.
+	// این هندلر کار کمی پیچیده‌تری انجام می‌دهد: همهٔ
+	// سرآیندهای (headers) درخواست HTTP را می‌خواند و آن‌ها
+	// را در بدنهٔ پاسخ برمی‌گرداند.
 	for name, headers := range req.Header {
 		for _, h := range headers {
 			fmt.Fprintf(w, "%v: %v\n", name, h)
@@ -36,15 +34,15 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
-	// We register our handlers on server routes using the
-	// `http.HandleFunc` convenience function. It sets up
-	// the *default router* in the `net/http` package and
-	// takes a function as an argument.
+	// هندلرهایمان را با تابع کمکی `http.HandleFunc` روی
+	// مسیرهای سرور ثبت می‌کنیم. این تابع *مسیریاب پیش‌فرض*
+	// (default router) بستهٔ `net/http` را تنظیم می‌کند و یک
+	// تابع را به‌عنوان آرگومان می‌گیرد.
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
 
-	// Finally, we call the `ListenAndServe` with the port
-	// and a handler. `nil` tells it to use the default
-	// router we've just set up.
+	// در نهایت، `ListenAndServe` را با پورت و یک هندلر صدا
+	// می‌زنیم. `nil` به آن می‌گوید از همان مسیریاب پیش‌فرضی
+	// که الان تنظیم کردیم استفاده کند.
 	http.ListenAndServe(":8090", nil)
 }

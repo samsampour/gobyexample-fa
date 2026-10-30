@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Goroutines</title>
+    <title>Go با مثال: گوروتین‌ها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'custom-errors';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'channels';
           }
           
@@ -24,16 +24,16 @@
   </script>
   <body>
     <div class="example" id="goroutines">
-      <h2><a href="./">Go by Example</a>: Goroutines</h2>
+      <h2><a href="./">Go با مثال</a>: گوروتین‌ها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>A <em>goroutine</em> is a lightweight thread of execution.</p>
+            <p><em>گوروتین</em> (goroutine) یک رشتهٔ اجرایی (thread) سبک است.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -43,8 +43,8 @@
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/0fx_WokYVFO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/XX-WtaGW2VF"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -53,7 +53,7 @@
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -66,7 +66,7 @@
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">from</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">3</span> <span class="p">{</span>
@@ -80,7 +80,7 @@
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -88,12 +88,12 @@
         
         <tr>
           <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
-synchronously.</p>
+            <p>فرض کنید فراخوانی تابع <code>f(s)</code> را داریم. این روش
+معمولِ صدا زدن آن است که به‌صورت همگام (synchronous)
+اجرا می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">f</span><span class="p">(</span><span class="s">&#34;direct&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -101,12 +101,12 @@ synchronously.</p>
         
         <tr>
           <td class="docs">
-            <p>To invoke this function in a goroutine, use
-<code>go f(s)</code>. This new goroutine will execute
-concurrently with the calling one.</p>
+            <p>برای اجرای این تابع در یک گوروتین، از <code>go f(s)</code>
+استفاده کنید. این گوروتین جدید هم‌زمان با گوروتینِ
+صدازننده اجرا می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">f</span><span class="p">(</span><span class="s">&#34;goroutine&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -114,11 +114,11 @@ concurrently with the calling one.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also start a goroutine for an anonymous
-function call.</p>
+            <p>می‌توانید برای فراخوانی یک تابع بی‌نام هم گوروتین
+راه بیندازید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
@@ -128,12 +128,13 @@ function call.</p>
         
         <tr>
           <td class="docs">
-            <p>Our two function calls are running asynchronously in
-separate goroutines now. Wait for them to finish
-(for a more robust approach, use a <a href="waitgroups">WaitGroup</a>).</p>
+            <p>حالا دو فراخوانی تابع ما به‌صورت ناهمگام در
+گوروتین‌های جداگانه اجرا می‌شوند. منتظر می‌مانیم تا
+تمام شوند (برای روشی مطمئن‌تر، از
+<a href="waitgroups">WaitGroup</a> استفاده کنید).</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;done&#34;</span><span class="p">)</span>
@@ -147,14 +148,13 @@ separate goroutines now. Wait for them to finish
         
         <tr>
           <td class="docs">
-            <p>When we run this program, we see the output of the
-blocking call first, then the output of the two
-goroutines. The goroutines&rsquo; output may be interleaved,
-because goroutines are being run concurrently by the
-Go runtime.</p>
+            <p>وقتی این برنامه را اجرا کنیم، اول خروجی فراخوانی
+مسدودکننده را می‌بینیم و بعد خروجی دو گوروتین را.
+خروجی گوروتین‌ها ممکن است درهم باشد، چون runtime
+زبان Go آن‌ها را هم‌زمان اجرا می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run goroutines.go
 </span></span><span class="line"><span class="cl"><span class="go">direct : 0
@@ -170,11 +170,11 @@ Go runtime.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
-concurrent Go programs: channels.</p>
+            <p>در ادامه مکملِ گوروتین‌ها در برنامه‌های هم‌روند Go را
+می‌بینیم: کانال‌ها.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -184,12 +184,12 @@ concurrent Go programs: channels.</p>
       
       
       <p class="next">
-        Next example: <a href="channels" rel="next">Channels</a>.
+        مثال بعدی: <a href="channels" rel="next">کانال‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

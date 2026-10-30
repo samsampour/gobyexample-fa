@@ -1,5 +1,6 @@
-// _Maps_ are Go's built-in [associative data type](https://en.wikipedia.org/wiki/Associative_array)
-// (sometimes called _hashes_ or _dicts_ in other languages).
+// _مپ‌ها_ (maps) [نوع داده‌ی انجمنی](https://en.wikipedia.org/wiki/Associative_array)
+// داخلی Go هستند (که در زبان‌های دیگر گاهی _hash_ یا
+// _dict_ نامیده می‌شوند).
 
 package main
 
@@ -10,60 +11,59 @@ import (
 
 func main() {
 
-	// To create an empty map, use the builtin `make`:
-	// `make(map[key-type]val-type)`.
+	// برای ساختن یک مپ خالی از تابع داخلی `make` استفاده
+	// کنید: `make(map[key-type]val-type)`.
 	m := make(map[string]int)
 
-	// Set key/value pairs using typical `name[key] = val`
-	// syntax.
+	// جفت‌های کلید/مقدار را با نحو معمول `name[key] = val`
+	// تنظیم کنید.
 	m["k1"] = 7
 	m["k2"] = 13
 
-	// Printing a map with e.g. `fmt.Println` will show all of
-	// its key/value pairs.
+	// چاپ یک مپ، مثلاً با `fmt.Println`، همهٔ جفت‌های
+	// کلید/مقدار آن را نشان می‌دهد.
 	fmt.Println("map:", m)
 
-	// Get a value for a key with `name[key]`.
+	// مقدار یک کلید را با `name[key]` بخوانید.
 	v1 := m["k1"]
 	fmt.Println("v1:", v1)
 
-	// If the key doesn't exist, the
-	// [zero value](https://go.dev/ref/spec#The_zero_value) of the
-	// value type is returned.
+	// اگر کلید وجود نداشته باشد،
+	// [مقدار صفر](https://go.dev/ref/spec#The_zero_value)
+	// نوعِ مقدار برگردانده می‌شود.
 	v3 := m["k3"]
 	fmt.Println("v3:", v3)
 
-	// The builtin `len` returns the number of key/value
-	// pairs when called on a map.
+	// تابع داخلی `len` وقتی روی مپ صدا زده شود، تعداد
+	// جفت‌های کلید/مقدار را برمی‌گرداند.
 	fmt.Println("len:", len(m))
 
-	// The builtin `delete` removes key/value pairs from
-	// a map.
+	// تابع داخلی `delete` جفت‌های کلید/مقدار را از مپ
+	// حذف می‌کند.
 	delete(m, "k2")
 	fmt.Println("map:", m)
 
-	// To remove *all* key/value pairs from a map, use
-	// the `clear` builtin.
+	// برای حذف *همهٔ* جفت‌های کلید/مقدار از یک مپ، از
+	// تابع داخلی `clear` استفاده کنید.
 	clear(m)
 	fmt.Println("map:", m)
 
-	// The optional second return value when getting a
-	// value from a map indicates if the key was present
-	// in the map. This can be used to disambiguate
-	// between missing keys and keys with zero values
-	// like `0` or `""`. Here we didn't need the value
-	// itself, so we ignored it with the _blank identifier_
-	// `_`.
+	// مقدار بازگشتی دوم (اختیاری) هنگام خواندن از مپ نشان
+	// می‌دهد که آیا کلید در مپ وجود داشته یا نه. با این
+	// کار می‌توان کلیدهای ناموجود را از کلیدهایی که مقدار
+	// صفر دارند (مثل `0` یا `""`) تشخیص داد. اینجا به خود
+	// مقدار نیازی نداشتیم، پس آن را با _شناسهٔ خالی_ `_`
+	// نادیده گرفتیم.
 	_, prs := m["k2"]
 	fmt.Println("prs:", prs)
 
-	// You can also declare and initialize a new map in
-	// the same line with this syntax.
+	// با این نحو می‌توانید یک مپ جدید را در همان خط
+	// تعریف و مقداردهی هم بکنید.
 	n := map[string]int{"foo": 1, "bar": 2}
 	fmt.Println("map:", n)
 
-	// The `maps` package contains a number of useful
-	// utility functions for maps.
+	// بستهٔ `maps` تعدادی تابع کمکی مفید برای مپ‌ها
+	// دارد.
 	n2 := map[string]int{"foo": 1, "bar": 2}
 	if maps.Equal(n, n2) {
 		fmt.Println("n == n2")

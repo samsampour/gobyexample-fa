@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: TCP Server</title>
+    <title>Go با مثال: سرور TCP</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'http-server';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'context';
           }
           
@@ -24,18 +24,18 @@
   </script>
   <body>
     <div class="example" id="tcp-server">
-      <h2><a href="./">Go by Example</a>: TCP Server</h2>
+      <h2><a href="./">Go با مثال</a>: سرور TCP</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The <code>net</code> package provides the tools we need to easily build
-TCP socket servers.</p>
+            <p>بستهٔ <code>net</code> ابزارهای لازم برای ساختن آسان سرورهای سوکت
+TCP را فراهم می‌کند.</p>
 
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/G0k2jHMA6ei"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/35STnhdgA-5"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -44,7 +44,7 @@ TCP socket servers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
@@ -60,7 +60,7 @@ TCP socket servers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -68,11 +68,12 @@ TCP socket servers.</p>
         
         <tr>
           <td class="docs">
-            <p><code>net.Listen</code> starts the server on the given network
-(TCP) and address (port 8090 on all interfaces).</p>
+            <p><code>net.Listen</code> سرور را روی شبکهٔ داده‌شده (TCP) و
+آدرس داده‌شده (پورت 8090 روی همهٔ رابط‌ها) راه
+می‌اندازد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">listener</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="s">&#34;:8090&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -83,11 +84,11 @@ TCP socket servers.</p>
         
         <tr>
           <td class="docs">
-            <p>Close the listener to free the port
-when the application exits.</p>
+            <p>listener را می‌بندیم تا هنگام خروج برنامه پورت آزاد
+شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">listener</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -95,10 +96,10 @@ when the application exits.</p>
         
         <tr>
           <td class="docs">
-            <p>Loop indefinitely to accept new client connections.</p>
+            <p>به‌طور نامحدود حلقه می‌زنیم تا اتصال‌های جدید کلاینت‌ها را بپذیریم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -106,10 +107,10 @@ when the application exits.</p>
         
         <tr>
           <td class="docs">
-            <p>Wait for a connection.</p>
+            <p>منتظر یک اتصال می‌مانیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">listener</span><span class="p">.</span><span class="nf">Accept</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -121,12 +122,12 @@ when the application exits.</p>
         
         <tr>
           <td class="docs">
-            <p>We use a goroutine here to handle the connection
-so that the main loop can continue accepting more
-connections.</p>
+            <p>اینجا از یک گوروتین برای رسیدگی به اتصال استفاده
+می‌کنیم تا حلقهٔ اصلی بتواند به پذیرفتن اتصال‌های
+بیشتر ادامه دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">go</span> <span class="nf">handleConnection</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -136,11 +137,11 @@ connections.</p>
         
         <tr>
           <td class="docs">
-            <p><code>handleConnection</code> handles a single client connection,
-reading one line of text from the client and returning a response.</p>
+            <p><code>handleConnection</code> به یک اتصال کلاینت رسیدگی می‌کند؛
+یک خط متن از کلاینت می‌خواند و پاسخی برمی‌گرداند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">handleConnection</span><span class="p">(</span><span class="nx">conn</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -148,11 +149,11 @@ reading one line of text from the client and returning a response.</p>
         
         <tr>
           <td class="docs">
-            <p>Closing the connection releases resources when
-we are finished interacting with the client.</p>
+            <p>بستن اتصال، وقتی کارمان با کلاینت تمام شد، منابع را
+آزاد می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -160,11 +161,11 @@ we are finished interacting with the client.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>bufio.NewReader</code> to read one line of data
-from the client (terminated by a newline).</p>
+            <p>با <code>bufio.NewReader</code> یک خط داده از کلاینت می‌خوانیم
+(که با کاراکتر خط جدید تمام می‌شود).</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">reader</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">reader</span><span class="p">.</span><span class="nf">ReadString</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">)</span>
@@ -177,11 +178,11 @@ from the client (terminated by a newline).</p>
         
         <tr>
           <td class="docs">
-            <p>Create and send a response back to the client,
-demonstrating two-way communication.</p>
+            <p>یک پاسخ می‌سازیم و به کلاینت برمی‌گردانیم تا ارتباط
+دوطرفه را نشان دهیم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ackMsg</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">message</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">response</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;ACK: %s\n&#34;</span><span class="p">,</span> <span class="nx">ackMsg</span><span class="p">)</span>
@@ -199,10 +200,10 @@ demonstrating two-way communication.</p>
         
         <tr>
           <td class="docs">
-            <p>Run the TCP server in the background.</p>
+            <p>سرور TCP را در پس‌زمینه اجرا کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run tcp-server.go &amp;</span></span></code></pre>
           </td>
@@ -210,10 +211,10 @@ demonstrating two-way communication.</p>
         
         <tr>
           <td class="docs">
-            <p>Send data and capture the response using netcat.</p>
+            <p>با netcat داده بفرستید و پاسخ را دریافت کنید.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;Hello from netcat&#34; | nc localhost 8090
 </span></span><span class="line"><span class="cl"><span class="go">ACK: HELLO FROM NETCAT</span></span></span></code></pre>
@@ -224,12 +225,12 @@ demonstrating two-way communication.</p>
       
       
       <p class="next">
-        Next example: <a href="context" rel="next">Context</a>.
+        مثال بعدی: <a href="context" rel="next">Context</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

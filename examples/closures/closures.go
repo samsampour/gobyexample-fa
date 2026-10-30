@@ -1,16 +1,16 @@
-// Go supports [_anonymous functions_](https://en.wikipedia.org/wiki/Anonymous_function),
-// which can form <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
-// Anonymous functions are useful when you want to define
-// a function inline without having to name it.
+// Go از [_توابع بی‌نام_](https://en.wikipedia.org/wiki/Anonymous_function)
+// (anonymous functions) پشتیبانی می‌کند که می‌توانند <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)"><em>کلوژر</em></a> بسازند.
+// توابع بی‌نام وقتی مفیدند که بخواهید تابعی را درجا
+// تعریف کنید، بدون اینکه برایش نامی بگذارید.
 
 package main
 
 import "fmt"
 
-// This function `intSeq` returns another function, which
-// we define anonymously in the body of `intSeq`. The
-// returned function _closes over_ the variable `i` to
-// form a closure.
+// این تابع `intSeq` تابع دیگری برمی‌گرداند که آن را به
+// شکل بی‌نام در بدنهٔ `intSeq` تعریف کرده‌ایم. تابع
+// برگردانده‌شده متغیر `i` را _در بر می‌گیرد_
+// (closes over) و به این ترتیب یک کلوژر می‌سازد.
 func intSeq() func() int {
 	i := 0
 	return func() int {
@@ -21,20 +21,19 @@ func intSeq() func() int {
 
 func main() {
 
-	// We call `intSeq`, assigning the result (a function)
-	// to `nextInt`. This function value captures its
-	// own `i` value, which will be updated each time
-	// we call `nextInt`.
+	// `intSeq` را صدا می‌زنیم و نتیجه (یک تابع) را در
+	// `nextInt` می‌ریزیم. این مقدار تابعی، `i` مخصوص به
+	// خودش را نگه می‌دارد که با هر بار صدا زدن `nextInt`
+	// به‌روز می‌شود.
 	nextInt := intSeq()
 
-	// See the effect of the closure by calling `nextInt`
-	// a few times.
+	// با چند بار صدا زدن `nextInt` اثر کلوژر را ببینید.
 	fmt.Println(nextInt())
 	fmt.Println(nextInt())
 	fmt.Println(nextInt())
 
-	// To confirm that the state is unique to that
-	// particular function, create and test a new one.
+	// برای اطمینان از اینکه این وضعیت مختص همان تابع است،
+	// یک تابع جدید بسازید و امتحانش کنید.
 	newInts := intSeq()
 	fmt.Println(newInts())
 }

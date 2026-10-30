@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Errors</title>
+    <title>Go با مثال: خطاها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'range-over-iterators';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'custom-errors';
           }
           
@@ -24,27 +24,27 @@
   </script>
   <body>
     <div class="example" id="errors">
-      <h2><a href="./">Go by Example</a>: Errors</h2>
+      <h2><a href="./">Go با مثال</a>: خطاها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In Go it&rsquo;s idiomatic to communicate errors via an
-explicit, separate return value. This contrasts with
-the exceptions used in languages like Java, Python and
-Ruby and the overloaded single result / error value
-sometimes used in C. Go&rsquo;s approach makes it easy to
-see which functions return errors and to handle them
-using the same language constructs employed for other,
-non-error tasks.</p>
+            <p>در Go روش رایج این است که خطاها را از طریق یک مقدار
+بازگشتی صریح و جداگانه اعلام کنیم. این برخلاف
+استثناهایی (exceptions) است که در زبان‌هایی مثل Java،
+Python و Ruby استفاده می‌شود، و برخلاف مقدار واحدِ
+نتیجه/خطا که گاهی در C به کار می‌رود. رویکرد Go باعث
+می‌شود به‌راحتی ببینیم کدام توابع خطا برمی‌گردانند و
+خطاها را با همان ساختارهای زبانی مدیریت کنیم که برای
+کارهای دیگر (غیر از خطا) استفاده می‌کنیم.</p>
 
-<p>See the documentation of the <a href="https://pkg.go.dev/errors">errors package</a>
-and <a href="https://go.dev/blog/go1.13-errors">this blog post</a> for additional
-details.</p>
+<p>برای جزئیات بیشتر، مستندات <a href="https://pkg.go.dev/errors">بستهٔ errors</a>
+و <a href="https://go.dev/blog/go1.13-errors">این مقاله</a> را
+ببینید.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -54,8 +54,8 @@ details.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/xWXAMmcrbTs"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/gGsXbdmVneJ"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -64,7 +64,7 @@ details.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;errors&#34;</span>
@@ -75,11 +75,11 @@ details.</p>
         
         <tr>
           <td class="docs">
-            <p>By convention, errors are the last return value and
-have type <code>error</code>, a built-in interface.</p>
+            <p>طبق قرارداد، خطاها آخرین مقدار بازگشتی هستند و نوع
+<code>error</code> دارند که یک اینترفیس داخلی است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span></span></span></code></pre>
@@ -88,11 +88,11 @@ have type <code>error</code>, a built-in interface.</p>
         
         <tr>
           <td class="docs">
-            <p><code>errors.New</code> constructs a basic <code>error</code> value
-with the given error message.</p>
+            <p><code>errors.New</code> یک مقدار <code>error</code> ساده با پیام خطای
+داده‌شده می‌سازد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t work with 42&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
@@ -101,11 +101,11 @@ with the given error message.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>nil</code> value in the error position indicates that
-there was no error.</p>
+            <p>مقدار <code>nil</code> در جایگاه خطا یعنی هیچ خطایی رخ
+نداده است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -114,11 +114,11 @@ there was no error.</p>
         
         <tr>
           <td class="docs">
-            <p>A sentinel error is a predeclared variable that is used to
-signify a specific error condition.</p>
+            <p>خطای نگهبان (sentinel error) متغیری از پیش تعریف‌شده است
+که برای نشان دادن یک وضعیت خطای مشخص به کار می‌رود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrOutOfTea</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;no more tea available&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrPower</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t boil water&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -129,7 +129,7 @@ signify a specific error condition.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">makeTea</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">{</span>
@@ -140,15 +140,15 @@ signify a specific error condition.</p>
         
         <tr>
           <td class="docs">
-            <p>We can wrap errors with higher-level errors to add
-context. The simplest way to do this is with the
-<code>%w</code> verb in <code>fmt.Errorf</code>. Wrapped errors
-create a logical chain (A wraps B, which wraps C, etc.)
-that can be queried with functions like <code>errors.Is</code>
-and <code>errors.AsType</code>.</p>
+            <p>می‌توانیم خطاها را در خطاهای سطح بالاتر بپیچیم
+(wrap) تا اطلاعات زمینه‌ای اضافه کنیم. ساده‌ترین
+راه، استفاده از فعل <code>%w</code> در <code>fmt.Errorf</code> است.
+خطاهای پیچیده‌شده یک زنجیرهٔ منطقی می‌سازند (A، B را
+می‌پیچد که C را می‌پیچد و &hellip;) که می‌توان با توابعی
+مثل <code>errors.Is</code> و <code>errors.AsType</code> آن را بررسی کرد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;making tea: %w&#34;</span><span class="p">,</span> <span class="nx">ErrPower</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -161,7 +161,7 @@ and <code>errors.AsType</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span></span></span></code></pre>
@@ -170,11 +170,11 @@ and <code>errors.AsType</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s idiomatic to use an inline error check in the <code>if</code>
-line.</p>
+            <p>روش رایج، بررسی درون‌خطی خطا در همان خط <code>if</code>
+است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f failed:&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
@@ -189,7 +189,7 @@ line.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">5</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">makeTea</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
@@ -198,13 +198,14 @@ line.</p>
         
         <tr>
           <td class="docs">
-            <p><code>errors.Is</code> checks that a given error (or any error in its chain)
-matches a specific error value. This is especially useful with wrapped or
-nested errors, allowing you to identify specific error types or sentinel
-errors in a chain of errors.</p>
+            <p><code>errors.Is</code> بررسی می‌کند که آیا یک خطای مشخص (یا هر خطایی
+در زنجیره‌اش) با یک مقدار خطای مشخص مطابقت دارد. این
+مخصوصاً برای خطاهای پیچیده یا تودرتو مفید است و به شما
+اجازه می‌دهد نوع خاصی از خطا یا خطاهای نگهبان را در
+زنجیرهٔ خطاها پیدا کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ErrOutOfTea</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;We should buy new tea!&#34;</span><span class="p">)</span>
@@ -222,7 +223,7 @@ errors in a chain of errors.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Tea is ready!&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -238,7 +239,7 @@ errors in a chain of errors.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run errors.go
 </span></span><span class="line"><span class="cl"><span class="go">f worked: 10
@@ -255,12 +256,12 @@ errors in a chain of errors.</p>
       
       
       <p class="next">
-        Next example: <a href="custom-errors" rel="next">Custom Errors</a>.
+        مثال بعدی: <a href="custom-errors" rel="next">خطاهای سفارشی</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

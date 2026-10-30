@@ -16,7 +16,7 @@ apple
 {1 [apple peach]}
 
 
-# We've covered the basic of JSON in Go here, but check
-# out the [JSON and Go](https://go.dev/blog/json)
-# blog post and the [JSON package docs](https://pkg.go.dev/encoding/json/v2)
-# for more.
+# اینجا اصول پایهٔ JSON در Go را پوشش دادیم؛ برای اطلاعات
+# بیشتر مقالهٔ [JSON and Go](https://go.dev/blog/json) و
+# [مستندات بستهٔ JSON](https://pkg.go.dev/encoding/json/v2)
+# را ببینید.

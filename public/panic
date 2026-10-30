@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Panic</title>
+    <title>Go با مثال: panic</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'sorting-by-functions';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'defer';
           }
           
@@ -24,19 +24,19 @@
   </script>
   <body>
     <div class="example" id="panic">
-      <h2><a href="./">Go by Example</a>: Panic</h2>
+      <h2><a href="./">Go با مثال</a>: panic</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>A <code>panic</code> typically means something went unexpectedly
-wrong. Mostly we use it to fail fast on errors that
-shouldn&rsquo;t occur during normal operation, or that we
-aren&rsquo;t prepared to handle gracefully.</p>
+            <p><code>panic</code> معمولاً یعنی چیزی به‌طور غیرمنتظره خراب شده
+است. بیشتر از آن استفاده می‌کنیم تا در برابر خطاهایی که
+نباید در عملکرد عادی رخ دهند، یا آمادهٔ مدیریت درستشان
+نیستیم، سریع شکست بخوریم (fail fast).</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -46,8 +46,8 @@ aren&rsquo;t prepared to handle gracefully.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/Z57OSC0ASwn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/Xr7FwbEGFej"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -56,7 +56,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
@@ -69,7 +69,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -77,12 +77,12 @@ aren&rsquo;t prepared to handle gracefully.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use panic throughout this site to check for
-unexpected errors. This is the only program on the
-site designed to panic.</p>
+            <p>در سراسر این سایت از panic برای بررسی خطاهای
+غیرمنتظره استفاده می‌کنیم. این تنها برنامهٔ سایت است
+که عمداً طوری طراحی شده که panic کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;a problem&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -90,13 +90,13 @@ site designed to panic.</p>
         
         <tr>
           <td class="docs">
-            <p>A common use of panic is to abort if a function
-returns an error value that we don&rsquo;t know how to
-(or want to) handle. Here&rsquo;s an example of
-<code>panic</code>king if we get an unexpected error when creating a new file.</p>
+            <p>یک کاربرد رایج panic، توقف برنامه است وقتی تابعی
+مقدار خطایی برمی‌گرداند که نمی‌دانیم چطور مدیریتش
+کنیم (یا نمی‌خواهیم). این نمونه‌ای از <code>panic</code> کردن
+است، اگر هنگام ساختن یک فایل جدید خطای غیرمنتظره‌ای بگیریم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">path</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nf">TempDir</span><span class="p">(),</span> <span class="s">&#34;file&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
@@ -113,12 +113,12 @@ returns an error value that we don&rsquo;t know how to
         
         <tr>
           <td class="docs">
-            <p>Running this program will cause it to panic, print
-an error message and goroutine traces, and exit with
-a non-zero status.</p>
+            <p>اجرای این برنامه باعث panic می‌شود؛ یک پیام خطا و
+ردپای گوروتین‌ها چاپ می‌شود و برنامه با وضعیت غیرصفر
+خارج می‌شود.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -126,13 +126,12 @@ a non-zero status.</p>
         
         <tr>
           <td class="docs">
-            <p>When first panic in <code>main</code> fires, the program exits
-without reaching the rest of the code. If you&rsquo;d like
-to see the program try to create a temp file, comment
-the first panic out.</p>
+            <p>وقتی اولین panic در <code>main</code> اجرا شود، برنامه بدون رسیدن
+به بقیهٔ کد خارج می‌شود. اگر می‌خواهید ببینید برنامه
+سعی می‌کند یک فایل موقت بسازد، panic اول را کامنت کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run panic.go
 </span></span><span class="line"><span class="cl"><span class="go">panic: a problem</span></span></span></code></pre>
@@ -143,7 +142,7 @@ the first panic out.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">goroutine 1 [running]:
 </span></span></span><span class="line"><span class="cl"><span class="go">main.main()
@@ -155,12 +154,13 @@ the first panic out.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that unlike some languages which use exceptions
-for handling of many errors, in Go it is idiomatic
-to use error-indicating return values wherever possible.</p>
+            <p>توجه کنید که برخلاف برخی زبان‌ها که برای مدیریت
+بسیاری از خطاها از استثنا (exception) استفاده می‌کنند،
+در Go روش رایج این است که هر جا ممکن است از مقادیر
+بازگشتیِ نشان‌دهندهٔ خطا استفاده کنیم.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -170,12 +170,12 @@ to use error-indicating return values wherever possible.</p>
       
       
       <p class="next">
-        Next example: <a href="defer" rel="next">Defer</a>.
+        مثال بعدی: <a href="defer" rel="next">defer</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

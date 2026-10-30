@@ -1,9 +1,9 @@
-# To try out our line filter, first make a file with a few
-# lowercase lines.
+# برای امتحان فیلتر خطی، اول فایلی با چند خط با حروف
+# کوچک بسازید.
 $ echo 'hello'   > /tmp/lines
 $ echo 'filter' >> /tmp/lines
 
-# Then use the line filter to get uppercase lines.
+# سپس با فیلتر خطی، خطوط را با حروف بزرگ بگیرید.
 $ cat /tmp/lines | go run line-filters.go
 HELLO
 FILTER

@@ -1,5 +1,5 @@
-// In this example we'll look at how to implement
-// a _worker pool_ using goroutines and channels.
+// در این مثال می‌بینیم که چطور با گوروتین‌ها و کانال‌ها
+// یک _استخر کارگر_ (worker pool) پیاده‌سازی کنیم.
 
 package main
 
@@ -8,11 +8,11 @@ import (
 	"time"
 )
 
-// Here's the worker, of which we'll run several
-// concurrent instances. These workers will receive
-// work on the `jobs` channel and send the corresponding
-// results on `results`. We'll sleep a second per job to
-// simulate an expensive task.
+// این worker (کارگر) است که چند نمونهٔ هم‌روند از آن را
+// اجرا می‌کنیم. این کارگرها کارها را از کانال `jobs`
+// دریافت می‌کنند و نتایج متناظر را روی `results`
+// می‌فرستند. برای شبیه‌سازی یک کار سنگین، به ازای هر کار
+// یک ثانیه صبر می‌کنیم.
 func worker(id int, jobs <-chan int, results chan<- int) {
 	for j := range jobs {
 		fmt.Println("worker", id, "started  job", j)
@@ -24,30 +24,30 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 
 func main() {
 
-	// In order to use our pool of workers we need to send
-	// them work and collect their results. We make 2
-	// channels for this.
+	// برای استفاده از استخر کارگرها باید به آن‌ها کار
+	// بفرستیم و نتایجشان را جمع کنیم. برای این کار ۲ کانال
+	// می‌سازیم.
 	const numJobs = 5
 	jobs := make(chan int, numJobs)
 	results := make(chan int, numJobs)
 
-	// This starts up 3 workers, initially blocked
-	// because there are no jobs yet.
+	// این بخش ۳ کارگر را راه می‌اندازد که در ابتدا مسدودند،
+	// چون هنوز کاری وجود ندارد.
 	for w := 1; w <= 3; w++ {
 		go worker(w, jobs, results)
 	}
 
-	// Here we send 5 `jobs` and then `close` that
-	// channel to indicate that's all the work we have.
+	// اینجا ۵ کار (`jobs`) می‌فرستیم و سپس آن کانال را با
+	// `close` می‌بندیم تا نشان دهیم کار دیگری نداریم.
 	for j := 1; j <= numJobs; j++ {
 		jobs <- j
 	}
 	close(jobs)
 
-	// Finally we collect all the results of the work.
-	// This also ensures that the worker goroutines have
-	// finished. An alternative way to wait for multiple
-	// goroutines is to use a [WaitGroup](waitgroups).
+	// در نهایت همهٔ نتایج کار را جمع می‌کنیم. این کار
+	// همچنین تضمین می‌کند که گوروتین‌های کارگر تمام شده‌اند.
+	// روش دیگر برای منتظر ماندن چند گوروتین، استفاده از
+	// [WaitGroup](waitgroups) است.
 	for a := 1; a <= numJobs; a++ {
 		<-results
 	}

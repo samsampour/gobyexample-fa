@@ -1,8 +1,8 @@
-// [_Rate limiting_](https://en.wikipedia.org/wiki/Rate_limiting)
-// is an important mechanism for controlling resource
-// utilization and maintaining quality of service. Go
-// elegantly supports rate limiting with goroutines,
-// channels, and [tickers](tickers).
+// [_محدودسازی نرخ_](https://en.wikipedia.org/wiki/Rate_limiting)
+// (rate limiting) سازوکار مهمی برای کنترل مصرف منابع و
+// حفظ کیفیت سرویس است. Go با گوروتین‌ها، کانال‌ها و
+// [تیکرها](tickers) به شکلی زیبا از محدودسازی نرخ
+// پشتیبانی می‌کند.
 
 package main
 
@@ -13,52 +13,51 @@ import (
 
 func main() {
 
-	// First we'll look at basic rate limiting. Suppose
-	// we want to limit our handling of incoming requests.
-	// We'll serve these requests off a channel of the
-	// same name.
+	// اول محدودسازی نرخ ساده را می‌بینیم. فرض کنید
+	// می‌خواهیم رسیدگی به درخواست‌های ورودی را محدود کنیم.
+	// این درخواست‌ها را از کانالی به همین نام سرویس
+	// می‌دهیم.
 	requests := make(chan int, 5)
 	for i := 1; i <= 5; i++ {
 		requests <- i
 	}
 	close(requests)
 
-	// This `limiter` channel will receive a value
-	// every 200 milliseconds. This is the regulator in
-	// our rate limiting scheme.
+	// کانال `limiter` هر ۲۰۰ میلی‌ثانیه یک مقدار دریافت
+	// می‌کند. این تنظیم‌کنندهٔ طرح محدودسازی نرخ ماست.
 	limiter := time.Tick(200 * time.Millisecond)
 
-	// By blocking on a receive from the `limiter` channel
-	// before serving each request, we limit ourselves to
-	// 1 request every 200 milliseconds.
+	// با مسدود شدن روی دریافت از کانال `limiter` پیش از
+	// سرویس دادن به هر درخواست، خودمان را به ۱ درخواست در
+	// هر ۲۰۰ میلی‌ثانیه محدود می‌کنیم.
 	for req := range requests {
 		<-limiter
 		fmt.Println("request", req, time.Now())
 	}
 
-	// We may want to allow short bursts of requests in
-	// our rate limiting scheme while preserving the
-	// overall rate limit. We can accomplish this by
-	// buffering our limiter channel. This `burstyLimiter`
-	// channel will allow bursts of up to 3 events.
+	// ممکن است بخواهیم در طرح محدودسازی نرخ، اجازهٔ
+	// رگبارهای کوتاهی از درخواست‌ها (burst) را بدهیم و در
+	// عین حال محدودیت نرخ کلی حفظ شود. این کار را می‌توان
+	// با بافردار کردن کانال limiter انجام داد. کانال
+	// `burstyLimiter` اجازهٔ رگبارهایی تا ۳ رویداد را می‌دهد.
 	burstyLimiter := make(chan time.Time, 3)
 
-	// Fill up the channel to represent allowed bursting.
+	// کانال را پر می‌کنیم تا رگبار مجاز را نشان دهد.
 	for range 3 {
 		burstyLimiter <- time.Now()
 	}
 
-	// Every 200 milliseconds we'll try to add a new
-	// value to `burstyLimiter`, up to its limit of 3.
+	// هر ۲۰۰ میلی‌ثانیه سعی می‌کنیم یک مقدار جدید به
+	// `burstyLimiter` اضافه کنیم، تا سقف ۳.
 	go func() {
 		for t := range time.Tick(200 * time.Millisecond) {
 			burstyLimiter <- t
 		}
 	}()
 
-	// Now simulate 5 more incoming requests. The first
-	// 3 of these will benefit from the burst capability
-	// of `burstyLimiter`.
+	// حالا ۵ درخواست ورودی دیگر را شبیه‌سازی می‌کنیم. ۳
+	// درخواست اول از قابلیت رگبارِ `burstyLimiter` بهره
+	// می‌برند.
 	burstyRequests := make(chan int, 5)
 	for i := 1; i <= 5; i++ {
 		burstyRequests <- i

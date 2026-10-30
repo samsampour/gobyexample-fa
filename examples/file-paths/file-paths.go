@@ -1,7 +1,7 @@
-// The `filepath` package provides functions to parse
-// and construct *file paths* in a way that is portable
-// between operating systems; `dir/file` on Linux vs.
-// `dir\file` on Windows, for example.
+// بستهٔ `filepath` توابعی برای تجزیه و ساختن *مسیرهای
+// فایل* فراهم می‌کند، به شکلی که بین سیستم‌عامل‌های مختلف
+// قابل‌حمل باشد؛ برای مثال `dir/file` در لینوکس در برابر
+// `dir\file` در ویندوز.
 package main
 
 import (
@@ -12,44 +12,43 @@ import (
 
 func main() {
 
-	// `Join` should be used to construct paths in a
-	// portable way. It takes any number of arguments
-	// and constructs a hierarchical path from them.
+	// برای ساختن مسیرها به شکل قابل‌حمل باید از `Join`
+	// استفاده کرد. این تابع هر تعداد آرگومان می‌گیرد و از
+	// آن‌ها یک مسیر سلسله‌مراتبی می‌سازد.
 	p := filepath.Join("dir1", "dir2", "filename")
 	fmt.Println("p:", p)
 
-	// You should always use `Join` instead of
-	// concatenating `/`s or `\`s manually. In addition
-	// to providing portability, `Join` will also
-	// normalize paths by removing superfluous separators
-	// and directory changes.
+	// همیشه به‌جای چسباندن دستی `/` یا `\`، از `Join`
+	// استفاده کنید. `Join` علاوه بر قابل‌حمل بودن، مسیرها
+	// را با حذف جداکننده‌های اضافی و تغییر پوشه‌های
+	// غیرضروری نرمال‌سازی هم می‌کند.
 	fmt.Println(filepath.Join("dir1//", "filename"))
 	fmt.Println(filepath.Join("dir1/../dir1", "filename"))
 
-	// `Dir` and `Base` can be used to split a path to the
-	// directory and the file. Alternatively, `Split` will
-	// return both in the same call.
+	// با `Dir` و `Base` می‌توان یک مسیر را به پوشه و فایل
+	// تقسیم کرد. همچنین `Split` هر دو را در یک فراخوانی
+	// برمی‌گرداند.
 	fmt.Println("Dir(p):", filepath.Dir(p))
 	fmt.Println("Base(p):", filepath.Base(p))
 
-	// We can check whether a path is absolute.
+	// می‌توانیم بررسی کنیم که آیا یک مسیر مطلق است.
 	fmt.Println(filepath.IsAbs("dir/file"))
 	fmt.Println(filepath.IsAbs("/dir/file"))
 
 	filename := "config.json"
 
-	// Some file names have extensions following a dot. We
-	// can split the extension out of such names with `Ext`.
+	// برخی نام‌های فایل بعد از یک نقطه پسوند دارند. با
+	// `Ext` می‌توانیم پسوند را از این نام‌ها جدا کنیم.
 	ext := filepath.Ext(filename)
 	fmt.Println(ext)
 
-	// To find the file's name with the extension removed,
-	// use `strings.TrimSuffix`.
+	// برای گرفتن نام فایل بدون پسوند، از
+	// `strings.TrimSuffix` استفاده کنید.
 	fmt.Println(strings.TrimSuffix(filename, ext))
 
-	// `Rel` finds a relative path between a *base* and a
-	// *target*. It returns an error if the target cannot
-	// be made relative to base.
+	// `Rel` مسیر نسبی بین یک *مبنا* (base) و یک *مقصد*
+	// (target) را پیدا می‌کند. اگر نتوان مقصد را نسبت به
+	// مبنا نوشت، خطا برمی‌گرداند.
 	rel, err := filepath.Rel("a/b", "a/b/t/file")
 	if err != nil {
 		panic(err)

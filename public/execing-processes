@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Exec'ing Processes</title>
+    <title>Go با مثال: اجرای پروسه با exec</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'spawning-processes';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'signals';
           }
           
@@ -24,24 +24,23 @@
   </script>
   <body>
     <div class="example" id="execing-processes">
-      <h2><a href="./">Go by Example</a>: Exec'ing Processes</h2>
+      <h2><a href="./">Go با مثال</a>: اجرای پروسه با exec</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In the previous example we looked at
-<a href="spawning-processes">spawning external processes</a>. We
-do this when we need an external process accessible to
-a running Go process. Sometimes we just want to
-completely replace the current Go process with another
-(perhaps non-Go) one. To do this we&rsquo;ll use Go&rsquo;s
-implementation of the classic
+            <p>در مثال قبل <a href="spawning-processes">ایجاد پروسه‌های خارجی</a>
+را دیدیم. این کار را وقتی انجام می‌دهیم که به یک پروسهٔ
+خارجی نیاز داریم که در دسترس پروسهٔ در حال اجرای Go
+باشد. اما گاهی فقط می‌خواهیم پروسهٔ فعلی Go را کاملاً
+با پروسهٔ دیگری (شاید غیر از Go) جایگزین کنیم. برای این
+کار از پیاده‌سازی Go برای تابع کلاسیک
 <a href="https://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
-function.</p>
+استفاده می‌کنیم.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -51,8 +50,8 @@ function.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/s9qg7olf1dM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/dGL92R0p7rH"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -61,7 +60,7 @@ function.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
@@ -75,7 +74,7 @@ function.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -83,13 +82,13 @@ function.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll exec <code>ls</code>. Go requires an
-absolute path to the binary we want to execute, so
-we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
+            <p>در این مثال <code>ls</code> را exec می‌کنیم. Go به مسیر مطلق
+فایل اجرایی که می‌خواهیم اجرا کنیم نیاز دارد، پس با
+<code>exec.LookPath</code> آن را پیدا می‌کنیم (احتمالاً
 <code>/bin/ls</code>).</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">binary</span><span class="p">,</span> <span class="nx">lookErr</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">LookPath</span><span class="p">(</span><span class="s">&#34;ls&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lookErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -100,13 +99,12 @@ we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
         
         <tr>
           <td class="docs">
-            <p><code>Exec</code> requires arguments in slice form (as
-opposed to one big string). We&rsquo;ll give <code>ls</code> a few
-common arguments. Note that the first argument should
-be the program name.</p>
+            <p><code>Exec</code> آرگومان‌ها را به شکل اسلایس می‌خواهد (نه یک
+رشتهٔ بزرگ). چند آرگومان رایج به <code>ls</code> می‌دهیم. توجه
+کنید که آرگومان اول باید نام برنامه باشد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;ls&#34;</span><span class="p">,</span> <span class="s">&#34;-a&#34;</span><span class="p">,</span> <span class="s">&#34;-l&#34;</span><span class="p">,</span> <span class="s">&#34;-h&#34;</span><span class="p">}</span></span></span></code></pre>
           </td>
@@ -114,12 +112,12 @@ be the program name.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Exec</code> also needs a set of <a href="environment-variables">environment variables</a>
-to use. Here we just provide our current
-environment.</p>
+            <p><code>Exec</code> به مجموعه‌ای از <a href="environment-variables">متغیرهای محیطی</a>
+هم نیاز دارد. اینجا فقط محیط فعلی خودمان را
+می‌دهیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">env</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Environ</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -127,14 +125,13 @@ environment.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the actual <code>syscall.Exec</code> call. If this call is
-successful, the execution of our process will end
-here and be replaced by the <code>/bin/ls -a -l -h</code>
-process. If there is an error we&rsquo;ll get a return
-value.</p>
+            <p>این فراخوانی واقعی <code>syscall.Exec</code> است. اگر این
+فراخوانی موفق باشد، اجرای پروسهٔ ما همین‌جا تمام
+می‌شود و پروسهٔ <code>/bin/ls -a -l -h</code> جایش را می‌گیرد.
+اگر خطایی رخ دهد، یک مقدار بازگشتی می‌گیریم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">execErr</span> <span class="o">:=</span> <span class="nx">syscall</span><span class="p">.</span><span class="nf">Exec</span><span class="p">(</span><span class="nx">binary</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">execErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -150,10 +147,10 @@ value.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run our program it is replaced by <code>ls</code>.</p>
+            <p>وقتی برنامه را اجرا می‌کنیم، <code>ls</code> جایگزین آن می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run execing-processes.go
 </span></span><span class="line"><span class="cl"><span class="go">total 16
@@ -165,13 +162,13 @@ value.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that Go does not offer a classic Unix <code>fork</code>
-function. Usually this isn&rsquo;t an issue though, since
-starting goroutines, spawning processes, and exec&rsquo;ing
-processes covers most use cases for <code>fork</code>.</p>
+            <p>توجه کنید که Go تابع کلاسیک <code>fork</code> یونیکس را ندارد.
+البته معمولاً این مشکلی نیست، چون راه‌اندازی
+گوروتین‌ها، ایجاد پروسه‌ها و exec کردن پروسه‌ها بیشتر
+کاربردهای <code>fork</code> را پوشش می‌دهند.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -181,12 +178,12 @@ processes covers most use cases for <code>fork</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="signals" rel="next">Signals</a>.
+        مثال بعدی: <a href="signals" rel="next">سیگنال‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

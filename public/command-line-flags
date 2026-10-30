@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Command-Line Flags</title>
+    <title>Go با مثال: فلگ‌های خط فرمان</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'command-line-arguments';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'command-line-subcommands';
           }
           
@@ -24,19 +24,19 @@
   </script>
   <body>
     <div class="example" id="command-line-flags">
-      <h2><a href="./">Go by Example</a>: Command-Line Flags</h2>
+      <h2><a href="./">Go با مثال</a>: فلگ‌های خط فرمان</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>Command-line flags</em></a>
-are a common way to specify options for command-line
-programs. For example, in <code>wc -l</code> the <code>-l</code> is a
-command-line flag.</p>
+            <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>فلگ‌های خط فرمان</em></a>
+روشی رایج برای تعیین گزینه‌های برنامه‌های خط فرمان
+هستند. برای مثال، در <code>wc -l</code>، <code>-l</code> یک فلگ خط فرمان
+است.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -46,20 +46,20 @@ command-line flag.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/IUPZlYSigc3"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/2O_wLnlOkXn"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>Go provides a <code>flag</code> package supporting basic
-command-line flag parsing. We&rsquo;ll use this package to
-implement our example command-line program.</p>
+            <p>Go بستهٔ <code>flag</code> را دارد که از تجزیهٔ ساده‌ی فلگ‌های خط
+فرمان پشتیبانی می‌کند. از این بسته برای پیاده‌سازی
+برنامهٔ خط فرمان نمونهٔ خودمان استفاده می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
@@ -72,7 +72,7 @@ implement our example command-line program.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -80,15 +80,15 @@ implement our example command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>Basic flag declarations are available for string,
-integer, and boolean options. Here we declare a
-string flag <code>word</code> with a default value <code>&quot;foo&quot;</code>
-and a short description. This <code>flag.String</code> function
-returns a string pointer (not a string value);
-we&rsquo;ll see how to use this pointer below.</p>
+            <p>تعریف‌های پایهٔ فلگ برای گزینه‌های رشته‌ای، عدد صحیح
+و بولی در دسترس‌اند. اینجا یک فلگ رشته‌ای <code>word</code> با
+مقدار پیش‌فرض <code>&quot;foo&quot;</code> و یک توضیح کوتاه تعریف می‌کنیم.
+این تابع <code>flag.String</code> یک اشاره‌گر به رشته برمی‌گرداند
+(نه مقدار رشته)؛ در ادامه می‌بینیم که چطور از این
+اشاره‌گر استفاده کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;a string&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -96,11 +96,11 @@ we&rsquo;ll see how to use this pointer below.</p>
         
         <tr>
           <td class="docs">
-            <p>This declares <code>numb</code> and <code>fork</code> flags, using a
-similar approach to the <code>word</code> flag.</p>
+            <p>این بخش فلگ‌های <code>numb</code> و <code>fork</code> را با روشی مشابه
+فلگ <code>word</code> تعریف می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;numb&#34;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#34;an int&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">forkPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;fork&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;a bool&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -109,13 +109,12 @@ similar approach to the <code>word</code> flag.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s also possible to declare an option that uses an
-existing var declared elsewhere in the program.
-Note that we need to pass in a pointer to the flag
-declaration function.</p>
+            <p>همچنین می‌توان گزینه‌ای تعریف کرد که از متغیری استفاده
+کند که جای دیگری در برنامه تعریف شده. توجه کنید که
+باید یک اشاره‌گر را به تابع تعریف فلگ بدهیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&#34;svar&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;a string var&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -124,11 +123,11 @@ declaration function.</p>
         
         <tr>
           <td class="docs">
-            <p>Once all flags are declared, call <code>flag.Parse()</code>
-to execute the command-line parsing.</p>
+            <p>وقتی همهٔ فلگ‌ها تعریف شدند، <code>flag.Parse()</code> را صدا
+بزنید تا تجزیهٔ خط فرمان انجام شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">Parse</span><span class="p">()</span></span></span></code></pre>
           </td>
@@ -136,13 +135,13 @@ to execute the command-line parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we&rsquo;ll just dump out the parsed options and
-any trailing positional arguments. Note that we
-need to dereference the pointers with e.g. <code>*wordPtr</code>
-to get the actual option values.</p>
+            <p>اینجا فقط گزینه‌های تجزیه‌شده و هر آرگومان موقعیتی
+(positional) انتهایی را چاپ می‌کنیم. توجه کنید که
+برای گرفتن مقدار واقعی گزینه‌ها باید اشاره‌گرها را
+dereference کنیم، مثلاً با <code>*wordPtr</code>.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;word:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numb:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
@@ -159,12 +158,12 @@ to get the actual option values.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with the command-line flags program it&rsquo;s
-best to first compile it and then run the resulting
-binary directly.</p>
+            <p>برای آزمایش برنامهٔ فلگ‌های خط فرمان، بهتر است اول آن
+را کامپایل کنید و سپس فایل اجرایی حاصل را مستقیماً
+اجرا کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-flags.go</span></span></code></pre>
           </td>
@@ -172,11 +171,11 @@ binary directly.</p>
         
         <tr>
           <td class="docs">
-            <p>Try out the built program by first giving it values for
-all flags.</p>
+            <p>برنامهٔ ساخته‌شده را امتحان کنید؛ اول برای همهٔ فلگ‌ها
+مقدار بدهید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt -numb=7 -fork -svar=flag
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
@@ -189,11 +188,11 @@ all flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that if you omit flags they automatically take
-their default values.</p>
+            <p>توجه کنید که اگر فلگ‌ها را ننویسید، خودکار مقدار
+پیش‌فرضشان را می‌گیرند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
@@ -206,11 +205,11 @@ their default values.</p>
         
         <tr>
           <td class="docs">
-            <p>Trailing positional arguments can be provided after
-any flags.</p>
+            <p>آرگومان‌های موقعیتی انتهایی را می‌توان بعد از فلگ‌ها
+نوشت.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
@@ -221,12 +220,12 @@ any flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that the <code>flag</code> package requires all flags to
-appear before positional arguments (otherwise the flags
-will be interpreted as positional arguments).</p>
+            <p>توجه کنید که بستهٔ <code>flag</code> نیاز دارد همهٔ فلگ‌ها پیش از
+آرگومان‌های موقعیتی بیایند (وگرنه فلگ‌ها هم به‌عنوان
+آرگومان موقعیتی تفسیر می‌شوند).</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3 -numb=7
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
@@ -239,11 +238,11 @@ will be interpreted as positional arguments).</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
-generated help text for the command-line program.</p>
+            <p>از فلگ‌های <code>-h</code> یا <code>--help</code> استفاده کنید تا متن
+راهنمای خودکار برنامهٔ خط فرمان را ببینید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -h
 </span></span><span class="line"><span class="cl"><span class="go">Usage of ./command-line-flags:
@@ -256,12 +255,12 @@ generated help text for the command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>If you provide a flag that wasn&rsquo;t specified to the
-<code>flag</code> package, the program will print an error message
-and show the help text again.</p>
+            <p>اگر فلگی بدهید که در بستهٔ <code>flag</code> تعریف نشده، برنامه
+یک پیام خطا چاپ می‌کند و دوباره متن راهنما را نشان
+می‌دهد.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -wat
 </span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -wat
@@ -274,12 +273,12 @@ and show the help text again.</p>
       
       
       <p class="next">
-        Next example: <a href="command-line-subcommands" rel="next">Command-Line Subcommands</a>.
+        مثال بعدی: <a href="command-line-subcommands" rel="next">زیرفرمان‌های خط فرمان</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

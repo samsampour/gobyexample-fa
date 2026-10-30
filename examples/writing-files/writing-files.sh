@@ -1,10 +1,10 @@
-# Try running the file-writing code.
+# کد نوشتن فایل را اجرا کنید.
 $ go run writing-files.go 
 wrote 5 bytes
 wrote 7 bytes
 wrote 9 bytes
 
-# Then check the contents of the written files.
+# سپس محتوای فایل‌های نوشته‌شده را بررسی کنید.
 $ cat /tmp/dat1
 hello
 go
@@ -13,5 +13,6 @@ some
 writes
 buffered
 
-# Next we'll look at applying some of the file I/O ideas
-# we've just seen to the `stdin` and `stdout` streams.
+# در ادامه می‌بینیم که چطور برخی از ایده‌های ورودی/خروجی
+# فایل را که الان دیدیم، روی جریان‌های `stdin` و `stdout`
+# به کار ببریم.

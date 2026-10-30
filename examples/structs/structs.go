@@ -1,23 +1,23 @@
-// Go's _structs_ are typed collections of fields.
-// They're useful for grouping data together to form
-// records.
+// _ساختارها_ (structs) در Go مجموعه‌هایی نوع‌دار از
+// فیلدها هستند. برای گروه‌بندی داده‌ها کنار هم و ساختن
+// رکورد به کار می‌آیند.
 
 package main
 
 import "fmt"
 
-// This `person` struct type has `name` and `age` fields.
+// این نوع ساختار `person` دو فیلد `name` و `age` دارد.
 type person struct {
 	name string
 	age  int
 }
 
-// `newPerson` constructs a new person struct with the given name.
+// `newPerson` یک ساختار person جدید با نام داده‌شده می‌سازد.
 func newPerson(name string) *person {
-	// Go is a garbage collected language; you can safely
-	// return a pointer to a local variable - it will only
-	// be cleaned up by the garbage collector when there
-	// are no active references to it.
+	// Go زبانی با زباله‌روب (garbage collector) است؛ پس
+	// می‌توانید با خیال راحت اشاره‌گری به یک متغیر محلی
+	// برگردانید. این متغیر فقط زمانی توسط زباله‌روب پاک
+	// می‌شود که هیچ ارجاع فعالی به آن نمانده باشد.
 	p := person{name: name}
 	p.age = 42
 	return &p
@@ -25,39 +25,39 @@ func newPerson(name string) *person {
 
 func main() {
 
-	// This syntax creates a new struct.
+	// این نحو یک ساختار جدید می‌سازد.
 	fmt.Println(person{"Bob", 20})
 
-	// You can name the fields when initializing a struct.
+	// هنگام مقداردهی ساختار می‌توانید نام فیلدها را بنویسید.
 	fmt.Println(person{name: "Alice", age: 30})
 
-	// Omitted fields will be zero-valued.
+	// فیلدهایی که ذکر نشوند مقدار صفر می‌گیرند.
 	fmt.Println(person{name: "Fred"})
 
-	// An `&` prefix yields a pointer to the struct.
+	// پیشوند `&` یک اشاره‌گر به ساختار می‌دهد.
 	fmt.Println(&person{name: "Ann", age: 40})
 
-	// It's idiomatic to encapsulate new struct creation in constructor functions
+	// روش رایج این است که ساختن ساختار جدید را در توابع سازنده (constructor) کپسوله کنیم.
 	fmt.Println(newPerson("Jon"))
 
-	// Access struct fields with a dot.
+	// با نقطه به فیلدهای ساختار دسترسی پیدا کنید.
 	s := person{name: "Sean", age: 50}
 	fmt.Println(s.name)
 
-	// Structs are mutable.
+	// ساختارها تغییرپذیرند.
 	s.age = 51
 	fmt.Println(s)
 
-	// You can also use dots with struct pointers - the
-	// pointers are automatically dereferenced.
+	// با اشاره‌گر به ساختار هم می‌توانید از نقطه استفاده
+	// کنید؛ اشاره‌گرها به‌طور خودکار dereference می‌شوند.
 	sp := &s
 	sp.age = 52
 	fmt.Println(sp.age)
 
-	// If a struct type is only used for a single value, we don't
-	// have to give it a name. The value can have an anonymous
-	// struct type. This technique is commonly used for
-	// [table-driven tests](testing-and-benchmarking).
+	// اگر یک نوع ساختار فقط برای یک مقدار استفاده می‌شود،
+	// لازم نیست برایش نام بگذاریم. مقدار می‌تواند نوع
+	// ساختارِ بی‌نام داشته باشد. این تکنیک معمولاً در
+	// [تست‌های جدول‌محور](testing-and-benchmarking) به کار می‌رود.
 	dog := struct {
 		name   string
 		isGood bool

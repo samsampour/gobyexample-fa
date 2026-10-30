@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Closing Channels</title>
+    <title>Go با مثال: بستن کانال‌ها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'non-blocking-channel-operations';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'range-over-channels';
           }
           
@@ -24,18 +24,18 @@
   </script>
   <body>
     <div class="example" id="closing-channels">
-      <h2><a href="./">Go by Example</a>: Closing Channels</h2>
+      <h2><a href="./">Go با مثال</a>: بستن کانال‌ها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Closing</em> a channel indicates that no more values
-will be sent on it. This can be useful to communicate
-completion to the channel&rsquo;s receivers.</p>
+            <p><em>بستن</em> یک کانال نشان می‌دهد که دیگر مقداری روی آن
+فرستاده نخواهد شد. این کار برای اعلام پایان کار به
+گیرنده‌های کانال مفید است.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -45,8 +45,8 @@ completion to the channel&rsquo;s receivers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/yZijZHYe22y"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/WnEGCTUKDN5"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,7 +55,7 @@ completion to the channel&rsquo;s receivers.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
@@ -63,13 +63,13 @@ completion to the channel&rsquo;s receivers.</p>
         
         <tr>
           <td class="docs">
-            <p>In this example we&rsquo;ll use a <code>jobs</code> channel to
-communicate work to be done from the <code>main()</code> goroutine
-to a worker goroutine. When we have no more jobs for
-the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
+            <p>در این مثال از کانال <code>jobs</code> استفاده می‌کنیم تا کارهایی
+را که باید انجام شوند از گوروتین <code>main()</code> به یک
+گوروتین worker بفرستیم. وقتی کار دیگری برای worker
+نداشته باشیم، کانال <code>jobs</code> را با <code>close</code> می‌بندیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -79,16 +79,16 @@ the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the worker goroutine. It repeatedly receives
-from <code>jobs</code> with <code>j, more := &lt;-jobs</code>. In this
-special 2-value form of receive, the <code>more</code> value
-will be <code>false</code> if <code>jobs</code> has been <code>close</code>d and all
-values in the channel have already been received.
-We use this to notify on <code>done</code> when we&rsquo;ve worked
-all our jobs.</p>
+            <p>این گوروتین worker است. پشت سر هم با
+<code>j, more := &lt;-jobs</code> از <code>jobs</code> دریافت می‌کند. در این
+شکل خاص دومقداری از دریافت، اگر <code>jobs</code> بسته شده
+باشد و همهٔ مقادیر کانال قبلاً دریافت شده باشند،
+مقدار <code>more</code> برابر <code>false</code> خواهد بود. از این برای
+خبر دادن روی <code>done</code> استفاده می‌کنیم، وقتی همهٔ کارها
+انجام شده باشند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
@@ -107,11 +107,11 @@ all our jobs.</p>
         
         <tr>
           <td class="docs">
-            <p>This sends 3 jobs to the worker over the <code>jobs</code>
-channel, then closes it.</p>
+            <p>این بخش ۳ کار را از طریق کانال <code>jobs</code> به worker
+می‌فرستد و سپس کانال را می‌بندد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
@@ -124,12 +124,11 @@ channel, then closes it.</p>
         
         <tr>
           <td class="docs">
-            <p>We await the worker using the
-<a href="channel-synchronization">synchronization</a> approach
-we saw earlier.</p>
+            <p>با روش <a href="channel-synchronization">همگام‌سازی</a> که
+قبلاً دیدیم، منتظر worker می‌مانیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span></span></span></code></pre>
           </td>
@@ -137,16 +136,15 @@ we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>Reading from a closed channel succeeds immediately,
-returning the zero value of the underlying type.
-The optional second return value is <code>true</code> if the
-value received was delivered by a successful send
-operation to the channel, or <code>false</code> if it was a
-zero value generated because the channel is closed
-and empty.</p>
+            <p>خواندن از یک کانال بسته بلافاصله موفق می‌شود و مقدار
+صفرِ نوع زیربنایی را برمی‌گرداند. مقدار بازگشتی دوم
+(اختیاری) اگر مقدار دریافت‌شده حاصل یک ارسال موفق
+به کانال باشد <code>true</code> است، و اگر مقدار صفری باشد که
+به دلیل بسته و خالی بودن کانال تولید شده، <code>false</code>
+است.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received more jobs:&#34;</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
@@ -162,7 +160,7 @@ and empty.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run closing-channels.go 
 </span></span><span class="line"><span class="cl"><span class="go">sent job 1
@@ -179,11 +177,11 @@ and empty.</p>
         
         <tr>
           <td class="docs">
-            <p>The idea of closed channels leads naturally to our next
-example: <code>range</code> over channels.</p>
+            <p>ایدهٔ کانال‌های بسته ما را به‌طور طبیعی به مثال بعدی
+می‌رساند: <code>range</code> روی کانال‌ها.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -193,12 +191,12 @@ example: <code>range</code> over channels.</p>
       
       
       <p class="next">
-        Next example: <a href="range-over-channels" rel="next">Range over Channels</a>.
+        مثال بعدی: <a href="range-over-channels" rel="next">range روی کانال‌ها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: String Functions</title>
+    <title>Go با مثال: توابع رشته</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'recover';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'string-formatting';
           }
           
@@ -24,18 +24,18 @@
   </script>
   <body>
     <div class="example" id="string-functions">
-      <h2><a href="./">Go by Example</a>: String Functions</h2>
+      <h2><a href="./">Go با مثال</a>: توابع رشته</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The standard library&rsquo;s <code>strings</code> package provides many
-useful string-related functions. Here are some examples
-to give you a sense of the package.</p>
+            <p>بستهٔ <code>strings</code> در کتابخانهٔ استاندارد توابع مفید زیادی
+برای کار با رشته‌ها دارد. این چند مثال برای آشنایی با
+این بسته است.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -45,8 +45,8 @@ to give you a sense of the package.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/wKSAzxfs96O"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/FH5VgdGNNld"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,7 +55,7 @@ to give you a sense of the package.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -66,11 +66,11 @@ to give you a sense of the package.</p>
         
         <tr>
           <td class="docs">
-            <p>We alias <code>fmt.Println</code> to a shorter name as we&rsquo;ll use
-it a lot below.</p>
+            <p>برای <code>fmt.Println</code> نام کوتاه‌تری می‌گذاریم، چون در ادامه
+زیاد از آن استفاده می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
@@ -80,7 +80,7 @@ it a lot below.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -88,16 +88,14 @@ it a lot below.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a sample of the functions available in
-<code>strings</code>. Since these are functions from the
-package, not methods on the string object itself,
-we need to pass the string in question as the first
-argument to the function. You can find more
-functions in the <a href="https://pkg.go.dev/strings"><code>strings</code></a>
-package docs.</p>
+            <p>این نمونه‌ای از توابع موجود در <code>strings</code> است. چون
+این‌ها توابعِ بسته هستند، نه متدهای خود شیء رشته،
+باید رشتهٔ مورد نظر را به‌عنوان آرگومان اول به تابع
+بدهیم. توابع بیشتری را می‌توانید در مستندات بستهٔ
+<a href="https://pkg.go.dev/strings"><code>strings</code></a> پیدا کنید.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Count:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Count</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">))</span>
@@ -123,7 +121,7 @@ package docs.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
 </span></span><span class="line"><span class="cl"><span class="go">Contains:   true
@@ -145,12 +143,12 @@ package docs.</p>
       
       
       <p class="next">
-        Next example: <a href="string-formatting" rel="next">String Formatting</a>.
+        مثال بعدی: <a href="string-formatting" rel="next">قالب‌بندی رشته</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

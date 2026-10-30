@@ -1,26 +1,26 @@
-// _Closing_ a channel indicates that no more values
-// will be sent on it. This can be useful to communicate
-// completion to the channel's receivers.
+// _بستن_ یک کانال نشان می‌دهد که دیگر مقداری روی آن
+// فرستاده نخواهد شد. این کار برای اعلام پایان کار به
+// گیرنده‌های کانال مفید است.
 
 package main
 
 import "fmt"
 
-// In this example we'll use a `jobs` channel to
-// communicate work to be done from the `main()` goroutine
-// to a worker goroutine. When we have no more jobs for
-// the worker we'll `close` the `jobs` channel.
+// در این مثال از کانال `jobs` استفاده می‌کنیم تا کارهایی
+// را که باید انجام شوند از گوروتین `main()` به یک
+// گوروتین worker بفرستیم. وقتی کار دیگری برای worker
+// نداشته باشیم، کانال `jobs` را با `close` می‌بندیم.
 func main() {
 	jobs := make(chan int, 5)
 	done := make(chan bool)
 
-	// Here's the worker goroutine. It repeatedly receives
-	// from `jobs` with `j, more := <-jobs`. In this
-	// special 2-value form of receive, the `more` value
-	// will be `false` if `jobs` has been `close`d and all
-	// values in the channel have already been received.
-	// We use this to notify on `done` when we've worked
-	// all our jobs.
+	// این گوروتین worker است. پشت سر هم با
+	// `j, more := <-jobs` از `jobs` دریافت می‌کند. در این
+	// شکل خاص دومقداری از دریافت، اگر `jobs` بسته شده
+	// باشد و همهٔ مقادیر کانال قبلاً دریافت شده باشند،
+	// مقدار `more` برابر `false` خواهد بود. از این برای
+	// خبر دادن روی `done` استفاده می‌کنیم، وقتی همهٔ کارها
+	// انجام شده باشند.
 	go func() {
 		for {
 			j, more := <-jobs
@@ -34,8 +34,8 @@ func main() {
 		}
 	}()
 
-	// This sends 3 jobs to the worker over the `jobs`
-	// channel, then closes it.
+	// این بخش ۳ کار را از طریق کانال `jobs` به worker
+	// می‌فرستد و سپس کانال را می‌بندد.
 	for j := 1; j <= 3; j++ {
 		jobs <- j
 		fmt.Println("sent job", j)
@@ -43,18 +43,16 @@ func main() {
 	close(jobs)
 	fmt.Println("sent all jobs")
 
-	// We await the worker using the
-	// [synchronization](channel-synchronization) approach
-	// we saw earlier.
+	// با روش [همگام‌سازی](channel-synchronization) که
+	// قبلاً دیدیم، منتظر worker می‌مانیم.
 	<-done
 
-	// Reading from a closed channel succeeds immediately,
-	// returning the zero value of the underlying type.
-	// The optional second return value is `true` if the
-	// value received was delivered by a successful send
-	// operation to the channel, or `false` if it was a
-	// zero value generated because the channel is closed
-	// and empty.
+	// خواندن از یک کانال بسته بلافاصله موفق می‌شود و مقدار
+	// صفرِ نوع زیربنایی را برمی‌گرداند. مقدار بازگشتی دوم
+	// (اختیاری) اگر مقدار دریافت‌شده حاصل یک ارسال موفق
+	// به کانال باشد `true` است، و اگر مقدار صفری باشد که
+	// به دلیل بسته و خالی بودن کانال تولید شده، `false`
+	// است.
 	_, ok := <-jobs
 	fmt.Println("received more jobs:", ok)
 }

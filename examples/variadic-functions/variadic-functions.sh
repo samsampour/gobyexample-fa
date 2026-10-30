@@ -3,5 +3,5 @@ $ go run variadic-functions.go
 [1 2 3] 6
 [1 2 3 4] 10
 
-# Another key aspect of functions in Go is their ability
-# to form closures, which we'll look at next.
+# یکی دیگر از جنبه‌های کلیدی توابع در Go، توانایی ساختن
+# کلوژر (closure) است که در ادامه به آن می‌پردازیم.

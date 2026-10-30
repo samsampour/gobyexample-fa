@@ -1,7 +1,7 @@
-// In Go, an _array_ is a numbered sequence of elements of a
-// specific length. In typical Go code, [slices](slices) are
-// much more common; arrays are useful in some special
-// scenarios.
+// در Go، یک _آرایه_ دنباله‌ای شماره‌دار از عناصر با طول
+// مشخص است. در کدهای معمول Go، [اسلایس‌ها](slices) بسیار
+// رایج‌ترند؛ آرایه‌ها در برخی موقعیت‌های خاص به کار
+// می‌آیند.
 
 package main
 
@@ -9,41 +9,39 @@ import "fmt"
 
 func main() {
 
-	// Here we create an array `a` that will hold exactly
-	// 5 `int`s. The type of elements and length are both
-	// part of the array's type. By default an array is
-	// zero-valued, which for `int`s means `0`s.
+	// اینجا آرایهٔ `a` را می‌سازیم که دقیقاً ۵ عدد `int`
+	// نگه می‌دارد. نوع عناصر و طول، هر دو بخشی از نوع
+	// آرایه هستند. به‌طور پیش‌فرض آرایه مقدار صفر دارد که
+	// برای `int` یعنی همه‌ی عناصر `0` هستند.
 	var a [5]int
 	fmt.Println("emp:", a)
 
-	// We can set a value at an index using the
-	// `array[index] = value` syntax, and get a value with
-	// `array[index]`.
+	// با نحو `array[index] = value` می‌توانیم مقداری را در
+	// یک اندیس قرار دهیم و با `array[index]` آن را بخوانیم.
 	a[4] = 100
 	fmt.Println("set:", a)
 	fmt.Println("get:", a[4])
 
-	// The builtin `len` returns the length of an array.
+	// تابع داخلی `len` طول آرایه را برمی‌گرداند.
 	fmt.Println("len:", len(a))
 
-	// Use this syntax to declare and initialize an array
-	// in one line.
+	// از این نحو برای تعریف و مقداردهی آرایه در یک خط
+	// استفاده کنید.
 	b := [5]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 
-	// You can also have the compiler count the number of
-	// elements for you with `...`
+	// همچنین می‌توانید با `...` شمردن تعداد عناصر را به
+	// کامپایلر بسپارید.
 	b = [...]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 
-	// If you specify the index with `:`, the elements in
-	// between will be zeroed.
+	// اگر اندیس را با `:` مشخص کنید، عناصر بینِ آن‌ها
+	// مقدار صفر می‌گیرند.
 	b = [...]int{100, 3: 400, 500}
 	fmt.Println("idx:", b)
 
-	// Array types are one-dimensional, but you can
-	// compose types to build multi-dimensional data
-	// structures.
+	// نوع آرایه یک‌بعدی است، اما می‌توانید نوع‌ها را با هم
+	// ترکیب کنید و ساختارهای داده‌ی چندبعدی بسازید.
 	var twoD [2][3]int
 	for i := range 2 {
 		for j := range 3 {
@@ -52,8 +50,8 @@ func main() {
 	}
 	fmt.Println("2d: ", twoD)
 
-	// You can create and initialize multi-dimensional
-	// arrays at once too.
+	// می‌توانید آرایه‌های چندبعدی را هم یک‌جا بسازید و
+	// مقداردهی کنید.
 	twoD = [2][3]int{
 		{1, 2, 3},
 		{1, 2, 3},

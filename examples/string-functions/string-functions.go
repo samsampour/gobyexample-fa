@@ -1,6 +1,6 @@
-// The standard library's `strings` package provides many
-// useful string-related functions. Here are some examples
-// to give you a sense of the package.
+// بستهٔ `strings` در کتابخانهٔ استاندارد توابع مفید زیادی
+// برای کار با رشته‌ها دارد. این چند مثال برای آشنایی با
+// این بسته است.
 
 package main
 
@@ -9,19 +9,17 @@ import (
 	s "strings"
 )
 
-// We alias `fmt.Println` to a shorter name as we'll use
-// it a lot below.
+// برای `fmt.Println` نام کوتاه‌تری می‌گذاریم، چون در ادامه
+// زیاد از آن استفاده می‌کنیم.
 var p = fmt.Println
 
 func main() {
 
-	// Here's a sample of the functions available in
-	// `strings`. Since these are functions from the
-	// package, not methods on the string object itself,
-	// we need to pass the string in question as the first
-	// argument to the function. You can find more
-	// functions in the [`strings`](https://pkg.go.dev/strings)
-	// package docs.
+	// این نمونه‌ای از توابع موجود در `strings` است. چون
+	// این‌ها توابعِ بسته هستند، نه متدهای خود شیء رشته،
+	// باید رشتهٔ مورد نظر را به‌عنوان آرگومان اول به تابع
+	// بدهیم. توابع بیشتری را می‌توانید در مستندات بستهٔ
+	// [`strings`](https://pkg.go.dev/strings) پیدا کنید.
 	p("Contains:  ", s.Contains("test", "es"))
 	p("Count:     ", s.Count("test", "t"))
 	p("HasPrefix: ", s.HasPrefix("test", "te"))

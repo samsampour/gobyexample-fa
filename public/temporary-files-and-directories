@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Temporary Files and Directories</title>
+    <title>Go با مثال: فایل‌ها و پوشه‌های موقت</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'directories';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'embed-directive';
           }
           
@@ -24,20 +24,19 @@
   </script>
   <body>
     <div class="example" id="temporary-files-and-directories">
-      <h2><a href="./">Go by Example</a>: Temporary Files and Directories</h2>
+      <h2><a href="./">Go با مثال</a>: فایل‌ها و پوشه‌های موقت</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Throughout program execution, we often want to create
-data that isn&rsquo;t needed after the program exits.
-<em>Temporary files and directories</em> are useful for this
-purpose since they don&rsquo;t pollute the file system over
-time.</p>
+            <p>در طول اجرای برنامه، اغلب می‌خواهیم داده‌هایی بسازیم که
+پس از خروج برنامه دیگر به آن‌ها نیازی نیست.
+<em>فایل‌ها و پوشه‌های موقت</em> برای این منظور مفیدند، چون
+به مرور زمان سیستم فایل را شلوغ نمی‌کنند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -47,8 +46,8 @@ time.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/hVcPg9RH3_V"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/aQH93kE8qLI"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -57,7 +56,7 @@ time.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -71,7 +70,7 @@ time.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -85,7 +84,7 @@ time.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -93,14 +92,14 @@ time.</p>
         
         <tr>
           <td class="docs">
-            <p>The easiest way to create a temporary file is by
-calling <code>os.CreateTemp</code>. It creates a file <em>and</em>
-opens it for reading and writing. We provide <code>&quot;&quot;</code>
-as the first argument, so <code>os.CreateTemp</code> will
-create the file in the default location for our OS.</p>
+            <p>ساده‌ترین راه برای ساختن فایل موقت، صدا زدن
+<code>os.CreateTemp</code> است. این تابع یک فایل می‌سازد <em>و</em> آن
+را برای خواندن و نوشتن باز می‌کند. <code>&quot;&quot;</code> را به‌عنوان
+آرگومان اول می‌دهیم، پس <code>os.CreateTemp</code> فایل را در
+مکان پیش‌فرض سیستم‌عامل ما می‌سازد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">CreateTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sample&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -109,15 +108,15 @@ create the file in the default location for our OS.</p>
         
         <tr>
           <td class="docs">
-            <p>Display the name of the temporary file. On
-Unix-based OSes the directory will likely be <code>/tmp</code>.
-The file name starts with the prefix given as the
-second argument to <code>os.CreateTemp</code> and the rest
-is chosen automatically to ensure that concurrent
-calls will always create different file names.</p>
+            <p>نام فایل موقت را نمایش می‌دهیم. در سیستم‌عامل‌های
+مبتنی بر یونیکس، پوشه احتمالاً <code>/tmp</code> خواهد بود. نام
+فایل با پیشوندی که به‌عنوان آرگومان دوم به
+<code>os.CreateTemp</code> داده شده شروع می‌شود و بقیه‌اش خودکار
+انتخاب می‌شود تا فراخوانی‌های هم‌زمان همیشه نام‌های
+متفاوتی بسازند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Temp file name:&#34;</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -125,13 +124,12 @@ calls will always create different file names.</p>
         
         <tr>
           <td class="docs">
-            <p>Clean up the file after we&rsquo;re done. The OS is
-likely to clean up temporary files by itself after
-some time, but it&rsquo;s good practice to do this
-explicitly.</p>
+            <p>پس از پایان کار فایل را پاک می‌کنیم. سیستم‌عامل
+احتمالاً پس از مدتی خودش فایل‌های موقت را پاک می‌کند،
+اما بهتر است این کار را صریحاً انجام دهیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -139,10 +137,10 @@ explicitly.</p>
         
         <tr>
           <td class="docs">
-            <p>We can write some data to the file.</p>
+            <p>می‌توانیم مقداری داده در فایل بنویسیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">})</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
@@ -151,14 +149,13 @@ explicitly.</p>
         
         <tr>
           <td class="docs">
-            <p>If we intend to write many temporary files, we may
-prefer to create a temporary <em>directory</em>.
-<code>os.MkdirTemp</code>&rsquo;s arguments are the same as
-<code>CreateTemp</code>&rsquo;s, but it returns a directory <em>name</em>
-rather than an open file.</p>
+            <p>اگر قصد داریم فایل‌های موقت زیادی بنویسیم، شاید بهتر
+باشد یک <em>پوشهٔ</em> موقت بسازیم. آرگومان‌های
+<code>os.MkdirTemp</code> مثل <code>CreateTemp</code> است، اما به‌جای یک
+فایل باز، <em>نام</em> یک پوشه را برمی‌گرداند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dname</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">MkdirTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sampledir&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -170,7 +167,7 @@ rather than an open file.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">RemoveAll</span><span class="p">(</span><span class="nx">dname</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -178,11 +175,11 @@ rather than an open file.</p>
         
         <tr>
           <td class="docs">
-            <p>Now we can synthesize temporary file names by
-prefixing them with our temporary directory.</p>
+            <p>حالا می‌توانیم نام فایل‌های موقت را با افزودن پوشهٔ
+موقت به ابتدایشان بسازیم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fname</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">dname</span><span class="p">,</span> <span class="s">&#34;file1&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mo">0666</span><span class="p">)</span>
@@ -199,7 +196,7 @@ prefixing them with our temporary directory.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run temporary-files-and-directories.go
 </span></span><span class="line"><span class="cl"><span class="go">Temp file name: /tmp/sample610887201
@@ -211,12 +208,12 @@ prefixing them with our temporary directory.</p>
       
       
       <p class="next">
-        Next example: <a href="embed-directive" rel="next">Embed Directive</a>.
+        مثال بعدی: <a href="embed-directive" rel="next">دستور embed</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

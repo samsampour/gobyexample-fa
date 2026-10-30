@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Channels</title>
+    <title>Go با مثال: کانال‌ها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'goroutines';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'channel-buffering';
           }
           
@@ -24,19 +24,19 @@
   </script>
   <body>
     <div class="example" id="channels">
-      <h2><a href="./">Go by Example</a>: Channels</h2>
+      <h2><a href="./">Go با مثال</a>: کانال‌ها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Channels</em> are the pipes that connect concurrent
-goroutines. You can send values into channels from one
-goroutine and receive those values into another
-goroutine.</p>
+            <p><em>کانال‌ها</em> (channels) لوله‌هایی هستند که گوروتین‌های
+هم‌روند را به هم وصل می‌کنند. می‌توانید از یک گوروتین
+مقادیری را به کانال بفرستید و در گوروتینی دیگر آن‌ها را
+دریافت کنید.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -46,8 +46,8 @@ goroutine.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/MaLY7AiAkHM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/9eMCDhR4kDV"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -56,7 +56,7 @@ goroutine.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
@@ -66,7 +66,7 @@ goroutine.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -74,11 +74,12 @@ goroutine.</p>
         
         <tr>
           <td class="docs">
-            <p>Create a new channel with <code>make(chan val-type)</code>.
-Channels are typed by the values they convey.</p>
+            <p>یک کانال جدید را با <code>make(chan val-type)</code> بسازید.
+نوع کانال‌ها با نوع مقادیری که منتقل می‌کنند تعیین
+می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -86,12 +87,12 @@ Channels are typed by the values they convey.</p>
         
         <tr>
           <td class="docs">
-            <p><em>Send</em> a value into a channel using the <code>channel &lt;-</code>
-syntax. Here we send <code>&quot;ping&quot;</code>  to the <code>messages</code>
-channel we made above, from a new goroutine.</p>
+            <p>با نحو <code>channel &lt;-</code> یک مقدار را به کانال <em>بفرستید</em>.
+اینجا از یک گوروتین جدید، <code>&quot;ping&quot;</code> را به کانال
+<code>messages</code> که بالا ساختیم می‌فرستیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&#34;ping&#34;</span> <span class="p">}()</span></span></span></code></pre>
           </td>
@@ -99,12 +100,12 @@ channel we made above, from a new goroutine.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&lt;-channel</code> syntax <em>receives</em> a value from the
-channel. Here we&rsquo;ll receive the <code>&quot;ping&quot;</code> message
-we sent above and print it out.</p>
+            <p>نحو <code>&lt;-channel</code> یک مقدار را از کانال <em>دریافت</em>
+می‌کند. اینجا پیام <code>&quot;ping&quot;</code> را که بالا فرستادیم
+دریافت و چاپ می‌کنیم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
@@ -118,12 +119,12 @@ we sent above and print it out.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run the program the <code>&quot;ping&quot;</code> message is
-successfully passed from one goroutine to another via
-our channel.</p>
+            <p>وقتی برنامه را اجرا می‌کنیم، پیام <code>&quot;ping&quot;</code> با موفقیت
+از طریق کانال از یک گوروتین به گوروتین دیگر منتقل
+می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channels.go 
 </span></span><span class="line"><span class="cl"><span class="go">ping</span></span></span></code></pre>
@@ -132,13 +133,13 @@ our channel.</p>
         
         <tr>
           <td class="docs">
-            <p>By default sends and receives block until both the
-sender and receiver are ready. This property allowed
-us to wait at the end of our program for the <code>&quot;ping&quot;</code>
-message without having to use any other synchronization.</p>
+            <p>به‌طور پیش‌فرض، ارسال و دریافت تا زمانی که هم فرستنده
+و هم گیرنده آماده باشند مسدود (block) می‌شوند. همین
+ویژگی باعث شد بتوانیم در انتهای برنامه منتظر پیام
+<code>&quot;ping&quot;</code> بمانیم، بدون نیاز به هیچ همگام‌سازی دیگری.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -148,12 +149,12 @@ message without having to use any other synchronization.</p>
       
       
       <p class="next">
-        Next example: <a href="channel-buffering" rel="next">Channel Buffering</a>.
+        مثال بعدی: <a href="channel-buffering" rel="next">کانال‌های بافردار</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

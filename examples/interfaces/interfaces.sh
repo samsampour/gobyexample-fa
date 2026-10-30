@@ -7,5 +7,6 @@ $ go run interfaces.go
 31.41592653589793
 circle with radius 5
 
-# To understand how Go's interfaces work under the hood,
-# check out this [blog post](https://research.swtch.com/interfaces).
+# برای فهم اینکه اینترفیس‌های Go در پشت صحنه چطور کار
+# می‌کنند، این [مقاله](https://research.swtch.com/interfaces)
+# را بخوانید.

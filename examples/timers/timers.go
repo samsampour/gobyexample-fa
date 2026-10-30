@@ -1,8 +1,8 @@
-// We often want to execute Go code at some point in the
-// future, or repeatedly at some interval. Go's built-in
-// _timer_ and _ticker_ features make both of these tasks
-// easy. We'll look first at timers and then
-// at [tickers](tickers).
+// اغلب می‌خواهیم کد Go را در زمانی در آینده یا به‌طور
+// تکراری در فواصل مشخص اجرا کنیم. قابلیت‌های داخلی
+// _timer_ و _ticker_ در Go هر دو کار را ساده می‌کنند.
+// اول تایمرها را می‌بینیم و سپس
+// [تیکرها](tickers) را.
 
 package main
 
@@ -13,22 +13,21 @@ import (
 
 func main() {
 
-	// Timers represent a single event in the future. You
-	// tell the timer how long you want to wait, and it
-	// provides a channel that will be notified at that
-	// time. This timer will wait 2 seconds.
+	// تایمرها نمایانگر یک رویداد واحد در آینده هستند. به
+	// تایمر می‌گویید چقدر می‌خواهید صبر کنید و تایمر
+	// کانالی در اختیارتان می‌گذارد که در آن زمان خبردار
+	// می‌شود. این تایمر ۲ ثانیه صبر می‌کند.
 	timer1 := time.NewTimer(2 * time.Second)
 
-	// The `<-timer1.C` blocks on the timer's channel `C`
-	// until it sends a value indicating that the timer
-	// fired.
+	// `<-timer1.C` روی کانال `C` تایمر مسدود می‌ماند تا
+	// تایمر مقداری بفرستد که نشان دهد زمانش فرا رسیده است.
 	<-timer1.C
 	fmt.Println("Timer 1 fired")
 
-	// If you just wanted to wait, you could have used
-	// `time.Sleep`. One reason a timer may be useful is
-	// that you can cancel the timer before it fires.
-	// Here's an example of that.
+	// اگر فقط می‌خواستید صبر کنید، می‌توانستید از
+	// `time.Sleep` استفاده کنید. یکی از دلایل مفید بودن
+	// تایمر این است که می‌توانید آن را پیش از فرا رسیدن
+	// زمانش لغو کنید. این یک نمونه از آن است.
 	timer2 := time.NewTimer(time.Second)
 	go func() {
 		<-timer2.C
@@ -39,7 +38,8 @@ func main() {
 		fmt.Println("Timer 2 stopped")
 	}
 
-	// Give the `timer2` enough time to fire, if it ever
-	// was going to, to show it is in fact stopped.
+	// به `timer2` به اندازهٔ کافی زمان می‌دهیم تا اگر قرار
+	// بود اجرا شود، اجرا شود؛ تا نشان دهیم که واقعاً
+	// متوقف شده است.
 	time.Sleep(2 * time.Second)
 }

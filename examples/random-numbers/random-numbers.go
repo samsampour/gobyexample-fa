@@ -1,6 +1,6 @@
-// Go's `math/rand/v2` package provides
-// [pseudorandom number](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
-// generation.
+// بستهٔ `math/rand/v2` در Go امکان تولید
+// [اعداد شبه‌تصادفی](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+// را فراهم می‌کند.
 
 package main
 
@@ -11,28 +11,27 @@ import (
 
 func main() {
 
-	// For example, `rand.IntN` returns a random `int` n,
-	// `0 <= n < 100`.
+	// برای مثال، `rand.IntN` یک `int` تصادفی n برمی‌گرداند
+	// که `0 <= n < 100`.
 	fmt.Print(rand.IntN(100), ",")
 	fmt.Print(rand.IntN(100))
 	fmt.Println()
 
-	// `rand.Float64` returns a `float64` `f`,
-	// `0.0 <= f < 1.0`.
+	// `rand.Float64` یک `float64` به نام `f` برمی‌گرداند
+	// که `0.0 <= f < 1.0`.
 	fmt.Println(rand.Float64())
 
-	// This can be used to generate random floats in
-	// other ranges, for example `5.0 <= f' < 10.0`.
+	// از این می‌توان برای تولید اعداد اعشاری تصادفی در
+	// بازه‌های دیگر استفاده کرد، مثلاً `5.0 <= f' < 10.0`.
 	fmt.Print((rand.Float64()*5)+5, ",")
 	fmt.Print((rand.Float64() * 5) + 5)
 	fmt.Println()
 
-	// If you want a known seed, create a new
-	// `rand.Source` and pass it into the `New`
-	// constructor. `NewPCG` creates a new
+	// اگر یک بذر (seed) مشخص می‌خواهید، یک `rand.Source`
+	// جدید بسازید و آن را به سازندهٔ `New` بدهید. `NewPCG`
+	// یک منبع
 	// [PCG](https://en.wikipedia.org/wiki/Permuted_congruential_generator)
-	// source that requires a seed of two `uint64`
-	// numbers.
+	// جدید می‌سازد که به بذری از دو عدد `uint64` نیاز دارد.
 	s2 := rand.NewPCG(42, 1024)
 	r2 := rand.New(s2)
 	fmt.Print(r2.IntN(100), ",")

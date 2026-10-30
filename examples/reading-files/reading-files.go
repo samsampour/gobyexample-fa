@@ -1,6 +1,6 @@
-// Reading and writing files are basic tasks needed for
-// many Go programs. First we'll look at some examples of
-// reading files.
+// خواندن و نوشتن فایل‌ها از کارهای پایه‌ای است که بسیاری
+// از برنامه‌های Go به آن نیاز دارند. اول چند مثال از
+// خواندن فایل‌ها را می‌بینیم.
 
 package main
 
@@ -12,8 +12,9 @@ import (
 	"path/filepath"
 )
 
-// Reading files requires checking most calls for errors.
-// This helper will streamline our error checks below.
+// خواندن فایل‌ها نیاز دارد که خطای بیشتر فراخوانی‌ها را
+// بررسی کنیم. این تابع کمکی بررسی خطاها را در ادامه
+// ساده‌تر می‌کند.
 func check(e error) {
 	if e != nil {
 		panic(e)
@@ -22,29 +23,30 @@ func check(e error) {
 
 func main() {
 
-	// Perhaps the most basic file reading task is
-	// slurping a file's entire contents into memory.
+	// شاید ابتدایی‌ترین کار در خواندن فایل، بارگذاری کل
+	// محتوای یک فایل در حافظه باشد.
 	path := filepath.Join(os.TempDir(), "dat")
 	dat, err := os.ReadFile(path)
 	check(err)
 	fmt.Print(string(dat))
 
-	// You'll often want more control over how and what
-	// parts of a file are read. For these tasks, start
-	// by `Open`ing a file to obtain an `os.File` value.
+	// اغلب می‌خواهید کنترل بیشتری روی نحوهٔ خواندن و اینکه
+	// کدام بخش‌های فایل خوانده شوند داشته باشید. برای این
+	// کارها، اول فایل را با `Open` باز کنید تا یک مقدار
+	// `os.File` بگیرید.
 	f, err := os.Open(path)
 	check(err)
 
-	// Read some bytes from the beginning of the file.
-	// Allow up to 5 to be read but also note how many
-	// actually were read.
+	// چند بایت از ابتدای فایل می‌خوانیم. اجازهٔ خواندن تا
+	// ۵ بایت را می‌دهیم، اما به تعداد بایت‌هایی که واقعاً
+	// خوانده شد هم توجه می‌کنیم.
 	b1 := make([]byte, 5)
 	n1, err := f.Read(b1)
 	check(err)
 	fmt.Printf("%d bytes: %s\n", n1, string(b1[:n1]))
 
-	// You can also `Seek` to a known location in the file
-	// and `Read` from there.
+	// همچنین می‌توانید با `Seek` به موقعیت مشخصی در فایل
+	// بروید و از آنجا `Read` کنید.
 	o2, err := f.Seek(6, io.SeekStart)
 	check(err)
 	b2 := make([]byte, 2)
@@ -53,19 +55,18 @@ func main() {
 	fmt.Printf("%d bytes @ %d: ", n2, o2)
 	fmt.Printf("%v\n", string(b2[:n2]))
 
-	// Other methods of seeking are relative to the
-	// current cursor position,
+	// روش‌های دیگر جابه‌جایی (seek) نسبت به موقعیت فعلی
+	// مکان‌نما هستند،
 	_, err = f.Seek(2, io.SeekCurrent)
 	check(err)
 
-	// and relative to the end of the file.
+	// و نسبت به انتهای فایل.
 	_, err = f.Seek(-4, io.SeekEnd)
 	check(err)
 
-	// The `io` package provides some functions that may
-	// be helpful for file reading. For example, reads
-	// like the ones above can be more robustly
-	// implemented with `ReadAtLeast`.
+	// بستهٔ `io` توابعی دارد که ممکن است برای خواندن فایل
+	// مفید باشند. برای مثال، خواندن‌هایی مثل موارد بالا را
+	// می‌توان با `ReadAtLeast` مطمئن‌تر پیاده‌سازی کرد.
 	o3, err := f.Seek(6, io.SeekStart)
 	check(err)
 	b3 := make([]byte, 2)
@@ -73,22 +74,20 @@ func main() {
 	check(err)
 	fmt.Printf("%d bytes @ %d: %s\n", n3, o3, string(b3))
 
-	// There is no built-in rewind, but
-	// `Seek(0, io.SeekStart)` accomplishes this.
+	// تابع داخلی برای برگشت به ابتدا (rewind) وجود ندارد،
+	// اما `Seek(0, io.SeekStart)` همین کار را انجام می‌دهد.
 	_, err = f.Seek(0, io.SeekStart)
 	check(err)
 
-	// The `bufio` package implements a buffered
-	// reader that may be useful both for its efficiency
-	// with many small reads and because of the additional
-	// reading methods it provides.
+	// بستهٔ `bufio` یک خوانندهٔ بافردار پیاده‌سازی می‌کند که
+	// هم به دلیل کارایی‌اش در خواندن‌های کوچکِ زیاد و هم به
+	// دلیل متدهای خواندن اضافه‌ای که دارد می‌تواند مفید باشد.
 	r4 := bufio.NewReader(f)
 	b4, err := r4.Peek(5)
 	check(err)
 	fmt.Printf("5 bytes: %s\n", string(b4))
 
-	// Close the file when you're done (usually this would
-	// be scheduled immediately after `Open`ing with
-	// `defer`).
+	// وقتی کارتان تمام شد فایل را ببندید (معمولاً این کار
+	// بلافاصله پس از `Open` با `defer` زمان‌بندی می‌شود).
 	f.Close()
 }

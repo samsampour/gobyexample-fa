@@ -1,9 +1,9 @@
-// In the previous example we looked at setting up a simple
-// [HTTP server](http-server). HTTP servers are useful for
-// demonstrating the usage of `context.Context` for
-// controlling cancellation. A `Context` carries deadlines,
-// cancellation signals, and other request-scoped values
-// across API boundaries and goroutines.
+// در مثال قبل راه‌اندازی یک [سرور HTTP](http-server) ساده
+// را دیدیم. سرورهای HTTP برای نشان دادن کاربرد
+// `context.Context` در کنترل لغو (cancellation) مفیدند.
+// یک `Context` مهلت‌های زمانی (deadlines)، سیگنال‌های لغو
+// و دیگر مقادیر مربوط به یک درخواست را از مرزهای API و
+// بین گوروتین‌ها منتقل می‌کند.
 package main
 
 import (
@@ -14,25 +14,24 @@ import (
 
 func hello(w http.ResponseWriter, req *http.Request) {
 
-	// A `context.Context` is created for each request by
-	// the `net/http` machinery, and is available with
-	// the `Context()` method.
+	// سازوکار `net/http` برای هر درخواست یک
+	// `context.Context` می‌سازد که با متد `Context()` در
+	// دسترس است.
 	ctx := req.Context()
 	fmt.Println("server: hello handler started")
 	defer fmt.Println("server: hello handler ended")
 
-	// Wait for a few seconds before sending a reply to the
-	// client. This could simulate some work the server is
-	// doing. While working, keep an eye on the context's
-	// `Done()` channel for a signal that we should cancel
-	// the work and return as soon as possible.
+	// چند ثانیه پیش از فرستادن پاسخ به کلاینت صبر می‌کنیم.
+	// این می‌تواند کاری را که سرور انجام می‌دهد شبیه‌سازی
+	// کند. در حین کار، حواسمان به کانال `Done()` در context
+	// هست تا اگر سیگنالی رسید که باید کار را لغو کنیم، هر
+	// چه زودتر برگردیم.
 	select {
 	case <-time.After(10 * time.Second):
 		fmt.Fprintf(w, "hello\n")
 	case <-ctx.Done():
-		// The context's `Err()` method returns an error
-		// that explains why the `Done()` channel was
-		// closed.
+		// متد `Err()` در context خطایی برمی‌گرداند که توضیح
+		// می‌دهد چرا کانال `Done()` بسته شده است.
 		err := ctx.Err()
 		fmt.Println("server:", err)
 		internalError := http.StatusInternalServerError
@@ -42,8 +41,8 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
-	// As before, we register our handler on the "/hello"
-	// route, and start serving.
+	// مثل قبل، هندلرمان را روی مسیر "/hello" ثبت می‌کنیم
+	// و سرویس‌دهی را شروع می‌کنیم.
 	http.HandleFunc("/hello", hello)
 	http.ListenAndServe(":8090", nil)
 }

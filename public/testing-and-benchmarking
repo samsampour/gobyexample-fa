@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Testing and Benchmarking</title>
+    <title>Go با مثال: تست و بنچمارک</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'embed-directive';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'command-line-arguments';
           }
           
@@ -24,19 +24,19 @@
   </script>
   <body>
     <div class="example" id="testing-and-benchmarking">
-      <h2><a href="./">Go by Example</a>: Testing and Benchmarking</h2>
+      <h2><a href="./">Go با مثال</a>: تست و بنچمارک</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Unit testing is an important part of writing
-principled Go programs. The <code>testing</code> package
-provides the tools we need to write unit tests
-and the <code>go test</code> command runs tests.</p>
+            <p>تست واحد (unit testing) بخش مهمی از نوشتن برنامه‌های
+اصولی Go است. بستهٔ <code>testing</code> ابزارهای لازم برای نوشتن
+تست واحد را فراهم می‌کند و دستور <code>go test</code> تست‌ها را
+اجرا می‌کند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -44,13 +44,13 @@ and the <code>go test</code> command runs tests.</p>
         
         <tr>
           <td class="docs">
-            <p>For the sake of demonstration, this code is in package
-<code>main</code>, but it could be any package. Testing code
-typically lives in the same package as the code it tests.</p>
+            <p>برای نمایش، این کد در بستهٔ <code>main</code> است، اما می‌تواند در
+هر بسته‌ای باشد. کد تست معمولاً در همان بسته‌ای قرار
+می‌گیرد که کدِ مورد تست در آن است.</p>
 
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/osZckbKSkse"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/1yoCQP9DqqY"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -59,7 +59,7 @@ typically lives in the same package as the code it tests.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -70,14 +70,13 @@ typically lives in the same package as the code it tests.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll be testing this simple implementation of an
-integer minimum. Typically, the code we&rsquo;re testing
-would be in a source file named something like
-<code>intutils.go</code>, and the test file for it would then
-be named <code>intutils_test.go</code>.</p>
+            <p>این پیاده‌سازی ساده‌ی کمینهٔ دو عدد صحیح را تست
+می‌کنیم. معمولاً کدی که تست می‌کنیم در فایلی با نامی مثل
+<code>intutils.go</code> قرار دارد و فایل تست آن
+<code>intutils_test.go</code> نامیده می‌شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">IntMin</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span> <span class="p">{</span>
@@ -90,11 +89,11 @@ be named <code>intutils_test.go</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>A test is created by writing a function with a name
-beginning with <code>Test</code>.</p>
+            <p>یک تست با نوشتن تابعی ساخته می‌شود که نامش با <code>Test</code>
+شروع شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestIntMinBasic</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">ans</span> <span class="o">:=</span> <span class="nf">IntMin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
@@ -104,12 +103,12 @@ beginning with <code>Test</code>.</p>
         
         <tr>
           <td class="docs">
-            <p><code>t.Error*</code> will report test failures but continue
-executing the test. <code>t.Fatal*</code> will report test
-failures and stop the test immediately.</p>
+            <p><code>t.Error*</code> شکست تست را گزارش می‌کند اما اجرای تست
+را ادامه می‌دهد. <code>t.Fatal*</code> شکست را گزارش می‌کند و
+تست را بلافاصله متوقف می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;IntMin(2, -2) = %d; want -2&#34;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -119,13 +118,14 @@ failures and stop the test immediately.</p>
         
         <tr>
           <td class="docs">
-            <p>Writing tests can be repetitive, so it&rsquo;s idiomatic to
-use a <em>table-driven style</em>, where test inputs and
-expected outputs are listed in a table and a single loop
-walks over them and performs the test logic.</p>
+            <p>نوشتن تست‌ها می‌تواند تکراری باشد، پس روش رایج استفاده
+از <em>سبک جدول‌محور</em> (table-driven) است؛ ورودی‌های تست و
+خروجی‌های مورد انتظار در یک جدول فهرست می‌شوند و یک
+حلقهٔ واحد روی آن‌ها پیمایش می‌کند و منطق تست را اجرا
+می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestIntMinTableDriven</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
@@ -143,12 +143,12 @@ walks over them and performs the test logic.</p>
         
         <tr>
           <td class="docs">
-            <p><code>t.Run</code> enables running &ldquo;subtests&rdquo;, one for each
-table entry. These are shown separately
-when executing <code>go test -v</code>.</p>
+            <p><code>t.Run</code> امکان اجرای «زیرتست‌ها» را می‌دهد؛ یکی
+برای هر سطر جدول. این‌ها هنگام اجرای <code>go test -v</code>
+جداگانه نمایش داده می‌شوند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tt</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -158,7 +158,7 @@ when executing <code>go test -v</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">testname</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d,%d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="nx">testname</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
@@ -174,13 +174,13 @@ when executing <code>go test -v</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Benchmark tests typically go in <code>_test.go</code> files and are
-named beginning with <code>Benchmark</code>.
-Any code that&rsquo;s required for the benchmark to run but should
-not be measured goes before this loop.</p>
+            <p>تست‌های بنچمارک معمولاً در فایل‌های <code>_test.go</code> قرار
+می‌گیرند و نامشان با <code>Benchmark</code> شروع می‌شود.
+هر کدی که برای اجرای بنچمارک لازم است اما نباید اندازه‌گیری
+شود، پیش از این حلقه قرار می‌گیرد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">BenchmarkIntMin</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Loop</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
@@ -189,12 +189,12 @@ not be measured goes before this loop.</p>
         
         <tr>
           <td class="docs">
-            <p>The benchmark runner will automatically execute this loop
-body many times to determine a reasonable estimate of the
-run-time of a single iteration.</p>
+            <p>اجراکنندهٔ بنچمارک این بدنهٔ حلقه را خودکار بارها اجرا
+می‌کند تا تخمین معقولی از زمان اجرای یک تکرار به دست
+آورد.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nf">IntMin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -208,10 +208,11 @@ run-time of a single iteration.</p>
         
         <tr>
           <td class="docs">
-            <p>Run all tests in the current project in verbose mode.</p>
+            <p>همهٔ تست‌های پروژهٔ فعلی را در حالت مفصل (verbose)
+اجرا کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go test -v
 </span></span><span class="line"><span class="cl"><span class="go">== RUN   TestIntMinBasic
@@ -235,12 +236,12 @@ run-time of a single iteration.</p>
         
         <tr>
           <td class="docs">
-            <p>Run all benchmarks in the current project. All tests
-are run prior to benchmarks. The <code>bench</code> flag filters
-benchmark function names with a regexp.</p>
+            <p>همهٔ بنچمارک‌های پروژهٔ فعلی را اجرا کنید. همهٔ تست‌ها
+پیش از بنچمارک‌ها اجرا می‌شوند. فلگ <code>bench</code> نام توابع
+بنچمارک را با یک regexp فیلتر می‌کند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go test -bench=.
 </span></span><span class="line"><span class="cl"><span class="go">goos: darwin
@@ -256,12 +257,12 @@ benchmark function names with a regexp.</p>
       
       
       <p class="next">
-        Next example: <a href="command-line-arguments" rel="next">Command-Line Arguments</a>.
+        مثال بعدی: <a href="command-line-arguments" rel="next">آرگومان‌های خط فرمان</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

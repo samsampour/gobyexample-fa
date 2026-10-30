@@ -1,20 +1,20 @@
-// [_Variadic functions_](https://en.wikipedia.org/wiki/Variadic_function)
-// can be called with any number of trailing arguments.
-// For example, `fmt.Println` is a common variadic
-// function.
+// [_توابع variadic_](https://en.wikipedia.org/wiki/Variadic_function)
+// (با تعداد آرگومان متغیر) را می‌توان با هر تعدادی
+// آرگومان انتهایی صدا زد. برای مثال، `fmt.Println` یک
+// تابع variadic رایج است.
 
 package main
 
 import "fmt"
 
-// Here's a function that will take an arbitrary number
-// of `int`s as arguments.
+// این تابع هر تعداد دلخواهی `int` را به‌عنوان آرگومان
+// می‌پذیرد.
 func sum(nums ...int) {
 	fmt.Print(nums, " ")
 	total := 0
-	// Within the function, the type of `nums` is
-	// equivalent to `[]int`. We can call `len(nums)`,
-	// iterate over it with `range`, etc.
+	// داخل تابع، نوع `nums` معادل `[]int` است. می‌توانیم
+	// `len(nums)` را صدا بزنیم، با `range` روی آن پیمایش
+	// کنیم و غیره.
 	for _, num := range nums {
 		total += num
 	}
@@ -23,14 +23,13 @@ func sum(nums ...int) {
 
 func main() {
 
-	// Variadic functions can be called in the usual way
-	// with individual arguments.
+	// توابع variadic را می‌توان به روش معمول و با
+	// آرگومان‌های جداگانه صدا زد.
 	sum(1, 2)
 	sum(1, 2, 3)
 
-	// If you already have multiple args in a slice,
-	// apply them to a variadic function using
-	// `func(slice...)` like this.
+	// اگر از قبل چند آرگومان در یک اسلایس دارید، آن‌ها را
+	// این‌طور با `func(slice...)` به تابع variadic بدهید.
 	nums := []int{1, 2, 3, 4}
 	sum(nums...)
 }

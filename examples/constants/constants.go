@@ -1,5 +1,5 @@
-// Go supports _constants_ of character, string, boolean,
-// and numeric values.
+// Go از _ثابت‌ها_ (constants) برای مقادیر کاراکتری،
+// رشته‌ای، بولی و عددی پشتیبانی می‌کند.
 
 package main
 
@@ -8,28 +8,28 @@ import (
 	"math"
 )
 
-// `const` declares a constant value.
+// `const` یک مقدار ثابت تعریف می‌کند.
 const s string = "constant"
 
 func main() {
 	fmt.Println(s)
 
-	// A `const` statement can also appear inside a
-	// function body.
+	// دستور `const` می‌تواند داخل بدنهٔ یک تابع هم
+	// بیاید.
 	const n = 500000000
 
-	// Constant expressions perform arithmetic with
-	// arbitrary precision.
+	// عبارت‌های ثابت محاسبات را با دقت دلخواه
+	// (نامحدود) انجام می‌دهند.
 	const d = 3e20 / n
 	fmt.Println(d)
 
-	// A numeric constant has no type until it's given
-	// one, such as by an explicit conversion.
+	// یک ثابت عددی تا زمانی که نوعی به آن داده نشود،
+	// نوع ندارد؛ مثلاً با یک تبدیل نوع صریح.
 	fmt.Println(int64(d))
 
-	// A number can be given a type by using it in a
-	// context that requires one, such as a variable
-	// assignment or function call. For example, here
-	// `math.Sin` expects a `float64`.
+	// یک عدد می‌تواند با استفاده در جایی که به نوع نیاز
+	// دارد نوع بگیرد، مثل انتساب به متغیر یا فراخوانی
+	// تابع. برای مثال، اینجا `math.Sin` یک `float64`
+	// انتظار دارد.
 	fmt.Println(math.Sin(n))
 }

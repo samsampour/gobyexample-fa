@@ -1,7 +1,7 @@
-// _range_ iterates over elements in a variety of
-// built-in data structures. Let's see how to
-// use `range` with some of the data structures
-// we've already learned.
+// _range_ روی عناصر انواع مختلفی از ساختارهای داده‌ی
+// داخلی پیمایش می‌کند. ببینیم چطور می‌توان از `range`
+// با برخی از ساختارهای داده‌ای که تا حالا یاد گرفته‌ایم
+// استفاده کرد.
 
 package main
 
@@ -9,8 +9,8 @@ import "fmt"
 
 func main() {
 
-	// Here we use `range` to sum the numbers in a slice.
-	// Arrays work like this too.
+	// اینجا با `range` اعداد یک اسلایس را جمع می‌زنیم.
+	// آرایه‌ها هم همین‌طور کار می‌کنند.
 	nums := []int{2, 3, 4}
 	sum := 0
 	for _, num := range nums {
@@ -18,33 +18,31 @@ func main() {
 	}
 	fmt.Println("sum:", sum)
 
-	// `range` on arrays and slices provides both the
-	// index and value for each entry. Above we didn't
-	// need the index, so we ignored it with the
-	// blank identifier `_`. Sometimes we actually want
-	// the indexes though.
+	// `range` روی آرایه‌ها و اسلایس‌ها هم اندیس و هم مقدار
+	// هر عنصر را می‌دهد. در بالا به اندیس نیازی نداشتیم،
+	// پس آن را با شناسهٔ خالی `_` نادیده گرفتیم. اما گاهی
+	// واقعاً به اندیس‌ها نیاز داریم.
 	for i, num := range nums {
 		if num == 3 {
 			fmt.Println("index:", i)
 		}
 	}
 
-	// `range` on map iterates over key/value pairs.
+	// `range` روی مپ، جفت‌های کلید/مقدار را پیمایش می‌کند.
 	kvs := map[string]string{"a": "apple", "b": "banana"}
 	for k, v := range kvs {
 		fmt.Printf("%s -> %s\n", k, v)
 	}
 
-	// `range` can also iterate over just the keys of a map.
+	// `range` می‌تواند فقط روی کلیدهای یک مپ هم پیمایش کند.
 	for k := range kvs {
 		fmt.Println("key:", k)
 	}
 
-	// `range` on strings iterates over Unicode code
-	// points. The first value is the starting byte index
-	// of the `rune` and the second the `rune` itself.
-	// See [Strings and Runes](strings-and-runes) for more
-	// details.
+	// `range` روی رشته‌ها، کد‌پوینت‌های یونیکد را پیمایش
+	// می‌کند. مقدار اول، اندیس بایتِ شروع `rune` و مقدار
+	// دوم خود `rune` است. برای جزئیات بیشتر
+	// [رشته‌ها و رون‌ها](strings-and-runes) را ببینید.
 	for i, c := range "go" {
 		fmt.Println(i, c)
 	}

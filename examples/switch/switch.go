@@ -1,5 +1,5 @@
-// _Switch statements_ express conditionals across many
-// branches.
+// _دستورهای switch_ شرط‌ها را در چندین شاخه بیان
+// می‌کنند.
 
 package main
 
@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	// Here's a basic `switch`.
+	// یک `switch` ساده.
 	i := 2
 	fmt.Print("Write ", i, " as ")
 	switch i {
@@ -22,9 +22,9 @@ func main() {
 		fmt.Println("three")
 	}
 
-	// You can use commas to separate multiple expressions
-	// in the same `case` statement. We use the optional
-	// `default` case in this example as well.
+	// می‌توانید چند عبارت را در یک `case` با کاما از هم
+	// جدا کنید. در این مثال از حالت اختیاری `default` هم
+	// استفاده کرده‌ایم.
 	switch time.Now().Weekday() {
 	case time.Saturday, time.Sunday:
 		fmt.Println("It's the weekend")
@@ -32,9 +32,9 @@ func main() {
 		fmt.Println("It's a weekday")
 	}
 
-	// `switch` without an expression is an alternate way
-	// to express if/else logic. Here we also show how the
-	// `case` expressions can be non-constants.
+	// `switch` بدون عبارت، روش دیگری برای بیان منطق
+	// if/else است. اینجا همچنین نشان می‌دهیم که عبارت‌های
+	// `case` لازم نیست ثابت باشند.
 	t := time.Now()
 	switch {
 	case t.Hour() < 12:
@@ -43,10 +43,10 @@ func main() {
 		fmt.Println("It's after noon")
 	}
 
-	// A type `switch` compares types instead of values.  You
-	// can use this to discover the type of an interface
-	// value.  In this example, the variable `t` will have the
-	// type corresponding to its clause.
+	// `switch` نوعی (type switch) به‌جای مقدارها، نوع‌ها
+	// را مقایسه می‌کند. با آن می‌توانید نوع یک مقدار
+	// اینترفیسی را کشف کنید. در این مثال، متغیر `t` در
+	// هر شاخه نوعِ مربوط به همان شاخه را خواهد داشت.
 	whatAmI := func(i any) {
 		switch t := i.(type) {
 		case bool:

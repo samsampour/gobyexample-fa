@@ -1,7 +1,7 @@
-# When we run this program it will block waiting for a
-# signal. By typing `ctrl-C` (which the
-# terminal shows as `^C`) we can send a `SIGINT` signal,
-# causing the program to print the cancellation cause and then exit.
+# وقتی این برنامه را اجرا کنیم، منتظر یک سیگنال مسدود
+# می‌ماند. با زدن `ctrl-C` (که ترمینال آن را به شکل `^C`
+# نشان می‌دهد) می‌توانیم سیگنال `SIGINT` بفرستیم؛ در
+# نتیجه برنامه دلیل لغو را چاپ می‌کند و خارج می‌شود.
 $ go run signals.go
 awaiting signal
 ^C

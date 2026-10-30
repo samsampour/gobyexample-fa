@@ -1,5 +1,5 @@
-// _Interfaces_ are named collections of method
-// signatures.
+// _اینترفیس‌ها_ (interfaces) مجموعه‌هایی نام‌دار از امضای
+// متدها هستند.
 
 package main
 
@@ -8,14 +8,14 @@ import (
 	"math"
 )
 
-// Here's a basic interface for geometric shapes.
+// این یک اینترفیس ساده برای اشکال هندسی است.
 type geometry interface {
 	area() float64
 	perim() float64
 }
 
-// For our example we'll implement this interface on
-// `rect` and `circle` types.
+// در این مثال، این اینترفیس را روی نوع‌های `rect` و
+// `circle` پیاده‌سازی می‌کنیم.
 type rect struct {
 	width, height float64
 }
@@ -23,9 +23,9 @@ type circle struct {
 	radius float64
 }
 
-// To implement an interface in Go, we just need to
-// implement all the methods in the interface. Here we
-// implement `geometry` on `rect`s.
+// برای پیاده‌سازی یک اینترفیس در Go کافی است همهٔ متدهای
+// آن اینترفیس را پیاده‌سازی کنیم. اینجا `geometry` را
+// روی `rect` پیاده‌سازی می‌کنیم.
 func (r rect) area() float64 {
 	return r.width * r.height
 }
@@ -33,7 +33,7 @@ func (r rect) perim() float64 {
 	return 2*r.width + 2*r.height
 }
 
-// The implementation for `circle`s.
+// پیاده‌سازی برای `circle`.
 func (c circle) area() float64 {
 	return math.Pi * c.radius * c.radius
 }
@@ -41,19 +41,19 @@ func (c circle) perim() float64 {
 	return 2 * math.Pi * c.radius
 }
 
-// If a variable has an interface type, then we can call
-// methods that are in the named interface. Here's a
-// generic `measure` function taking advantage of this
-// to work on any `geometry`.
+// اگر یک متغیر از نوع اینترفیس باشد، می‌توانیم متدهای آن
+// اینترفیس را رویش صدا بزنیم. این تابع عمومی `measure`
+// از همین ویژگی استفاده می‌کند تا روی هر `geometry`ای کار
+// کند.
 func measure(g geometry) {
 	fmt.Println(g)
 	fmt.Println(g.area())
 	fmt.Println(g.perim())
 }
 
-// Sometimes it's useful to know the runtime type of an
-// interface value. One option is using a *type assertion*
-// as shown here; another is a [type `switch`](switch).
+// گاهی دانستن نوع زمان اجرای یک مقدار اینترفیسی مفید است.
+// یک راه، استفاده از *type assertion* است که اینجا
+// می‌بینید؛ راه دیگر یک [`switch` نوعی](switch) است.
 func detectCircle(g geometry) {
 	if c, ok := g.(circle); ok {
 		fmt.Println("circle with radius", c.radius)
@@ -64,10 +64,10 @@ func main() {
 	r := rect{width: 3, height: 4}
 	c := circle{radius: 5}
 
-	// The `circle` and `rect` struct types both
-	// implement the `geometry` interface so we can use
-	// instances of
-	// these structs as arguments to `measure`.
+	// هر دو نوع ساختار `circle` و `rect` اینترفیس
+	// `geometry` را پیاده‌سازی می‌کنند، پس می‌توانیم
+	// نمونه‌هایی از
+	// این ساختارها را به‌عنوان آرگومان به `measure` بدهیم.
 	measure(r)
 	measure(c)
 

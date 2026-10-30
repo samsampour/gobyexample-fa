@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Range over Iterators</title>
+    <title>Go با مثال: range روی پیمایشگرها</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'generics';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'errors';
           }
           
@@ -24,18 +24,19 @@
   </script>
   <body>
     <div class="example" id="range-over-iterators">
-      <h2><a href="./">Go by Example</a>: Range over Iterators</h2>
+      <h2><a href="./">Go با مثال</a>: range روی پیمایشگرها</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Starting with version 1.23, Go has added support for
-<a href="https://go.dev/blog/range-functions">iterators</a>,
-which lets us range over pretty much anything!</p>
+            <p>از نسخهٔ 1.23، Go پشتیبانی از
+<a href="https://go.dev/blog/range-functions">پیمایشگرها</a>
+(iterators) را اضافه کرده که به ما اجازه می‌دهد تقریباً
+روی هر چیزی <code>range</code> بزنیم!</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -45,8 +46,8 @@ which lets us range over pretty much anything!</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/lHX3uDqdfUB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/JHGb27zNR08"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,7 +56,7 @@ which lets us range over pretty much anything!</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -68,14 +69,13 @@ which lets us range over pretty much anything!</p>
         
         <tr>
           <td class="docs">
-            <p>Let&rsquo;s look at the <code>List</code> type from the
-<a href="generics">previous example</a> again. In that example
-we had an <code>AllElements</code> method that returned a slice
-of all elements in the list. With Go iterators, we
-can do it better - as shown below.</p>
+            <p>بیایید دوباره نوع <code>List</code> از <a href="generics">مثال قبل</a> را
+ببینیم. در آن مثال متد <code>AllElements</code> را داشتیم که یک
+اسلایس از همهٔ عناصر لیست برمی‌گرداند. با پیمایشگرهای
+Go می‌توانیم این کار را بهتر انجام دهیم؛ مثل کد زیر.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">head</span><span class="p">,</span> <span class="nx">tail</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
@@ -87,7 +87,7 @@ can do it better - as shown below.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">element</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">next</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
@@ -100,7 +100,7 @@ can do it better - as shown below.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">Push</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -116,11 +116,11 @@ can do it better - as shown below.</p>
         
         <tr>
           <td class="docs">
-            <p>All returns an <em>iterator</em>, which in Go is a function
-with a <a href="https://pkg.go.dev/iter#Seq">special signature</a>.</p>
+            <p>All یک <em>پیمایشگر</em> برمی‌گرداند که در Go تابعی با
+<a href="https://pkg.go.dev/iter#Seq">امضای ویژه</a> است.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">All</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">yield</span> <span class="kd">func</span><span class="p">(</span><span class="nx">T</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
@@ -129,14 +129,15 @@ with a <a href="https://pkg.go.dev/iter#Seq">special signature</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>The iterator function takes another function as
-a parameter, called <code>yield</code> by convention (but
-the name can be arbitrary). It will call <code>yield</code> for
-every element we want to iterate over, and note <code>yield</code>&rsquo;s
-return value for a potential early termination.</p>
+            <p>تابع پیمایشگر تابع دیگری را به‌عنوان پارامتر
+می‌گیرد که طبق قرارداد <code>yield</code> نامیده می‌شود (اما
+نامش می‌تواند هر چیزی باشد). این تابع برای هر
+عنصری که می‌خواهیم پیمایش کنیم <code>yield</code> را صدا
+می‌زند و به مقدار بازگشتی <code>yield</code> توجه می‌کند تا در
+صورت لزوم زودتر متوقف شود.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">next</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">!</span><span class="nf">yield</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
@@ -150,13 +151,13 @@ return value for a potential early termination.</p>
         
         <tr>
           <td class="docs">
-            <p>Iteration doesn&rsquo;t require an underlying data structure,
-and doesn&rsquo;t even have to be finite! Here&rsquo;s a function
-returning an iterator over Fibonacci numbers: it keeps
-running as long as <code>yield</code> keeps returning <code>true</code>.</p>
+            <p>پیمایش نیازی به یک ساختار داده‌ی زیربنایی ندارد و حتی
+لازم نیست متناهی باشد! این تابع پیمایشگری روی اعداد
+فیبوناچی برمی‌گرداند: تا زمانی که <code>yield</code> مقدار <code>true</code>
+برگرداند، به کارش ادامه می‌دهد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">genFib</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">yield</span> <span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
@@ -168,7 +169,7 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">!</span><span class="nf">yield</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
@@ -185,7 +186,7 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">lst</span> <span class="o">:=</span> <span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]{}</span>
@@ -197,11 +198,11 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Since <code>List.All</code> returns an iterator, we can use it
-in a regular <code>range</code> loop.</p>
+            <p>چون <code>List.All</code> یک پیمایشگر برمی‌گرداند، می‌توانیم از
+آن در یک حلقهٔ <code>range</code> معمولی استفاده کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
@@ -211,13 +212,13 @@ in a regular <code>range</code> loop.</p>
         
         <tr>
           <td class="docs">
-            <p>Packages like <a href="https://pkg.go.dev/slices">slices</a> have
-a number of useful functions to work with iterators.
-For example, <code>Collect</code> takes any iterator and collects
-all its values into a slice.</p>
+            <p>بسته‌هایی مثل <a href="https://pkg.go.dev/slices">slices</a>
+توابع مفید زیادی برای کار با پیمایشگرها دارند.
+برای مثال، <code>Collect</code> هر پیمایشگری را می‌گیرد و همهٔ
+مقادیرش را در یک اسلایس جمع می‌کند.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">all</span> <span class="o">:=</span> <span class="nx">slices</span><span class="p">.</span><span class="nf">Collect</span><span class="p">(</span><span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;all:&#34;</span><span class="p">,</span> <span class="nx">all</span><span class="p">)</span></span></span></code></pre>
@@ -226,12 +227,13 @@ all its values into a slice.</p>
         
         <tr>
           <td class="docs">
-            <p>Standard library packages now expose iterator helpers
-too. For example, <code>strings.SplitSeq</code> iterates over parts
-of a byte slice without first building a result slice.</p>
+            <p>بسته‌های کتابخانهٔ استاندارد حالا ابزارهای کمکی
+پیمایشگر هم دارند. برای مثال، <code>strings.SplitSeq</code> روی
+بخش‌های یک رشته پیمایش می‌کند، بدون اینکه اول یک
+اسلایس نتیجه بسازد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">part</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">SplitSeq</span><span class="p">(</span><span class="s">&#34;go-by-example&#34;</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;part: %s\n&#34;</span><span class="p">,</span> <span class="nx">part</span><span class="p">)</span>
@@ -243,7 +245,7 @@ of a byte slice without first building a result slice.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nf">genFib</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -251,11 +253,12 @@ of a byte slice without first building a result slice.</p>
         
         <tr>
           <td class="docs">
-            <p>Once the loop hits <code>break</code> or an early return, the <code>yield</code> function
-passed to the iterator will return <code>false</code>.</p>
+            <p>وقتی حلقه به <code>break</code> یا یک return زودهنگام برسد،
+تابع <code>yield</code> که به پیمایشگر داده شده <code>false</code>
+برمی‌گرداند.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">break</span>
@@ -274,7 +277,7 @@ passed to the iterator will return <code>false</code>.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-iterators.go
 </span></span><span class="line"><span class="cl"><span class="go">10
@@ -298,12 +301,12 @@ passed to the iterator will return <code>false</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="errors" rel="next">Errors</a>.
+        مثال بعدی: <a href="errors" rel="next">خطاها</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

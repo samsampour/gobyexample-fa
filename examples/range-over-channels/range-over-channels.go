@@ -1,7 +1,7 @@
-// In a [previous](range-over-built-in-types) example we saw how `for` and
-// `range` provide iteration over basic data structures.
-// We can also use this syntax to iterate over
-// values received from a channel.
+// در یک مثال [قبلی](range-over-built-in-types) دیدیم که `for` و
+// `range` چطور امکان پیمایش ساختارهای داده‌ی پایه را
+// فراهم می‌کنند. از همین نحو می‌توانیم برای پیمایش
+// مقادیری که از یک کانال دریافت می‌شوند هم استفاده کنیم.
 
 package main
 
@@ -9,16 +9,15 @@ import "fmt"
 
 func main() {
 
-	// We'll iterate over 2 values in the `queue` channel.
+	// روی ۲ مقدار در کانال `queue` پیمایش می‌کنیم.
 	queue := make(chan string, 2)
 	queue <- "one"
 	queue <- "two"
 	close(queue)
 
-	// This `range` iterates over each element as it's
-	// received from `queue`. Because we `close`d the
-	// channel above, the iteration terminates after
-	// receiving the 2 elements.
+	// این `range` روی هر عنصر به محض دریافت از `queue`
+	// پیمایش می‌کند. چون کانال را در بالا بستیم (`close`)،
+	// پیمایش پس از دریافت ۲ عنصر پایان می‌یابد.
 	for elem := range queue {
 		fmt.Println(elem)
 	}

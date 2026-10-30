@@ -1,13 +1,13 @@
-#  If you run `exit.go` using `go run`, the exit
-# will be picked up by `go` and printed.
+# اگر `exit.go` را با `go run` اجرا کنید، `go` وضعیت
+# خروج را دریافت و چاپ می‌کند.
 $ go run exit.go
 exit status 3
 
-# By building and executing a binary you can see
-# the status in the terminal.
+# با بیلد و اجرای فایل اجرایی می‌توانید وضعیت خروج را در
+# ترمینال ببینید.
 $ go build exit.go
 $ ./exit
 $ echo $?
 3
 
-# Note that the `!` from our program never got printed.
+# توجه کنید که `!` برنامهٔ ما هرگز چاپ نشد.

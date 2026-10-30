@@ -1,24 +1,24 @@
 $ go build command-line-subcommands.go 
 
-# First invoke the foo subcommand.
+# اول زیرفرمان foo را اجرا کنید.
 $ ./command-line-subcommands foo -enable -name=joe a1 a2
 subcommand 'foo'
   enable: true
   name: joe
   tail: [a1 a2]
 
-# Now try bar.
+# حالا bar را امتحان کنید.
 $ ./command-line-subcommands bar -level 8 a1
 subcommand 'bar'
   level: 8
   tail: [a1]
 
-# But bar won't accept foo's flags.
+# اما bar فلگ‌های foo را نمی‌پذیرد.
 $ ./command-line-subcommands bar -enable a1
 flag provided but not defined: -enable
 Usage of bar:
   -level int
     	level
 
-# Next we'll look at environment variables, another common
-# way to parameterize programs.
+# در ادامه متغیرهای محیطی را می‌بینیم؛ روش رایج دیگری
+# برای پارامتری کردن برنامه‌ها.

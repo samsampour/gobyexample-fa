@@ -1,6 +1,6 @@
-# Run the server in the background.
+# سرور را در پس‌زمینه اجرا کنید.
 $ go run http-server.go &
 
-# Access the `/hello` route.
+# به مسیر `/hello` درخواست بزنید.
 $ curl localhost:8090/hello
 hello

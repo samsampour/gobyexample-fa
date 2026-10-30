@@ -1,19 +1,21 @@
-// Starting with version 1.18, Go has added support for
-// _generics_, also known as _type parameters_.
+// از نسخهٔ 1.18، Go پشتیبانی از _جنریک‌ها_ (generics) را
+// اضافه کرده است که با نام _پارامترهای نوع_
+// (type parameters) هم شناخته می‌شوند.
 
 package main
 
 import "fmt"
 
-// As an example of a generic function, `SlicesIndex` takes
-// a slice of any `comparable` type and an element of that
-// type and returns the index of the first occurrence of
-// v in s, or -1 if not present. The `comparable` constraint
-// means that we can compare values of this type with the
-// `==` and `!=` operators. For a more thorough explanation
-// of this type signature, see [this blog post](https://go.dev/blog/deconstructing-type-parameters).
-// Note that this function exists in the standard library
-// as [slices.Index](https://pkg.go.dev/slices#Index).
+// به‌عنوان نمونه‌ای از یک تابع جنریک، `SlicesIndex` یک
+// اسلایس از هر نوع `comparable` و یک عنصر از همان نوع
+// می‌گیرد و اندیس اولین رخداد v در s را برمی‌گرداند، یا
+// اگر وجود نداشت -1 را. محدودیت `comparable` یعنی
+// می‌توانیم مقادیر این نوع را با عملگرهای `==` و `!=`
+// مقایسه کنیم. برای توضیح کامل‌تر این امضای نوع،
+// [این مقاله](https://go.dev/blog/deconstructing-type-parameters)
+// را ببینید. توجه کنید که این تابع در کتابخانهٔ
+// استاندارد با نام [slices.Index](https://pkg.go.dev/slices#Index)
+// وجود دارد.
 func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
 	for i := range s {
 		if v == s[i] {
@@ -23,8 +25,8 @@ func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
 	return -1
 }
 
-// As an example of a generic type, `List` is a
-// singly-linked list with values of any type.
+// به‌عنوان نمونه‌ای از یک نوع جنریک، `List` یک لیست
+// پیوندی یک‌طرفه است که مقادیری از هر نوعی را نگه می‌دارد.
 type List[T any] struct {
 	head, tail *element[T]
 }
@@ -34,9 +36,9 @@ type element[T any] struct {
 	val  T
 }
 
-// We can define methods on generic types just like we
-// do on regular types, but we have to keep the type
-// parameters in place. The type is `List[T]`, not `List`.
+// می‌توانیم روی نوع‌های جنریک هم مثل نوع‌های معمولی متد
+// تعریف کنیم، اما باید پارامترهای نوع را سر جایشان نگه
+// داریم. نوع ما `List[T]` است، نه `List`.
 func (lst *List[T]) Push(v T) {
 	if lst.tail == nil {
 		lst.head = &element[T]{val: v}
@@ -47,9 +49,9 @@ func (lst *List[T]) Push(v T) {
 	}
 }
 
-// AllElements returns all the List elements as a slice.
-// In the next example we'll see a more idiomatic way
-// of iterating over all elements of custom types.
+// AllElements همهٔ عناصر List را به‌صورت یک اسلایس
+// برمی‌گرداند. در مثال بعدی روش رایج‌تری برای پیمایش همهٔ
+// عناصر نوع‌های سفارشی را خواهیم دید.
 func (lst *List[T]) AllElements() []T {
 	var elems []T
 	for e := lst.head; e != nil; e = e.next {
@@ -61,14 +63,14 @@ func (lst *List[T]) AllElements() []T {
 func main() {
 	var s = []string{"foo", "bar", "zoo"}
 
-	// When invoking generic functions, we can often rely
-	// on _type inference_. Note that we don't have to
-	// specify the types for `S` and `E` when
-	// calling `SlicesIndex` - the compiler infers them
-	// automatically.
+	// هنگام فراخوانی توابع جنریک، اغلب می‌توانیم به
+	// _استنتاج نوع_ (type inference) تکیه کنیم. توجه کنید
+	// که هنگام صدا زدن `SlicesIndex` لازم نیست نوع‌های `S`
+	// و `E` را مشخص کنیم؛ کامپایلر آن‌ها را خودکار
+	// تشخیص می‌دهد.
 	fmt.Println("index of zoo:", SlicesIndex(s, "zoo"))
 
-	// ... though we could also specify them explicitly.
+	// ... البته می‌توانستیم آن‌ها را صریحاً هم مشخص کنیم.
 	_ = SlicesIndex[[]string, string](s, "zoo")
 
 	lst := List[int]{}

@@ -1,5 +1,5 @@
-// The `net` package provides the tools we need to easily build
-// TCP socket servers.
+// بستهٔ `net` ابزارهای لازم برای ساختن آسان سرورهای سوکت
+// TCP را فراهم می‌کند.
 package main
 
 import (
@@ -12,42 +12,43 @@ import (
 
 func main() {
 
-	// `net.Listen` starts the server on the given network
-	// (TCP) and address (port 8090 on all interfaces).
+	// `net.Listen` سرور را روی شبکهٔ داده‌شده (TCP) و
+	// آدرس داده‌شده (پورت 8090 روی همهٔ رابط‌ها) راه
+	// می‌اندازد.
 	listener, err := net.Listen("tcp", ":8090")
 	if err != nil {
 		log.Fatal("Error listening:", err)
 	}
 
-	// Close the listener to free the port
-	// when the application exits.
+	// listener را می‌بندیم تا هنگام خروج برنامه پورت آزاد
+	// شود.
 	defer listener.Close()
 
-	// Loop indefinitely to accept new client connections.
+	// به‌طور نامحدود حلقه می‌زنیم تا اتصال‌های جدید کلاینت‌ها را بپذیریم.
 	for {
-		// Wait for a connection.
+		// منتظر یک اتصال می‌مانیم.
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Println("Error accepting conn:", err)
 			continue
 		}
 
-		// We use a goroutine here to handle the connection
-		// so that the main loop can continue accepting more
-		// connections.
+		// اینجا از یک گوروتین برای رسیدگی به اتصال استفاده
+		// می‌کنیم تا حلقهٔ اصلی بتواند به پذیرفتن اتصال‌های
+		// بیشتر ادامه دهد.
 		go handleConnection(conn)
 	}
 }
 
-// `handleConnection` handles a single client connection,
-// reading one line of text from the client and returning a response.
+// `handleConnection` به یک اتصال کلاینت رسیدگی می‌کند؛
+// یک خط متن از کلاینت می‌خواند و پاسخی برمی‌گرداند.
 func handleConnection(conn net.Conn) {
-	// Closing the connection releases resources when
-	// we are finished interacting with the client.
+	// بستن اتصال، وقتی کارمان با کلاینت تمام شد، منابع را
+	// آزاد می‌کند.
 	defer conn.Close()
 
-	// Use `bufio.NewReader` to read one line of data
-	// from the client (terminated by a newline).
+	// با `bufio.NewReader` یک خط داده از کلاینت می‌خوانیم
+	// (که با کاراکتر خط جدید تمام می‌شود).
 	reader := bufio.NewReader(conn)
 	message, err := reader.ReadString('\n')
 	if err != nil {
@@ -55,8 +56,8 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
-	// Create and send a response back to the client,
-	// demonstrating two-way communication.
+	// یک پاسخ می‌سازیم و به کلاینت برمی‌گردانیم تا ارتباط
+	// دوطرفه را نشان دهیم.
 	ackMsg := strings.ToUpper(strings.TrimSpace(message))
 	response := fmt.Sprintf("ACK: %s\n", ackMsg)
 	_, err = conn.Write([]byte(response))

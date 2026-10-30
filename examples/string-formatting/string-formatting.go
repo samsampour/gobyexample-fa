@@ -1,6 +1,6 @@
-// Go offers excellent support for string formatting in
-// the `printf` tradition. Here are some examples of
-// common string formatting tasks.
+// Go پشتیبانی بسیار خوبی از قالب‌بندی رشته به سبک
+// `printf` دارد. این چند نمونه از کارهای رایج قالب‌بندی
+// رشته است.
 
 package main
 
@@ -15,96 +15,94 @@ type point struct {
 
 func main() {
 
-	// Go offers several printing "verbs" designed to
-	// format general Go values. For example, this prints
-	// an instance of our `point` struct.
+	// Go چند «فعل» (verb) چاپ دارد که برای قالب‌بندی
+	// مقادیر عمومی Go طراحی شده‌اند. برای مثال، این کد
+	// نمونه‌ای از ساختار `point` ما را چاپ می‌کند.
 	p := point{1, 2}
 	fmt.Printf("struct1: %v\n", p)
 
-	// If the value is a struct, the `%+v` variant will
-	// include the struct's field names.
+	// اگر مقدار یک ساختار باشد، حالت `%+v` نام فیلدهای
+	// ساختار را هم نشان می‌دهد.
 	fmt.Printf("struct2: %+v\n", p)
 
-	// The `%#v` variant prints a Go syntax representation
-	// of the value, i.e. the source code snippet that
-	// would produce that value.
+	// حالت `%#v` نمایش مقدار با نحو Go را چاپ می‌کند؛ یعنی
+	// تکه کدی که همان مقدار را تولید می‌کند.
 	fmt.Printf("struct3: %#v\n", p)
 
-	// To print the type of a value, use `%T`.
+	// برای چاپ نوع یک مقدار از `%T` استفاده کنید.
 	fmt.Printf("type: %T\n", p)
 
-	// Formatting booleans is straight-forward.
+	// قالب‌بندی مقادیر بولی ساده است.
 	fmt.Printf("bool: %t\n", true)
 
-	// There are many options for formatting integers.
-	// Use `%d` for standard, base-10 formatting.
+	// گزینه‌های زیادی برای قالب‌بندی اعداد صحیح وجود دارد.
+	// برای قالب‌بندی استاندارد در مبنای ۱۰ از `%d` استفاده
+	// کنید.
 	fmt.Printf("int: %d\n", 123)
 
-	// This prints a binary representation.
+	// این نمایش دودویی (باینری) را چاپ می‌کند.
 	fmt.Printf("bin: %b\n", 14)
 
-	// This prints the character corresponding to the
-	// given integer.
+	// این کاراکتر متناظر با عدد صحیح داده‌شده را چاپ
+	// می‌کند.
 	fmt.Printf("char: %c\n", 33)
 
-	// `%x` provides hex encoding.
+	// `%x` کدگذاری هگز (مبنای ۱۶) را می‌دهد.
 	fmt.Printf("hex: %x\n", 456)
 
-	// There are also several formatting options for
-	// floats. For basic decimal formatting use `%f`.
+	// برای اعداد اعشاری هم چند گزینهٔ قالب‌بندی وجود دارد.
+	// برای قالب‌بندی دهدهی ساده از `%f` استفاده کنید.
 	fmt.Printf("float1: %f\n", 78.9)
 
-	// `%e` and `%E` format the float in (slightly
-	// different versions of) scientific notation.
+	// `%e` و `%E` عدد اعشاری را با نماد علمی (در دو شکل
+	// کمی متفاوت) قالب‌بندی می‌کنند.
 	fmt.Printf("float2: %e\n", 123400000.0)
 	fmt.Printf("float3: %E\n", 123400000.0)
 
-	// For basic string printing use `%s`.
+	// برای چاپ ساده‌ی رشته از `%s` استفاده کنید.
 	fmt.Printf("str1: %s\n", "\"string\"")
 
-	// To double-quote strings as in Go source, use `%q`.
+	// برای قرار دادن رشته داخل دابل‌کوتیشن، مثل کد Go، از
+	// `%q` استفاده کنید.
 	fmt.Printf("str2: %q\n", "\"string\"")
 
-	// As with integers seen earlier, `%x` renders
-	// the string in base-16, with two output characters
-	// per byte of input.
+	// مثل اعداد صحیح که قبلاً دیدیم، `%x` رشته را در مبنای
+	// ۱۶ نمایش می‌دهد؛ به ازای هر بایت ورودی دو کاراکتر
+	// خروجی.
 	fmt.Printf("str3: %x\n", "hex this")
 
-	// To print a representation of a pointer, use `%p`.
+	// برای چاپ نمایش یک اشاره‌گر از `%p` استفاده کنید.
 	fmt.Printf("pointer: %p\n", &p)
 
-	// When formatting numbers you will often want to
-	// control the width and precision of the resulting
-	// figure. To specify the width of an integer, use a
-	// number after the `%` in the verb. By default the
-	// result will be right-justified and padded with
-	// spaces.
+	// هنگام قالب‌بندی اعداد اغلب می‌خواهید عرض و دقت عدد
+	// حاصل را کنترل کنید. برای تعیین عرض یک عدد صحیح، بعد
+	// از `%` در فعل یک عدد بنویسید. به‌طور پیش‌فرض نتیجه
+	// راست‌چین می‌شود و با فاصله پر می‌شود.
 	fmt.Printf("width1: |%6d|%6d|\n", 12, 345)
 
-	// You can also specify the width of printed floats,
-	// though usually you'll also want to restrict the
-	// decimal precision at the same time with the
-	// width.precision syntax.
+	// می‌توانید عرض اعداد اعشاری چاپ‌شده را هم تعیین کنید،
+	// هرچند معمولاً می‌خواهید هم‌زمان دقت اعشاری را هم با
+	// نحو width.precision محدود کنید.
 	fmt.Printf("width2: |%6.2f|%6.2f|\n", 1.2, 3.45)
 
-	// To left-justify, use the `-` flag.
+	// برای چپ‌چین کردن از فلگ `-` استفاده کنید.
 	fmt.Printf("width3: |%-6.2f|%-6.2f|\n", 1.2, 3.45)
 
-	// You may also want to control width when formatting
-	// strings, especially to ensure that they align in
-	// table-like output. For basic right-justified width.
+	// ممکن است بخواهید هنگام قالب‌بندی رشته‌ها هم عرض را
+	// کنترل کنید، به‌ویژه برای اینکه در خروجی‌های جدول‌مانند
+	// هم‌تراز شوند. این برای عرض ساده‌ی راست‌چین است.
 	fmt.Printf("width4: |%6s|%6s|\n", "foo", "b")
 
-	// To left-justify use the `-` flag as with numbers.
+	// برای چپ‌چین کردن، مثل اعداد از فلگ `-` استفاده کنید.
 	fmt.Printf("width5: |%-6s|%-6s|\n", "foo", "b")
 
-	// So far we've seen `Printf`, which prints the
-	// formatted string to `os.Stdout`. `Sprintf` formats
-	// and returns a string without printing it anywhere.
+	// تا اینجا `Printf` را دیدیم که رشتهٔ قالب‌بندی‌شده را
+	// در `os.Stdout` چاپ می‌کند. `Sprintf` رشته را
+	// قالب‌بندی می‌کند و بدون چاپ کردن برمی‌گرداند.
 	s := fmt.Sprintf("sprintf: a %s", "string")
 	fmt.Println(s)
 
-	// You can format+print to `io.Writers` other than
-	// `os.Stdout` using `Fprintf`.
+	// با `Fprintf` می‌توانید در `io.Writer`هایی غیر از
+	// `os.Stdout` قالب‌بندی و چاپ کنید.
 	fmt.Fprintf(os.Stderr, "io: an %s\n", "error")
 }

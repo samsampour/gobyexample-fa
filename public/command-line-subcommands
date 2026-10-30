@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Command-Line Subcommands</title>
+    <title>Go با مثال: زیرفرمان‌های خط فرمان</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -11,12 +11,12 @@
               return;
           }
           
-          if (e.key == "ArrowLeft") {
+          if (e.key == "ArrowRight") {
               window.location.href = 'command-line-flags';
           }
           
           
-          if (e.key == "ArrowRight") {
+          if (e.key == "ArrowLeft") {
               window.location.href = 'environment-variables';
           }
           
@@ -24,21 +24,21 @@
   </script>
   <body>
     <div class="example" id="command-line-subcommands">
-      <h2><a href="./">Go by Example</a>: Command-Line Subcommands</h2>
+      <h2><a href="./">Go با مثال</a>: زیرفرمان‌های خط فرمان</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Some command-line tools, like the <code>go</code> tool or <code>git</code>
-have many <em>subcommands</em>, each with its own set of
-flags. For example, <code>go build</code> and <code>go get</code> are two
-different subcommands of the <code>go</code> tool.
-The <code>flag</code> package lets us easily define simple
-subcommands that have their own flags.</p>
+            <p>برخی ابزارهای خط فرمان، مثل ابزار <code>go</code> یا <code>git</code>،
+<em>زیرفرمان‌های</em> (subcommands) زیادی دارند که هر کدام
+مجموعه فلگ‌های خودش را دارد. برای مثال، <code>go build</code> و
+<code>go get</code> دو زیرفرمان متفاوت ابزار <code>go</code> هستند.
+بستهٔ <code>flag</code> به ما اجازه می‌دهد به‌راحتی زیرفرمان‌های
+ساده‌ای تعریف کنیم که فلگ‌های خودشان را دارند.</p>
 
           </td>
-          <td class="code empty leading">
+          <td dir="ltr" class="code empty leading">
             
           
           </td>
@@ -48,8 +48,8 @@ subcommands that have their own flags.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/DkvdHKK-XCv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <td dir="ltr" class="code leading">
+            <a href="https://go.dev/play/p/QXRYK6rvlL2"><img title="اجرای کد" src="play.png" class="run" /></a><img title="کپی کد" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -58,7 +58,7 @@ subcommands that have their own flags.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
@@ -72,7 +72,7 @@ subcommands that have their own flags.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -80,12 +80,12 @@ subcommands that have their own flags.</p>
         
         <tr>
           <td class="docs">
-            <p>We declare a subcommand using the <code>NewFlagSet</code>
-function, and proceed to define new flags specific
-for this subcommand.</p>
+            <p>یک زیرفرمان را با تابع <code>NewFlagSet</code> تعریف می‌کنیم و
+سپس فلگ‌های جدیدِ مخصوص این زیرفرمان را تعریف
+می‌کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fooCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fooEnable</span> <span class="o">:=</span> <span class="nx">fooCmd</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;enable&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;enable&#34;</span><span class="p">)</span>
@@ -95,11 +95,11 @@ for this subcommand.</p>
         
         <tr>
           <td class="docs">
-            <p>For a different subcommand we can define different
-supported flags.</p>
+            <p>برای یک زیرفرمان دیگر می‌توانیم فلگ‌های متفاوتی
+تعریف کنیم.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">barCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">barLevel</span> <span class="o">:=</span> <span class="nx">barCmd</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;level&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;level&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -108,11 +108,10 @@ supported flags.</p>
         
         <tr>
           <td class="docs">
-            <p>The subcommand is expected as the first argument
-to the program.</p>
+            <p>انتظار می‌رود زیرفرمان اولین آرگومان برنامه باشد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;</span><span class="p">)</span>
@@ -123,10 +122,10 @@ to the program.</p>
         
         <tr>
           <td class="docs">
-            <p>Check which subcommand is invoked.</p>
+            <p>بررسی می‌کنیم کدام زیرفرمان صدا زده شده.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span></span></span></code></pre>
           </td>
@@ -134,11 +133,11 @@ to the program.</p>
         
         <tr>
           <td class="docs">
-            <p>For every subcommand, we parse its own flags and
-have access to trailing positional arguments.</p>
+            <p>برای هر زیرفرمان، فلگ‌های خودش را تجزیه می‌کنیم و به
+آرگومان‌های موقعیتی انتهایی دسترسی داریم.</p>
 
           </td>
-          <td class="code">
+          <td dir="ltr" class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">case</span> <span class="s">&#34;foo&#34;</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fooCmd</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
@@ -167,7 +166,7 @@ have access to trailing positional arguments.</p>
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-subcommands.go </span></span></code></pre>
           </td>
@@ -175,10 +174,10 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>First invoke the foo subcommand.</p>
+            <p>اول زیرفرمان foo را اجرا کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands foo -enable -name=joe a1 a2
 </span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;foo&#39;
@@ -190,10 +189,10 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>Now try bar.</p>
+            <p>حالا bar را امتحان کنید.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -level 8 a1
 </span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;bar&#39;
@@ -204,10 +203,10 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>But bar won&rsquo;t accept foo&rsquo;s flags.</p>
+            <p>اما bar فلگ‌های foo را نمی‌پذیرد.</p>
 
           </td>
-          <td class="code leading">
+          <td dir="ltr" class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -enable a1
 </span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -enable
@@ -219,11 +218,11 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
-way to parameterize programs.</p>
+            <p>در ادامه متغیرهای محیطی را می‌بینیم؛ روش رایج دیگری
+برای پارامتری کردن برنامه‌ها.</p>
 
           </td>
-          <td class="code empty">
+          <td dir="ltr" class="code empty">
             
           
           </td>
@@ -233,12 +232,12 @@ way to parameterize programs.</p>
       
       
       <p class="next">
-        Next example: <a href="environment-variables" rel="next">Environment Variables</a>.
+        مثال بعدی: <a href="environment-variables" rel="next">متغیرهای محیطی</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      نوشتهٔ <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | ترجمهٔ فارسی: <a href="https://github.com/samsampour">samsampour</a> | <a href="https://github.com/samsampour/gobyexample-fa">کد منبع</a> | <a href="https://github.com/mmcgrana/gobyexample#license">مجوز</a> | <a href="https://gobyexample.com">نسخهٔ انگلیسی</a>
     </p>
 
     </div>

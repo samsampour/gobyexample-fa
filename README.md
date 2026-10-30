@@ -1,4 +1,24 @@
-# Go by Example
+# Go by Example — Persian (فارسی)
+
+<div dir="rtl">
+
+این مخزن ترجمهٔ فارسی [Go by Example](https://gobyexample.com) است؛
+آموزش زبان Go با برنامه‌های نمونهٔ توضیح‌دار.
+
+**نسخهٔ آنلاین:** https://samsampour.github.io/gobyexample-fa/
+
+- متن همهٔ مثال‌ها به فارسی ترجمه شده و صفحه‌ها راست‌به‌چپ (RTL) هستند؛ کدها و خروجی‌ها بدون تغییر و چپ‌به‌راست باقی مانده‌اند.
+- آدرس صفحه‌ها همان آدرس‌های نسخهٔ اصلی است (مثلاً `hello-world`).
+- اگر اشکالی در ترجمه دیدید، لطفاً یک Issue یا Pull Request بفرستید.
+
+</div>
+
+This is a Persian translation of [Go by Example](https://gobyexample.com)
+([original repository](https://github.com/mmcgrana/gobyexample)), with a
+right-to-left layout. The live site is published with GitHub Pages from the
+`public` directory by `.github/workflows/pages.yml`.
+
+---
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
 a site that teaches Go via annotated example programs.

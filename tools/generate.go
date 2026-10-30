@@ -253,8 +253,16 @@ func parseExamples() []*Example {
 		if verbose() {
 			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
 		}
+		// A line may be "English Name|Translated Name": the English part
+		// keeps the example's ID (and URL) stable, the translated part is
+		// shown on the site.
+		idName := exampleName
+		if parts := strings.SplitN(exampleName, "|", 2); len(parts) == 2 {
+			idName = strings.TrimSpace(parts[0])
+			exampleName = strings.TrimSpace(parts[1])
+		}
 		example := Example{Name: exampleName}
-		exampleID := strings.ToLower(exampleName)
+		exampleID := strings.ToLower(idName)
 		exampleID = strings.Replace(exampleID, " ", "-", -1)
 		exampleID = strings.Replace(exampleID, "/", "-", -1)
 		exampleID = strings.Replace(exampleID, "'", "", -1)

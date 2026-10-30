@@ -1,6 +1,6 @@
-// Go's `slices` package implements sorting for builtins
-// and user-defined types. We'll look at sorting for
-// builtins first.
+// بستهٔ `slices` در Go مرتب‌سازی را برای انواع داخلی و
+// انواع تعریف‌شده توسط کاربر پیاده‌سازی می‌کند. اول
+// مرتب‌سازی انواع داخلی را می‌بینیم.
 
 package main
 
@@ -11,20 +11,21 @@ import (
 
 func main() {
 
-	// Sorting functions are generic, and work for any
-	// _ordered_ built-in type. For a list of ordered
-	// types, see [cmp.Ordered](https://pkg.go.dev/cmp#Ordered).
+	// توابع مرتب‌سازی جنریک هستند و برای هر نوع داخلی
+	// _ترتیب‌پذیر_ (ordered) کار می‌کنند. برای فهرست انواع
+	// ترتیب‌پذیر، [cmp.Ordered](https://pkg.go.dev/cmp#Ordered)
+	// را ببینید.
 	strs := []string{"c", "a", "b"}
 	slices.Sort(strs)
 	fmt.Println("Strings:", strs)
 
-	// An example of sorting `int`s.
+	// نمونه‌ای از مرتب‌سازی `int`ها.
 	ints := []int{7, 2, 4}
 	slices.Sort(ints)
 	fmt.Println("Ints:   ", ints)
 
-	// We can also use the `slices` package to check if
-	// a slice is already in sorted order.
+	// با بستهٔ `slices` می‌توانیم بررسی کنیم که آیا یک
+	// اسلایس از قبل مرتب است یا نه.
 	s := slices.IsSorted(ints)
 	fmt.Println("Sorted: ", s)
 }

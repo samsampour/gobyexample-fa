@@ -1,5 +1,5 @@
-// `for` is Go's only looping construct. Here are
-// some basic types of `for` loops.
+// `for` تنها ساختار حلقه در Go است. در اینجا چند نوع
+// پایه‌ای از حلقه‌های `for` را می‌بینید.
 
 package main
 
@@ -7,34 +7,34 @@ import "fmt"
 
 func main() {
 
-	// The most basic type, with a single condition.
+	// ساده‌ترین نوع، با یک شرط.
 	i := 1
 	for i <= 3 {
 		fmt.Println(i)
 		i = i + 1
 	}
 
-	// A classic initial/condition/after `for` loop.
+	// حلقهٔ کلاسیک `for` با بخش‌های مقدار اولیه/شرط/گام.
 	for j := 0; j < 3; j++ {
 		fmt.Println(j)
 	}
 
-	// Another way of accomplishing the basic "do this
-	// N times" iteration is `range` over an integer.
+	// روش دیگر برای تکرار ساده‌ی «این کار را N بار انجام
+	// بده»، استفاده از `range` روی یک عدد صحیح است.
 	for i := range 3 {
 		fmt.Println("range", i)
 	}
 
-	// `for` without a condition will loop repeatedly
-	// until you `break` out of the loop or `return` from
-	// the enclosing function.
+	// `for` بدون شرط آن‌قدر تکرار می‌شود تا با `break`
+	// از حلقه خارج شوید یا با `return` از تابع
+	// دربرگیرنده برگردید.
 	for {
 		fmt.Println("loop")
 		break
 	}
 
-	// You can also `continue` to the next iteration of
-	// the loop.
+	// همچنین می‌توانید با `continue` به تکرار بعدی
+	// حلقه بروید.
 	for n := range 6 {
 		if n%2 == 0 {
 			continue
